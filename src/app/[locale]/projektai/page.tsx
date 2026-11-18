@@ -6,7 +6,7 @@ import { getPathname } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { BoardWorld } from "@/components/board/BoardWorld";
 import { ProjectBoard } from "@/components/board/ProjectBoard";
-import { CardThrower } from "@/components/deck/CardThrower";
+import { CardThrower } from "@/components/thrower/CardThrower";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
@@ -21,7 +21,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-/** Infinite project board: drag (or scroll / arrow keys) in any direction. */
 export default async function BoardPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -31,10 +30,23 @@ export default async function BoardPage({ params }: PageProps) {
   return (
     <>
       <h1 className="sr-only">{t("title")}</h1>
-      <ProjectBoard width={WORLD_W} height={WORLD_H} label={t("label")} hint={t("hint")} start={{ x: GRID / 5, y: GRID / 4 }}>
+      <ProjectBoard
+        width={WORLD_W}
+        height={WORLD_H}
+        label={t("label")}
+        hint={t("hint")}
+        start={{ x: GRID / 5, y: GRID / 4 }}
+      >
         <BoardWorld />
       </ProjectBoard>
-      <CardThrower labels={{ off: thrower("off"), on: thrower("on"), hint: thrower("hint"), jackpot: thrower("jackpot") }} />
+      <CardThrower
+        labels={{
+          off: thrower("off"),
+          on: thrower("on"),
+          hint: thrower("hint"),
+          jackpot: thrower("jackpot"),
+        }}
+      />
     </>
   );
 }

@@ -1,4 +1,4 @@
-/** Deterministic pseudo-random numbers, so a crack keeps its shape across re-renders. */
+// Seeded random numbers, so a crack keeps its shape across re-renders.
 function seeded(seed: number) {
   let state = seed >>> 0;
   return () => {
@@ -10,7 +10,6 @@ function seeded(seed: number) {
   };
 }
 
-/** Radial fracture lines plus broken rings between them, centred on (0, 0). */
 function crackPaths(seed: number) {
   const random = seeded(seed);
   const spokes = 9 + Math.floor(random() * 5);
@@ -39,13 +38,14 @@ function crackPaths(seed: number) {
       if (random() < 0.35) continue;
       const a = rays[i][Math.min(ring, rays[i].length - 1)];
       const b = rays[(i + 1) % rays.length][Math.min(ring, rays[(i + 1) % rays.length].length - 1)];
-      paths.push(toPath([a, [(a[0] + b[0]) / 2 + (random() - 0.5) * 8, (a[1] + b[1]) / 2 + (random() - 0.5) * 8], b]));
+      const jitter = () => (random() - 0.5) * 8;
+      const middle: [number, number] = [(a[0] + b[0]) / 2 + jitter(), (a[1] + b[1]) / 2 + jitter()];
+      paths.push(toPath([a, middle, b]));
     }
   }
   return paths;
 }
 
-/** A glass crack drawn at a viewport point; fades itself out (see .crack in globals.css). */
 export function Crack({ x, y, seed }: { x: number; y: number; seed: number }) {
   const paths = crackPaths(seed);
   return (

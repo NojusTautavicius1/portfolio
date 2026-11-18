@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import { CardThrower } from "@/components/deck/CardThrower";
+import { CardThrower } from "@/components/thrower/CardThrower";
 import { Reveal } from "@/components/motion/Reveal";
 import { About } from "@/components/sections/About";
 import { Contact } from "@/components/sections/Contact";
