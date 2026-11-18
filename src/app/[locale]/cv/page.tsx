@@ -9,8 +9,9 @@ import { localize, localizeTerms } from "@/lib/localize";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
-// Concept work stays on the website; the one-page CV only lists real projects.
-const cvProjects = featuredProjects.filter((project) => project.status !== "concept");
+// GraspIT is already listed under experience. The full stacks are on the website.
+const CV_STACK_LIMIT = 5;
+const cvProjects = featuredProjects.filter((project) => project.slug !== "graspit");
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
@@ -106,7 +107,7 @@ export default async function CvPage({ params }: PageProps) {
                     </h3>
                     <p className="text-[8pt]">{firstSentence(localize(project.solution, locale))}</p>
                     <p className="mt-0.5 font-mono text-[7.5pt] text-muted">
-                      {localizeTerms(project.stack, locale).join(" · ")}
+                      {localizeTerms(project.stack, locale).slice(0, CV_STACK_LIMIT).join(" · ")}
                     </p>
                   </li>
                 ))}

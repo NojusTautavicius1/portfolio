@@ -58,7 +58,6 @@
   "status": {
     "client": "Client",
     "mvp": "MVP",
-    "concept": "Concept",
     "launching": "Launching soon",
     "live": "Live"
   },

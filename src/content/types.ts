@@ -5,7 +5,7 @@ export type Localized<T = string> = Record<Locale, T>;
 /** A tag that is the same in every language ("Next.js") or needs translating ("Technical SEO"). */
 export type Term = string | Localized;
 
-export type ProjectStatus = "client" | "mvp" | "concept" | "launching" | "live";
+export type ProjectStatus = "client" | "mvp" | "launching" | "live";
 
 export type ProjectLink = {
   kind: "live" | "demo" | "github" | "video";

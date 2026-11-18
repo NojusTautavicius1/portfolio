@@ -49,14 +49,8 @@ export const experience: ExperienceItem[] = [
     context: { lt: "Web studija", en: "Web studio" },
     period: { lt: "2026 m. – dabar", en: "2026 – present" },
     points: {
-      lt: [
-        "Svetainės ir el. parduotuvės smulkiam verslui, AI automatizacijos",
-        "Su partneriu darome viską kartu: dizainą, kodą ir bendravimą su klientais",
-      ],
-      en: [
-        "Websites and online shops for small businesses, AI automations",
-        "My partner and I do everything together: design, code and client work",
-      ],
+      lt: ["Svetainės ir el. parduotuvės smulkiam verslui, AI automatizacijos"],
+      en: ["Websites and online shops for small businesses, AI automations"],
     },
   },
 ];
