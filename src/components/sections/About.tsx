@@ -32,6 +32,7 @@ export async function About() {
     { label: t("player.languages"), value: t("player.languagesValue") },
     { label: t("player.base"), value: t("player.baseValue") },
     { label: t("player.focus"), value: t("player.focusValue") },
+    { label: t("player.offline"), value: t("player.offlineValue") },
   ];
 
   return (

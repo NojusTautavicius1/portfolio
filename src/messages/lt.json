@@ -18,17 +18,17 @@
   },
   "hero": {
     "status": "Atviras darbui ir apmokamai praktikai",
-    "statusDetail": "Klaipėdos regionas / nuotoliu",
+    "statusDetail": "Kretinga, Klaipėda / nuotoliu",
     "headline": "Kuriu web aplikacijas ir AI automatizacijas.",
     "headlineRich": "Kuriu web aplikacijas ir <mark>AI automatizacijas</mark>.",
     "subtitle": "JavaScript programuotojo specialybės studentas (KTMC, baigiamasis kursas). Dirbu su Next.js, TypeScript, Python ir Claude API, o laisvalaikiu kuriu motion design ir video reklamas.",
     "ctaProjects": "Peržiūrėti projektus",
     "ctaCv": "Atsisiųsti CV",
-    "city": "Klaipėda",
+    "city": "Kretinga",
     "flipHint": "apversti kortą",
     "facts": [
       "3 savo AI / SaaS produktai — nuo idėjos iki veikiančio MVP",
-      "Web & AI praktika SEO agentūroje Potissimus",
+      "Praktika IT Perspective (Lenkija) ir SEO agentūroje Potissimus",
       "Svetainės realiems klientams ir sava web studija GraspIT"
     ]
   },
@@ -66,7 +66,7 @@
     "eyebrow": "Mano web studija",
     "title": "GraspIT",
     "body": "Su partneriu kuriame svetaines, el. parduotuves ir AI automatizacijas mažoms ir vidutinėms įmonėms Lietuvoje. Fiksuota kaina, aiškus procesas, klientui atiduodamas visas kodas.",
-    "role": "[Ką darai tu, o ką partneris — pvz. „Aš — programavimas ir AI automatizacijos, partneris — dizainas ir klientai.“]"
+    "role": "Su partneriu darome viską kartu: dizainą, kodą ir bendravimą su klientais. Darbus pasiskirstome pagal projektą."
   },
   "motion": {
     "eyebrow": "Kai nerašau kodo",
@@ -88,19 +88,21 @@
     "photoAlt": "Nojus Tautavičius",
     "player": {
       "studies": "Studijos",
-      "studiesValue": "KTMC · baigiamasis kursas",
+      "studiesValue": "KTMC · 2024–2027",
       "languages": "Kalbos",
       "languagesValue": "LT · EN C1",
       "base": "Bazė",
-      "baseValue": "Klaipėdos regionas",
+      "baseValue": "Kretinga",
       "focus": "Kryptis",
-      "focusValue": "AI · Full-stack"
+      "focusValue": "AI · Full-stack",
+      "offline": "Laisvalaikis",
+      "offlineValue": "Salė · mašinos · knygos"
     }
   },
   "contact": {
     "title": "Dirbkime kartu",
     "titleRich": "Dirbkime <mark>kartu</mark>",
-    "body": "Ieškau darbo arba apmokamos praktikos. Parašyk — atsakau per 24 valandas.",
+    "body": "Ieškau vietos, kur galėčiau augti: Klaipėdoje, Kretingoje arba nuotoliu. Parašyk, atsakau per 24 valandas.",
     "emailLabel": "El. paštas",
     "cvLt": "CV (LT, PDF)",
     "cvEn": "CV (EN, PDF)"

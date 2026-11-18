@@ -10,7 +10,7 @@ export const profile = {
   linkedin: null as string | null,
   /** Path inside /public, e.g. "/images/nojus.webp". null shows initials instead. */
   photo: null as string | null,
-  location: { lt: "[Miestas]", en: "[City]" } satisfies Localized,
+  location: { lt: "Kretinga", en: "Kretinga" } satisfies Localized,
   cv: {
     lt: "/cv/nojus-tautavicius-cv-lt.pdf",
     en: "/cv/nojus-tautavicius-cv-en.pdf",
@@ -21,14 +21,14 @@ export const profile = {
   ] satisfies Localized[],
   about: {
     lt: [
-      "Esu Nojus, baigiamojo kurso JavaScript programuotojo specialybės studentas Kretingos technologijų ir verslo mokykloje (KTMC). Labiausiai mane traukia vieta, kur susitinka kodas ir dirbtinis intelektas: kuriu įrankius, kurie automatizuoja nuobodų darbą ir duoda verslui aiškų rezultatą.",
-      "Šiuo metu atlieku praktiką IT Perspective įmonėje Lenkijoje, o vasarą Potissimus agentūroje kūriau svetaines, AI automatizacijas ir taisiau techninį SEO. Su partneriu turiu nedidelę web studiją GraspIT, o laisvalaikiu kuriu savo SaaS produktus ir motion design darbus. Mokausi greitai, mėgstu baigti tai, ką pradedu, ir nebijau užduočių, kurių dar nemoku.",
-      "[1 sakinys apie tai, kokio darbo ieškai ir kuo galėtum būti naudingas komandai.]",
+      "Esu Nojus iš Kretingos. Programuoti pradėjau Klaipėdos technologijų mokymo centre (KTMC), kur nuo 2024 m. mokausi JavaScript programuotoju. Labiausiai mane užveda dvi akimirkos: kai sistema pirmą kartą suveikia nuo pradžios iki galo ir kai ji dar ir atrodo gražiai.",
+      "Mano mėgstamiausias projektas yra Sonara. Pradėjau ją kaip darbą, kuriuo norėjau parodyti įmonei, ką sugebu, bet nesustojau ir vysčiau toliau pats: norėjau suprasti, kaip veikia AI, kaip jis keičia atsakymus ir kaip jį teisingai promptinti. Šiuo metu atlieku praktiką IT Perspective įmonėje Lenkijoje, vasarą dirbau Potissimus agentūroje, o su partneriu turiu web studiją GraspIT.",
+      "Kai gaunu užduotį, kurios nemoku, pirma išsiaiškinu: skaitau dokumentaciją, klausiu AI ir žmonių, tada darau. Ieškau vietos, kur galėčiau augti, Klaipėdoje, Kretingoje arba nuotoliu. Kai nesu prie kompiuterio, dažnai einu į sporto salę, domiuosi mašinomis, klausau muzikos ir skaitau knygas apie verslą, pinigus ir psichologiją.",
     ],
     en: [
-      "I'm Nojus, a final-year JavaScript developer student at Kretinga Technology and Business School (KTMC). What excites me most is where code meets AI: I build tools that automate tedious work and give a business a clear result.",
-      "I'm currently an intern at IT Perspective in Poland; over the summer I built websites and AI automations and fixed technical SEO at the Potissimus agency. I run a small web studio, GraspIT, with a partner, and in my spare time I build my own SaaS products and motion design work. I learn fast, I finish what I start, and I'm not afraid of tasks I don't know how to do yet.",
-      "[One sentence about the kind of role you're looking for and how you could help a team.]",
+      "I am Nojus from Kretinga. I started programming at Klaipėda Technology Training Centre (KTMC), where I have been training as a JavaScript developer since 2024. Two moments get me going the most: when a system works end to end for the first time, and when it also looks good.",
+      "My favourite project is Sonara. I started it as a piece of work to show a company what I can do, but I did not stop and kept building it on my own: I wanted to understand how AI works, how it changes its answers and how to prompt it properly. I am currently an intern at IT Perspective in Poland, I worked at the Potissimus agency over the summer, and I run a web studio, GraspIT, with a partner.",
+      "When I get a task I do not know how to do yet, I figure it out first: I read the docs, ask AI and people, then build. I am looking for a place where I can grow, in Klaipėda, Kretinga or remote. Away from the computer I go to the gym a lot, I am into cars, I listen to music and read books about business, money and psychology.",
     ],
   } satisfies Localized<string[]>,
 };

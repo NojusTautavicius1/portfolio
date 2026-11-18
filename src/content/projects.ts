@@ -69,8 +69,8 @@ export const featuredProjects: FeaturedProject[] = [
     },
     status: "live",
     problem: {
-      lt: "[1 sakinys, kodėl kūrei — pvz. „Norėjau suprasti, kaip veikia Spotify tipo rekomendacijos, ir sukurti jas pats.“]",
-      en: '[One sentence on why you built it — e.g. "I wanted to understand how Spotify-style recommendations work and build them myself."]',
+      lt: "Pradėjau ją kaip darbą, kuriuo norėjau parodyti įmonei, ką sugebu. Vėliau tęsiau pats, nes norėjau suprasti, kaip veikia AI: kaip jis keičia atsakymus ir kaip jį teisingai promptinti.",
+      en: "I started it as a piece of work to show a company what I can do. Later I kept going on my own because I wanted to understand how AI works: how it changes its answers and how to prompt it properly.",
     },
     solution: {
       lt: "Pilna muzikos klausymosi platforma: dainų įkėlimas ir grojimas su bangos vizualizacija, automatiškai atsinaujinantys „Daily Mix“ ir „Discover Weekly“, grojaraščiai, dainų žodžiai, klausymo statistika. „Ask Sonara“ leidžia ieškoti natūralia kalba — pvz. „dainos lietingam vakarui“.",

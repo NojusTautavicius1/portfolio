@@ -10,8 +10,16 @@ export const experience: ExperienceItem[] = [
     },
     period: { lt: "2026 m. spalis – dabar", en: "Oct 2026 – present" },
     points: {
-      lt: ["[1–2 konkretūs darbai, kuriuos darai praktikoje]"],
-      en: ["[1–2 concrete things you work on during the internship]"],
+      lt: [
+        "Kuriu ir prižiūriu svetaines",
+        "Dizainas ir marketingo medžiaga",
+        "IT pagalba ir sistemų priežiūra",
+      ],
+      en: [
+        "Building and maintaining websites",
+        "Design and marketing materials",
+        "IT support and system maintenance",
+      ],
     },
   },
   {
@@ -25,12 +33,12 @@ export const experience: ExperienceItem[] = [
     points: {
       lt: [
         "Kūriau ir tobulinau klientų svetaines",
-        "Kūriau AI automatizacijas agentūros darbui su Python ir Claude API [1 konkretus pavyzdys]",
+        "Kūriau AI automatizacijas su Python ir Claude API: SEO turinio generavimą ir audito ataskaitas",
         "Atlikau techninius SEO auditus ir taisymus",
       ],
       en: [
         "Built and improved client websites",
-        "Built AI automations for the agency with Python and the Claude API [one concrete example]",
+        "Built AI automations with Python and the Claude API: SEO content generation and audit reports",
         "Ran technical SEO audits and fixes",
       ],
     },
@@ -39,10 +47,16 @@ export const experience: ExperienceItem[] = [
     role: { lt: "Bendraįkūrėjas", en: "Co-founder" },
     organization: "GraspIT",
     context: { lt: "Web studija", en: "Web studio" },
-    period: { lt: "[Nuo kada] – dabar", en: "[Since] – present" },
+    period: { lt: "2026 m. – dabar", en: "2026 – present" },
     points: {
-      lt: ["Svetainės ir el. parduotuvės smulkiam verslui, AI automatizacijos"],
-      en: ["Websites and online shops for small businesses, AI automations"],
+      lt: [
+        "Svetainės ir el. parduotuvės smulkiam verslui, AI automatizacijos",
+        "Su partneriu darome viską kartu: dizainą, kodą ir bendravimą su klientais",
+      ],
+      en: [
+        "Websites and online shops for small businesses, AI automations",
+        "My partner and I do everything together: design, code and client work",
+      ],
     },
   },
 ];
@@ -50,8 +64,8 @@ export const experience: ExperienceItem[] = [
 export const education = {
   title: { lt: "JavaScript programuotojas", en: "JavaScript Developer" },
   school: {
-    lt: "Kretingos technologijų ir verslo mokykla (KTMC)",
-    en: "Kretinga Technology and Business School (KTMC)",
+    lt: "Klaipėdos technologijų mokymo centras (KTMC)",
+    en: "Klaipėda Technology Training Centre (KTMC)",
   },
-  period: { lt: "[Pradžios metai] – 2027 (baigiamasis kursas)", en: "[Start year] – 2027 (final year)" },
+  period: { lt: "2024–2027 (baigiamasis kursas)", en: "2024–2027 (final year)" },
 } satisfies Record<string, Localized>;
