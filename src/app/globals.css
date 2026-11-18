@@ -334,6 +334,30 @@ body {
   }
 }
 
+/* Experience timeline: the red rail fills as the list scrolls through the viewport. */
+@keyframes rail-grow {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+.timeline-fill {
+  transform-origin: top;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .timeline {
+      view-timeline: --timeline block;
+    }
+    .timeline-fill {
+      animation: rail-grow linear both;
+      animation-timeline: --timeline;
+      animation-range: cover 15% cover 65%;
+    }
+  }
+}
+
 /* Skill decks: a squared pile that deals itself into a column on hover / focus.
    Touch screens and reduced motion get the dealt column straight away. */
 .deck {
