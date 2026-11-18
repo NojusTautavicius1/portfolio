@@ -86,7 +86,17 @@
   "about": {
     "title": "About me",
     "languages": "Languages",
-    "photoAlt": "Nojus Tautavičius"
+    "photoAlt": "Nojus Tautavičius",
+    "player": {
+      "studies": "Studies",
+      "studiesValue": "KTMC · final year",
+      "languages": "Languages",
+      "languagesValue": "LT · EN C1",
+      "base": "Based in",
+      "baseValue": "Klaipėda region",
+      "focus": "Focus",
+      "focusValue": "AI · Full-stack"
+    }
   },
   "contact": {
     "title": "Let's work together",

@@ -396,6 +396,23 @@ body {
   }
 }
 
+/* About: words brighten one by one as they scroll into the reading zone. */
+@keyframes word-in {
+  from {
+    opacity: 0.16;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal-words .w {
+      animation: word-in linear both;
+      animation-timeline: view();
+      animation-range: entry 90% cover 40%;
+    }
+  }
+}
+
 /* Endless image strip (contact). Content is doubled, so moving by -50% loops seamlessly. */
 @keyframes marquee {
   to {

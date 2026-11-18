@@ -86,7 +86,17 @@
   "about": {
     "title": "Apie mane",
     "languages": "Kalbos",
-    "photoAlt": "Nojus Tautavičius"
+    "photoAlt": "Nojus Tautavičius",
+    "player": {
+      "studies": "Studijos",
+      "studiesValue": "KTMC · baigiamasis kursas",
+      "languages": "Kalbos",
+      "languagesValue": "LT · EN C1",
+      "base": "Bazė",
+      "baseValue": "Klaipėdos regionas",
+      "focus": "Kryptis",
+      "focusValue": "AI · Full-stack"
+    }
   },
   "contact": {
     "title": "Dirbkime kartu",
