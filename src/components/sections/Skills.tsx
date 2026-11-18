@@ -14,13 +14,13 @@ export async function Skills() {
 
   return (
     <section aria-labelledby="skills-title" className={`${container} ${sectionSpacing} border-t border-line`}>
-      <h2 id="skills-title" className={sectionTitle}>
+      <h2 id="skills-title" data-reveal className={sectionTitle}>
         {t("title")}
       </h2>
 
       <dl className="mt-12">
         {skillGroups.map((group) => (
-          <div key={group.name.en} className={row}>
+          <div key={group.name.en} data-reveal className={row}>
             <dt className="font-medium">{localize(group.name, locale)}</dt>
             <dd>
               <TagList items={group.items} />
@@ -32,7 +32,7 @@ export async function Skills() {
       <h3 className={`${eyebrow} mt-16`}>{t("side")}</h3>
       <ul className="mt-4">
         {sideProjects.map((project) => (
-          <li key={project.title.en} className={row}>
+          <li key={project.title.en} data-reveal className={row}>
             <p className="font-medium">{localize(project.title, locale)}</p>
             <div className="space-y-3">
               <p className="leading-relaxed text-muted">{localize(project.description, locale)}</p>

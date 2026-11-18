@@ -3,6 +3,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { education, experience } from "@/content/experience";
 import { localize } from "@/lib/localize";
 import { container, eyebrow, sectionSpacing, sectionTitle } from "@/lib/styles";
+import { ProbeAnchor } from "@/components/three/ProbeAnchor";
 
 const row = "grid gap-2 border-t border-line py-8 md:grid-cols-[220px_minmax(0,1fr)] md:gap-10";
 
@@ -12,13 +13,16 @@ export async function Experience() {
 
   return (
     <section id="experience" aria-labelledby="experience-title" className={`${container} ${sectionSpacing}`}>
-      <h2 id="experience-title" className={sectionTitle}>
-        {t("title")}
-      </h2>
+      <div className="flex items-end justify-between gap-6">
+        <h2 id="experience-title" data-reveal className={sectionTitle}>
+          {t("title")}
+        </h2>
+        <ProbeAnchor yaw={-0.6} pitch={0.2} className="size-24 shrink-0 md:size-32" />
+      </div>
 
       <ol className="mt-12">
         {experience.map((item) => (
-          <li key={item.organization} className={row}>
+          <li key={item.organization} data-reveal className={row}>
             <p className="font-mono text-sm text-muted">{localize(item.period, locale)}</p>
             <div>
               <h3 className="text-xl font-semibold tracking-tight">
@@ -39,7 +43,7 @@ export async function Experience() {
       </ol>
 
       <h3 className={`${eyebrow} mt-16`}>{t("education")}</h3>
-      <div className={`${row} mt-4`}>
+      <div data-reveal className={`${row} mt-4`}>
         <p className="font-mono text-sm text-muted">{localize(education.period, locale)}</p>
         <div>
           <p className="text-xl font-semibold tracking-tight">{localize(education.title, locale)}</p>

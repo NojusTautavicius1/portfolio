@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { motionTools } from "@/content/skills";
 import { container, eyebrow, sectionSpacing } from "@/lib/styles";
 import { TagList } from "@/components/ui/Tag";
+import { ProbeAnchor } from "@/components/three/ProbeAnchor";
 
 export async function StudioMotion() {
   const studio = await getTranslations("studio");
@@ -10,7 +11,7 @@ export async function StudioMotion() {
 
   return (
     <section className={`${container} ${sectionSpacing} grid gap-16 border-t border-line lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]`}>
-      <div aria-labelledby="studio-title" role="group">
+      <div aria-labelledby="studio-title" role="group" data-reveal>
         <p className={eyebrow}>{studio("eyebrow")}</p>
         <h2 id="studio-title" className="mt-4 text-3xl font-semibold tracking-tight md:text-4xl">
           {studio("title")}
@@ -19,11 +20,17 @@ export async function StudioMotion() {
         <p className="mt-4 max-w-[60ch] leading-relaxed">{studio("role")}</p>
       </div>
 
-      <div aria-labelledby="motion-title" role="group">
-        <p className={eyebrow}>{motion("eyebrow")}</p>
-        <h2 id="motion-title" className="mt-4 text-3xl font-semibold tracking-tight md:text-4xl">
-          {motion("title")}
-        </h2>
+      <div aria-labelledby="motion-title" role="group" data-reveal>
+        <div className="flex items-start justify-between gap-6">
+          <div>
+            <p className={eyebrow}>{motion("eyebrow")}</p>
+            <h2 id="motion-title" className="mt-4 text-3xl font-semibold tracking-tight md:text-4xl">
+              {motion("title")}
+            </h2>
+          </div>
+          {/* The probe itself is a Blender piece, so it parks next to the motion work. */}
+          <ProbeAnchor yaw={-0.7} pitch={0.15} className="size-24 shrink-0 md:size-28" />
+        </div>
         <p className="mt-4 max-w-[60ch] leading-relaxed text-muted">{motion("body")}</p>
         <div className="mt-6">
           <TagList items={motionTools} />

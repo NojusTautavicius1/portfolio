@@ -59,6 +59,15 @@ body {
   border-radius: 4px;
 }
 
+/* Hero poster: visible until the 3D probe layer is ready (ProbeLayer sets the attribute). */
+.probe-poster {
+  transition: opacity 0.7s ease;
+}
+
+html[data-probe="ready"] .probe-poster {
+  opacity: 0;
+}
+
 @keyframes status-pulse {
   0%,
   100% {

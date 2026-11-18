@@ -13,17 +13,17 @@ export async function About() {
     <section aria-labelledby="about-title" className={`${container} ${sectionSpacing} border-t border-line`}>
       <div className="grid gap-12 md:grid-cols-[minmax(0,1fr)_260px] md:gap-20">
         <div>
-          <h2 id="about-title" className={sectionTitle}>
+          <h2 id="about-title" data-reveal className={sectionTitle}>
             {t("title")}
           </h2>
-          <div className="mt-8 max-w-[65ch] space-y-5 text-lg leading-relaxed text-muted">
+          <div data-reveal className="mt-8 max-w-[65ch] space-y-5 text-lg leading-relaxed text-muted">
             {localize(profile.about, locale).map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
         </div>
 
-        <aside className="space-y-6">
+        <aside data-reveal className="space-y-6">
           <div className="relative aspect-[4/5] w-full max-w-[260px] overflow-hidden rounded-2xl border border-line bg-surface">
             {profile.photo ? (
               <Image src={profile.photo} alt={t("photoAlt")} fill sizes="260px" className="object-cover" />

@@ -7,7 +7,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
 
+import "lenis/dist/lenis.css";
 import "../globals.css";
 
 const geistSans = Geist({ subsets: ["latin", "latin-ext"], variable: "--font-geist-sans" });
@@ -60,6 +62,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           {t("skip")}
         </a>
         <NextIntlClientProvider>
+          <SmoothScroll />
           <Header />
           <main id="main">{children}</main>
           <Footer />
