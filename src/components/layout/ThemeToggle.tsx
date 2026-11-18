@@ -1,38 +1,18 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
 
-type Theme = "dark" | "light";
-
-function subscribe(onChange: () => void) {
-  const observer = new MutationObserver(onChange);
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-  return () => observer.disconnect();
-}
-
-function readTheme(): Theme {
-  return document.documentElement.dataset.theme === "light" ? "light" : "dark";
-}
+import { setTheme, useTheme, type Theme } from "@/lib/useTheme";
 
 export function ThemeToggle() {
   const t = useTranslations("nav");
-  const theme = useSyncExternalStore<Theme>(subscribe, readTheme, () => "dark");
+  const theme = useTheme();
   const next: Theme = theme === "dark" ? "light" : "dark";
-
-  function toggle() {
-    document.documentElement.dataset.theme = next;
-    try {
-      localStorage.setItem("theme", next);
-    } catch {
-      // Storage can be blocked (private mode); the theme still switches for this visit.
-    }
-  }
 
   return (
     <button
       type="button"
-      onClick={toggle}
+      onClick={() => setTheme(next)}
       aria-label={next === "light" ? t("themeToLight") : t("themeToDark")}
       className="grid size-11 place-items-center rounded-xl text-muted transition-colors hover:text-text"
     >

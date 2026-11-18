@@ -4,6 +4,7 @@ import { profile } from "@/content/profile";
 import { Link } from "@/i18n/navigation";
 import { localize } from "@/lib/localize";
 import { buttonPrimary, buttonSecondary, container } from "@/lib/styles";
+import { ProbeStage } from "@/components/three/ProbeStage";
 
 export async function Hero() {
   const t = await getTranslations("hero");
@@ -11,11 +12,12 @@ export async function Hero() {
   const facts = t.raw("facts") as string[];
 
   return (
+    // Mobile order: intro → probe → facts. Desktop: intro and facts on the left, probe on the right.
     <section
       aria-labelledby="hero-title"
-      className={`${container} grid min-h-[100dvh] items-center gap-12 pb-16 pt-28 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]`}
+      className={`${container} grid min-h-dvh content-center gap-x-12 gap-y-10 pb-16 pt-28 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-y-12`}
     >
-      <div>
+      <div className="lg:col-start-1 lg:row-start-1">
         <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-muted">
           <span className="inline-flex items-center gap-2 text-text">
             <span aria-hidden className="status-dot size-2 rounded-full bg-accent" />
@@ -45,24 +47,18 @@ export async function Hero() {
             {t("ctaCv")}
           </a>
         </div>
-
-        <ol className="mt-12 max-w-xl divide-y divide-line border-y border-line">
-          {facts.map((fact, index) => (
-            <li key={fact} className="flex gap-4 py-3 text-sm">
-              <span className="font-mono text-muted">{String(index + 1).padStart(2, "0")}</span>
-              <span>{fact}</span>
-            </li>
-          ))}
-        </ol>
       </div>
 
-      {/* Stage for the 3D probe (step 4). Until then: a static stand-in with the same footprint. */}
-      <div id="probe-stage" aria-hidden className="relative mx-auto hidden aspect-square w-full max-w-[520px] lg:block">
-        <div className="absolute inset-[8%] rounded-full border border-line" />
-        <div className="absolute inset-[24%] rounded-full border border-line" />
-        <div className="absolute inset-[40%] rounded-full border border-line bg-surface" />
-        <div className="absolute left-1/2 top-1/2 size-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent" />
-      </div>
+      <ProbeStage className="mx-auto max-w-80 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-140 lg:self-center" />
+
+      <ol className="max-w-xl divide-y divide-line border-y border-line lg:col-start-1 lg:row-start-2">
+        {facts.map((fact, index) => (
+          <li key={fact} className="flex gap-4 py-3 text-sm">
+            <span className="font-mono text-muted">{String(index + 1).padStart(2, "0")}</span>
+            <span>{fact}</span>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }
