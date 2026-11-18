@@ -209,33 +209,80 @@ body {
     animation-delay: var(--float-delay, 0s);
   }
 
-  /* Hero: cards are dealt from behind the name out to their corners. */
+  /* Hero intro: the four cards appear clustered in the centre, each aimed at its corner
+     (--aim), hold for a beat, then fly out to their corners (--end-x/--end-y, in container
+     units of the hero stage) while spinning into their final angle (--rot). Pure CSS, so it
+     starts on the first frame. Slots sit at the stage centre; an open card returns there. */
   @keyframes deal-out {
-    from {
-      transform: translate(var(--from-x), var(--from-y)) rotate(0deg) scale(0.35);
+    0% {
+      transform: translate(-50%, -50%) translate(var(--aim-x), var(--aim-y)) rotate(var(--aim)) scale(0.2);
       opacity: 0;
+      animation-timing-function: cubic-bezier(0.2, 0.8, 0.3, 1);
     }
-    55% {
+    16% {
+      transform: translate(-50%, -50%) translate(var(--aim-x), var(--aim-y)) rotate(var(--aim)) scale(0.82);
+      opacity: 1;
+      animation-timing-function: linear;
+    }
+    42% {
+      transform: translate(-50%, -50%) translate(var(--aim-x), var(--aim-y)) rotate(var(--aim)) scale(0.82);
+      animation-timing-function: cubic-bezier(0.7, 0, 0.2, 1.12);
+    }
+    100% {
+      transform: translate(-50%, -50%) translate(var(--end-x), var(--end-y)) rotate(var(--rot)) scale(1);
       opacity: 1;
     }
   }
 
   .deal {
-    transform: rotate(var(--rot));
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translate(var(--end-x), var(--end-y)) rotate(var(--rot));
     translate: calc(var(--px, 0) * var(--depth, 12) * 1px) calc(var(--py, 0) * var(--depth, 12) * 1px);
     transition:
       transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
       translate 0.4s ease-out;
-    animation: deal-out 1.15s cubic-bezier(0.2, 0.9, 0.25, 1.12) backwards;
+    /* backwards (not both): after the intro the normal transform applies again, so opening works. */
+    animation: deal-out 1.8s backwards;
     animation-delay: var(--delay, 0s);
   }
 
   .deal[data-open="true"] {
-    transform: translate(var(--tx, 0px), var(--ty, 0px)) rotate(0deg) scale(var(--open-scale, 1.8));
+    transform: translate(-50%, -50%) rotate(0deg) scale(var(--open-scale, 2));
+  }
+
+  /* The name rises in, letter by letter, as the cards leave the centre. */
+  @keyframes letter-rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.45em) rotate(4deg);
+      filter: blur(6px);
+    }
+  }
+
+  .hero-letter {
+    display: inline-block;
+    animation: letter-rise 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+    animation-delay: calc(0.85s + var(--i, 0) * 0.035s);
+  }
+
+  @keyframes intro-fade {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+  }
+
+  .intro-fade {
+    animation: intro-fade 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+    animation-delay: var(--intro-delay, 1.45s);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .deal {
+    .deal,
+    .hero-letter,
+    .intro-fade {
       animation: none;
       transition: none;
     }

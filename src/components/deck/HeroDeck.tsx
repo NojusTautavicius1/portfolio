@@ -16,13 +16,17 @@ export type HeroCardData = {
   best: string;
 };
 
-// Corner slots. `from` points back toward the name, so the deal-out animation starts behind it.
+// Corner slots, relative to the stage centre (cqw/cqh = % of the stage, see globals.css .deal).
+// `aim` is the angle the card points at its corner while clustered in the centre before take-off.
+// On phones the bottom cards sit lower so they clear the buttons.
 const slots = [
-  { position: "left-[2%] top-[4%] sm:left-[5%] sm:top-[8%]", rot: -14, from: ["36vw", "20vh"], depth: 18, delay: 0.15 },
-  { position: "right-[2%] top-[2%] sm:right-[6%] sm:top-[6%]", rot: 11, from: ["-36vw", "22vh"], depth: 26, delay: 0.27 },
-  { position: "left-[3%] bottom-[2%] sm:left-[9%] sm:bottom-[7%]", rot: 9, from: ["32vw", "-18vh"], depth: 22, delay: 0.39 },
-  { position: "right-[3%] bottom-[4%] sm:right-[8%] sm:bottom-[9%]", rot: -9, from: ["-34vw", "-20vh"], depth: 14, delay: 0.51 },
+  { end: "[--end-x:-38cqw] [--end-y:-30cqh] sm:[--end-y:-26cqh]", aim: -45, dir: [-1, -1], rot: -14, depth: 18, delay: 0 },
+  { end: "[--end-x:38cqw] [--end-y:-31cqh] sm:[--end-y:-28cqh]", aim: 45, dir: [1, -1], rot: 11, depth: 26, delay: 0.04 },
+  { end: "[--end-x:-37cqw] [--end-y:37cqh] sm:[--end-y:25cqh]", aim: -135, dir: [-1, 1], rot: 9, depth: 22, delay: 0.08 },
+  { end: "[--end-x:37cqw] [--end-y:36cqh] sm:[--end-y:23cqh]", aim: 135, dir: [1, 1], rot: -9, depth: 14, delay: 0.12 },
 ];
+
+
 
 /**
  * The four direction cards around the name. Each card is a real button: hover tilts it
@@ -66,24 +70,12 @@ export function HeroDeck({ cards, flipHint }: { cards: HeroCardData[]; flipHint:
     };
   }, [open]);
 
-  function toggle(index: number, slot: HTMLElement) {
-    if (open === index) {
-      setOpen(null);
-      return;
-    }
-    const area = stage.current?.getBoundingClientRect();
-    if (area) {
-      const rect = slot.getBoundingClientRect();
-      const target = Math.min(320, area.width * 0.62);
-      slot.style.setProperty("--tx", `${area.left + area.width / 2 - (rect.left + rect.width / 2)}px`);
-      slot.style.setProperty("--ty", `${area.top + area.height / 2 - (rect.top + rect.height / 2)}px`);
-      slot.style.setProperty("--open-scale", String(Math.min(3.2, Math.max(1.5, target / rect.width))));
-    }
-    setOpen(index);
-  }
-
   return (
-    <div ref={stage} className="absolute inset-0">
+    // Container for cqw/cqh; --cw is the card width (also scales the clustered offsets).
+    <div
+      ref={stage}
+      className="absolute inset-0 [--cw:clamp(72px,11vw,176px)] [--open-scale:3] [container-type:size] sm:[--open-scale:2]"
+    >
       {cards.map((card, index) => {
         const slot = slots[index];
         const isOpen = open === index;
@@ -91,12 +83,13 @@ export function HeroDeck({ cards, flipHint }: { cards: HeroCardData[]; flipHint:
           <div
             key={card.suit}
             data-open={isOpen}
-            className={`deal absolute ${slot.position} ${isOpen ? "z-30" : "z-0 hover:z-20 focus-within:z-20"}`}
+            className={`deal ${slot.end} ${isOpen ? "z-30" : "z-0 hover:z-20 focus-within:z-20"}`}
             style={
               {
                 "--rot": `${slot.rot}deg`,
-                "--from-x": slot.from[0],
-                "--from-y": slot.from[1],
+                "--aim": `${slot.aim}deg`,
+                "--aim-x": `calc(var(--cw) * ${slot.dir[0] * 0.3})`,
+                "--aim-y": `calc(var(--cw) * ${slot.dir[1] * 0.42})`,
                 "--depth": slot.depth,
                 "--delay": `${slot.delay}s`,
               } as React.CSSProperties
@@ -107,10 +100,10 @@ export function HeroDeck({ cards, flipHint }: { cards: HeroCardData[]; flipHint:
               data-hero-card=""
               aria-pressed={isOpen}
               data-flipped={isOpen}
-              onClick={(event) => toggle(index, event.currentTarget.parentElement as HTMLElement)}
+              onClick={() => setOpen(isOpen ? null : index)}
               onPointerMove={tilt}
               onPointerLeave={resetTilt}
-              className="card cursor-pointer [--card-w:clamp(72px,11vw,176px)]"
+              className="card cursor-pointer [--card-w:var(--cw)]"
             >
               <span className="card-float" style={{ "--float-delay": `${index * -1.3}s` } as React.CSSProperties}>
                 <span className="card-tilt">
