@@ -1,19 +1,32 @@
-import type { SkillGroup } from "./types";
+import type { Suit } from "./areas";
+import type { Localized, Term } from "./types";
 
-export const skillGroups: SkillGroup[] = [
+export type SkillDeck = {
+  /** "joker" = tools that serve every direction. */
+  suit: Suit | "joker";
+  name: Localized;
+  items: Term[];
+};
+
+/** Skills as five decks, one per direction (same suits as the hero cards) plus a joker for tools. */
+export const skillDecks: SkillDeck[] = [
   {
+    suit: "spades",
     name: { lt: "AI ir automatizacijos", en: "AI & automation" },
     items: ["Claude API", "Perplexity API", "Python", "Playwright", "Puppeteer", { lt: "Telegram botai", en: "Telegram bots" }],
   },
   {
-    name: { lt: "Frontend", en: "Frontend" },
-    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Motion"],
+    suit: "hearts",
+    name: { lt: "Full-stack", en: "Full-stack" },
+    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Prisma", "Redis (Upstash)", "Stripe"],
   },
   {
-    name: { lt: "Backend ir duomenys", en: "Backend & data" },
-    items: ["Supabase", "PostgreSQL", "Prisma", "Redis (Upstash)", "Stripe", "REST API"],
+    suit: "diamonds",
+    name: { lt: "Motion ir 3D", en: "Motion & 3D" },
+    items: ["After Effects", "Blender", "Remotion", "GSAP", "CSS 3D"],
   },
   {
+    suit: "clubs",
     name: { lt: "SEO", en: "SEO" },
     items: [
       { lt: "Techninis SEO", en: "Technical SEO" },
@@ -23,10 +36,7 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    name: { lt: "Motion ir 3D", en: "Motion & 3D" },
-    items: ["After Effects", "Blender", "Remotion"],
-  },
-  {
+    suit: "joker",
     name: { lt: "Įrankiai", en: "Tools" },
     items: ["Git", "GitHub", "Vercel", "Railway", "Claude Code"],
   },

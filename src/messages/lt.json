@@ -80,7 +80,8 @@
   },
   "skills": {
     "title": "Įgūdžiai",
-    "side": "Kiti projektai"
+    "side": "Kiti projektai",
+    "deckHint": "Užvesk pelę ant kaladės — ji išsidalins"
   },
   "about": {
     "title": "Apie mane",

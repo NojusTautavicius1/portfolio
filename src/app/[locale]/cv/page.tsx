@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { education, experience } from "@/content/experience";
 import { profile } from "@/content/profile";
 import { featuredProjects } from "@/content/projects";
-import { skillGroups } from "@/content/skills";
+import { skillDecks } from "@/content/skills";
 import { localize, localizeTerms } from "@/lib/localize";
 
 type PageProps = { params: Promise<{ locale: string }> };
@@ -112,7 +112,7 @@ export default async function CvPage({ params }: PageProps) {
             <section>
               <h2 className={heading}>{t("skills")}</h2>
               <dl className="mt-2 space-y-2.5">
-                {skillGroups.map((group) => (
+                {skillDecks.map((group) => (
                   <div key={group.name.en} className="break-inside-avoid">
                     <dt className="font-semibold">{localize(group.name, locale)}</dt>
                     <dd className="text-[8.5pt] text-muted">{localizeTerms(group.items, locale).join(", ")}</dd>

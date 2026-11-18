@@ -80,7 +80,8 @@
   },
   "skills": {
     "title": "Skills",
-    "side": "Other projects"
+    "side": "Other projects",
+    "deckHint": "Hover a deck — it deals itself out"
   },
   "about": {
     "title": "About me",
