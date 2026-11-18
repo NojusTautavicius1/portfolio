@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "Nojus Tautavičius — web & AI developer",
+    "description": "JavaScript developer student (KTMC). I build web apps with Next.js and AI automations with Python and the Claude API. Open to jobs and paid internships."
+  },
+  "nav": {
+    "skip": "Skip to content",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "cv": "CV",
+    "cvLabel": "Download CV (PDF)",
+    "language": "Lietuviškai",
+    "languageLabel": "Perjungti į lietuvių kalbą",
+    "themeToLight": "Switch to light theme",
+    "themeToDark": "Switch to dark theme",
+    "home": "Home",
+    "sections": "Sections"
+  },
+  "hero": {
+    "status": "Open to jobs and paid internships",
+    "statusDetail": "Klaipėda region / remote",
+    "headline": "I build web apps and AI automations.",
+    "subtitle": "Final-year JavaScript developer student (KTMC). I work with Next.js, TypeScript, Python and the Claude API, and in my spare time I make motion design and video ads.",
+    "ctaProjects": "View projects",
+    "ctaCv": "Download CV",
+    "facts": [
+      "3 of my own AI / SaaS products — from idea to working MVP",
+      "Web & AI internship at the SEO agency Potissimus",
+      "Websites for real clients and my own web studio, GraspIT"
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "intro": "Problem → solution → result. AI products first, then client work.",
+    "more": "Read more",
+    "moreAbout": "Read more about {title}",
+    "back": "All projects",
+    "problem": "Problem",
+    "solution": "Solution",
+    "result": "Result",
+    "role": "My role",
+    "stack": "Stack",
+    "links": "Links",
+    "next": "Next project",
+    "mediaSoon": "Screenshot / video coming soon",
+    "linkKinds": {
+      "live": "Website",
+      "demo": "Demo",
+      "github": "GitHub",
+      "video": "Video"
+    }
+  },
+  "status": {
+    "client": "Client",
+    "mvp": "MVP",
+    "concept": "Concept",
+    "launching": "Launching soon",
+    "live": "Live"
+  },
+  "studio": {
+    "eyebrow": "My web studio",
+    "title": "GraspIT",
+    "body": "With my partner I build websites, online shops and AI automations for small and medium businesses in Lithuania. Fixed price, a clear process, and the client gets the full source code.",
+    "role": "[What you do vs. your partner — e.g. \"I handle development and AI automations, my partner handles design and clients.\"]"
+  },
+  "motion": {
+    "eyebrow": "When I'm not coding",
+    "title": "Motion design & video",
+    "body": "I make video ads and animations, from 2D motion graphics to 3D scenes. When a campaign needs many variants, I generate the videos with code.",
+    "worksSoon": "[3–6 best video pieces go here]"
+  },
+  "experience": {
+    "title": "Experience",
+    "education": "Education"
+  },
+  "skills": {
+    "title": "Skills",
+    "side": "Other projects"
+  },
+  "about": {
+    "title": "About me",
+    "languages": "Languages",
+    "photoAlt": "Nojus Tautavičius"
+  },
+  "contact": {
+    "title": "Let's work together",
+    "body": "I'm looking for a job or a paid internship. Write to me — I reply within 24 hours.",
+    "emailLabel": "Email",
+    "cvLt": "CV (LT, PDF)",
+    "cvEn": "CV (EN, PDF)"
+  },
+  "footer": {
+    "built": "Built with Next.js and React Three Fiber."
+  }
+}

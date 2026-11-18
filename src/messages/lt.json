@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "Nojus Tautavičius — web ir AI programuotojas",
+    "description": "JavaScript programuotojo specialybės studentas (KTMC). Kuriu web aplikacijas su Next.js ir AI automatizacijas su Python bei Claude API. Ieškau darbo arba apmokamos praktikos."
+  },
+  "nav": {
+    "skip": "Pereiti prie turinio",
+    "projects": "Projektai",
+    "experience": "Patirtis",
+    "contact": "Kontaktai",
+    "cv": "CV",
+    "cvLabel": "Atsisiųsti CV (PDF)",
+    "language": "English",
+    "languageLabel": "Switch to English",
+    "themeToLight": "Įjungti šviesią temą",
+    "themeToDark": "Įjungti tamsią temą",
+    "home": "Pradžia",
+    "sections": "Sekcijos"
+  },
+  "hero": {
+    "status": "Atviras darbui ir apmokamai praktikai",
+    "statusDetail": "Klaipėdos regionas / nuotoliu",
+    "headline": "Kuriu web aplikacijas ir AI automatizacijas.",
+    "subtitle": "JavaScript programuotojo specialybės studentas (KTMC, baigiamasis kursas). Dirbu su Next.js, TypeScript, Python ir Claude API, o laisvalaikiu kuriu motion design ir video reklamas.",
+    "ctaProjects": "Peržiūrėti projektus",
+    "ctaCv": "Atsisiųsti CV",
+    "facts": [
+      "3 savo AI / SaaS produktai — nuo idėjos iki veikiančio MVP",
+      "Web & AI praktika SEO agentūroje Potissimus",
+      "Svetainės realiems klientams ir sava web studija GraspIT"
+    ]
+  },
+  "projects": {
+    "title": "Projektai",
+    "intro": "Problema → sprendimas → rezultatas. Pirmiausia — AI produktai, tada darbai klientams.",
+    "more": "Plačiau",
+    "moreAbout": "Plačiau apie {title}",
+    "back": "Visi projektai",
+    "problem": "Problema",
+    "solution": "Sprendimas",
+    "result": "Rezultatas",
+    "role": "Mano vaidmuo",
+    "stack": "Technologijos",
+    "links": "Nuorodos",
+    "next": "Kitas projektas",
+    "mediaSoon": "Ekrano nuotrauka / video — netrukus",
+    "linkKinds": {
+      "live": "Svetainė",
+      "demo": "Demo",
+      "github": "GitHub",
+      "video": "Video"
+    }
+  },
+  "status": {
+    "client": "Klientas",
+    "mvp": "MVP",
+    "concept": "Koncepcija",
+    "launching": "Ruošiama paleidimui",
+    "live": "Veikia"
+  },
+  "studio": {
+    "eyebrow": "Mano web studija",
+    "title": "GraspIT",
+    "body": "Su partneriu kuriame svetaines, el. parduotuves ir AI automatizacijas mažoms ir vidutinėms įmonėms Lietuvoje. Fiksuota kaina, aiškus procesas, klientui atiduodamas visas kodas.",
+    "role": "[Ką darai tu, o ką partneris — pvz. „Aš — programavimas ir AI automatizacijos, partneris — dizainas ir klientai.“]"
+  },
+  "motion": {
+    "eyebrow": "Kai nerašau kodo",
+    "title": "Motion design ir video",
+    "body": "Kuriu video reklamas ir animacijas: nuo 2D motion graphics iki 3D scenų. Kai reikia daug variantų, video generuoju kodu.",
+    "worksSoon": "[Čia bus 3–6 geriausi video darbai]"
+  },
+  "experience": {
+    "title": "Patirtis",
+    "education": "Išsilavinimas"
+  },
+  "skills": {
+    "title": "Įgūdžiai",
+    "side": "Kiti projektai"
+  },
+  "about": {
+    "title": "Apie mane",
+    "languages": "Kalbos",
+    "photoAlt": "Nojus Tautavičius"
+  },
+  "contact": {
+    "title": "Dirbkime kartu",
+    "body": "Ieškau darbo arba apmokamos praktikos. Parašyk — atsakau per 24 valandas.",
+    "emailLabel": "El. paštas",
+    "cvLt": "CV (LT, PDF)",
+    "cvEn": "CV (EN, PDF)"
+  },
+  "footer": {
+    "built": "Sukurta su Next.js ir React Three Fiber."
+  }
+}

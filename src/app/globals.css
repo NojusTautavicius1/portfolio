@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* Dark is the default theme. data-theme is set before paint by the inline script in the layout. */
+:root,
+[data-theme="dark"] {
+  --bg: #0e0f11;
+  --surface: #17191c;
+  --line: #26292e;
+  --text: #ecedee;
+  --muted: #8a8f98;
+  --accent: #e8643c;
+  --on-accent: #0e0f11;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f5f3ef;
+  --surface: #ffffff;
+  --line: #e3e0da;
+  --text: #17181b;
+  --muted: #5f636b;
+  --accent: #b83e18;
+  --on-accent: #ffffff;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.status-dot {
+  animation: status-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot {
+    animation: none;
+  }
+}
