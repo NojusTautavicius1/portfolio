@@ -22,7 +22,12 @@ function readLocalEnv(name) {
   const line = readFileSync(".env.local", "utf8")
     .split(/\r?\n/)
     .find((entry) => entry.startsWith(`${name}=`));
-  return line?.slice(name.length + 1).trim().replace(/^["']|["']$/g, "") || undefined;
+  return (
+    line
+      ?.slice(name.length + 1)
+      .trim()
+      .replace(/^["']|["']$/g, "") || undefined
+  );
 }
 
 const chromePath =
@@ -65,7 +70,9 @@ try {
     const pdf = await page.pdf({ path, format: "A4", printBackground: true, preferCSSPageSize: true });
     const pages = (pdf.toString("latin1").match(/\/Type\s*\/Page[^s]/g) ?? []).length;
     const warning = pages > 1 ? "  ⚠ more than one page: shorten the content" : "";
-    console.log(`✓ ${path} (${pages} page${pages > 1 ? "s" : ""})${warning}${phone ? "" : "  — no CV_PHONE in .env.local, phone omitted"}`);
+    console.log(
+      `✓ ${path} (${pages} page${pages > 1 ? "s" : ""})${warning}${phone ? "" : "  — no CV_PHONE in .env.local, phone omitted"}`,
+    );
     await page.close();
   }
 } finally {

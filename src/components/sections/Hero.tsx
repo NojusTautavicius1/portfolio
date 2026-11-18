@@ -9,15 +9,17 @@ import { HeroDeck } from "@/components/deck/HeroDeck";
 import { LocalClock } from "@/components/deck/LocalClock";
 import { Scribble } from "@/components/ui/Scribble";
 
-/**
- * Each letter is its own element: it rises in during the intro (staggered by --i, continuing
- * across both lines via `offset`) and thrown cards can knock it (see CardThrower).
- */
+// One span per letter: they rise in one by one, and thrown cards can knock them over.
 function Letters({ word, offset = 0 }: { word: string; offset?: number }) {
   return (
     <>
       {Array.from(word).map((letter, index) => (
-        <span key={index} data-egg="letter" className="hero-letter" style={{ "--i": offset + index } as React.CSSProperties}>
+        <span
+          key={index}
+          data-egg="letter"
+          className="hero-letter"
+          style={{ "--i": offset + index } as React.CSSProperties}
+        >
           {letter}
         </span>
       ))}
@@ -42,9 +44,14 @@ export async function Hero() {
 
   return (
     // Bottom padding keeps the facts clear of the fixed card-thrower toggle (bottom-left).
-    <section aria-labelledby="hero-title" className="relative isolate flex min-h-dvh flex-col overflow-x-clip pb-20 pt-20 md:pb-24">
+    <section
+      aria-labelledby="hero-title"
+      className="relative isolate flex min-h-dvh flex-col overflow-x-clip pt-20 pb-20 md:pb-24"
+    >
       {/* HUD row */}
-      <div className={`${container} flex flex-wrap items-center justify-between gap-x-6 gap-y-1 pt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-muted`}>
+      <div
+        className={`${container} flex flex-wrap items-center justify-between gap-x-6 gap-y-1 pt-4 font-mono text-[11px] tracking-[0.12em] text-muted uppercase`}
+      >
         <p className="flex items-center gap-2 text-text" data-egg="status">
           <span aria-hidden className="status-dot size-2 rounded-full bg-accent" />
           {t("status")}
@@ -60,7 +67,7 @@ export async function Hero() {
 
         <h1
           id="hero-title"
-          className="pointer-events-none relative z-10 select-none text-center font-display-wide text-[clamp(2rem,9.1vw,9.25rem)] uppercase leading-[0.95] tracking-[-0.02em]"
+          className="pointer-events-none relative z-10 text-center font-display-wide text-[clamp(2rem,9.1vw,9.25rem)] leading-[0.95] tracking-[-0.02em] uppercase select-none"
         >
           <span className="sr-only">{profile.name}</span>
           <span aria-hidden className="block">
@@ -68,13 +75,16 @@ export async function Hero() {
           </span>
           <span aria-hidden className="block">
             <Letters word={last} offset={first.length} />
-            <span className="hero-letter text-accent" style={{ "--i": first.length + last.length + 2 } as React.CSSProperties}>
+            <span
+              className="hero-letter text-accent"
+              style={{ "--i": first.length + last.length + 2 } as React.CSSProperties}
+            >
               .
             </span>
           </span>
         </h1>
 
-        <p className="intro-fade relative z-10 mt-8 max-w-xl text-balance text-center text-lg leading-relaxed md:text-xl">
+        <p className="intro-fade relative z-10 mt-8 max-w-xl text-center text-lg leading-relaxed text-balance md:text-xl">
           {t.rich("headlineRich", {
             mark: (chunks) => (
               <Scribble kind="underline" trigger="load" delay={2.1}>
@@ -87,14 +97,22 @@ export async function Hero() {
           <Link href={{ pathname: "/", hash: "projects" }} className={buttonPrimary}>
             {t("ctaProjects")}
           </Link>
-          <a href={localize(profile.cv, locale)} target="_blank" rel="noopener" className={buttonSecondary} data-egg="cv">
+          <a
+            href={localize(profile.cv, locale)}
+            target="_blank"
+            rel="noopener"
+            className={buttonSecondary}
+            data-egg="cv"
+          >
             {t("ctaCv")}
           </a>
         </div>
       </div>
 
       {/* Facts strip */}
-      <ol className={`intro-fade ${container} grid gap-x-8 gap-y-2 border-t border-line pt-4 font-mono text-xs text-muted [--intro-delay:1.8s] md:grid-cols-3`}>
+      <ol
+        className={`intro-fade ${container} grid gap-x-8 gap-y-2 border-t border-line pt-4 font-mono text-xs text-muted [--intro-delay:1.8s] md:grid-cols-3`}
+      >
         {facts.map((fact, index) => (
           <li key={fact} className="flex gap-3">
             <span className="text-accent">{String(index + 1).padStart(2, "0")}</span>

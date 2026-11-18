@@ -2,10 +2,10 @@
 
 All fonts here are licensed under the SIL Open Font License 1.1.
 
-| File | Source | Used for |
-|---|---|---|
-| `Geist-*.ttf`, `GeistMono-Regular.ttf` | [Geist](https://github.com/vercel/geist-font) | Open Graph image (`next/og` needs TTF) |
-| `ArchivoExpanded-Black.woff2` | [Archivo](https://github.com/google/fonts/tree/main/ofl/archivo) | Display face (`font-display-wide`) |
+| File                                   | Source                                                           | Used for                               |
+| -------------------------------------- | ---------------------------------------------------------------- | -------------------------------------- |
+| `Geist-*.ttf`, `GeistMono-Regular.ttf` | [Geist](https://github.com/vercel/geist-font)                    | Open Graph image (`next/og` needs TTF) |
+| `ArchivoExpanded-Black.woff2`          | [Archivo](https://github.com/google/fonts/tree/main/ofl/archivo) | Display face (`font-display-wide`)     |
 
 `ArchivoExpanded-Black.woff2` is the Archivo variable font frozen at `wdth 125 / wght 900` and
 subset to Basic Latin, Lithuanian letters and a few punctuation marks (7 KB instead of ~170 KB).

@@ -5,12 +5,8 @@ import { useEffect } from "react";
 import { loadGsap, MOTION_OK } from "@/lib/gsap";
 import { whenIdle } from "@/lib/idle";
 
-/**
- * Fades in every [data-reveal] element as it enters the viewport, in small staggered batches.
- * Set up once the browser is idle, so it never competes with the first paint. Elements are only
- * hidden once this runs, so the page is fully readable without JS and with reduced motion.
- * Mount it once, after the sections it should animate.
- */
+// Runs once the browser is idle. Elements are only hidden from that point, so the page
+// still reads fine without JS or with reduced motion.
 export function Reveal() {
   useEffect(() => {
     if (!matchMedia(MOTION_OK).matches) return;
@@ -30,7 +26,14 @@ export function Reveal() {
             start: "top 90%",
             once: true,
             onEnter: (batch) =>
-              gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.07, overwrite: true }),
+              gsap.to(batch, {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                ease: "power3.out",
+                stagger: 0.07,
+                overwrite: true,
+              }),
           });
         });
         ScrollTrigger.sort();

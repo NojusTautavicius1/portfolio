@@ -5,11 +5,17 @@ import { education, experience } from "@/content/experience";
 import { localize } from "@/lib/localize";
 import { container, eyebrow, sectionSpacing, sectionTitle } from "@/lib/styles";
 
-type Entry = { suit: Suit; period: string; title: string; organization: string; context: string; points: string[] };
+type Entry = {
+  suit: Suit;
+  period: string;
+  title: string;
+  organization: string;
+  context: string;
+  points: string[];
+};
 
 const entrySuits: Suit[] = ["spades", "hearts", "diamonds", "clubs"];
 
-/** A suit marker sitting on the rail. */
 function Marker({ suit }: { suit: Suit }) {
   return (
     <span
@@ -55,8 +61,11 @@ export async function Experience() {
       {/* Rail: grey track + red fill that grows with scroll (see .timeline in globals.css). */}
       <ol className="timeline relative mt-14 md:mt-20">
         {/* Centred on the marker column: 36px / 2 on mobile; 200px + 24px gap + 18px on desktop. */}
-        <span aria-hidden className="absolute bottom-0 left-[17.5px] top-0 w-px bg-line md:left-[241.5px]" />
-        <span aria-hidden className="timeline-fill absolute bottom-0 left-[16.5px] top-0 w-[3px] rounded-full bg-accent-fill md:left-[240.5px]" />
+        <span aria-hidden className="absolute top-0 bottom-0 left-[17.5px] w-px bg-line md:left-[241.5px]" />
+        <span
+          aria-hidden
+          className="timeline-fill absolute top-0 bottom-0 left-[16.5px] w-[3px] rounded-full bg-accent-fill md:left-[240.5px]"
+        />
 
         {entries.map((entry) => (
           <li
@@ -71,7 +80,9 @@ export async function Experience() {
               <span className="card-frame" />
               <p className="font-mono text-xs text-muted md:hidden">{entry.period}</p>
               <p className={`${eyebrow} mt-1 md:mt-0`}>{entry.organization}</p>
-              <h3 className="mt-2 font-display-wide text-[clamp(1.4rem,2.6vw,2.1rem)] uppercase leading-[1]">{entry.title}</h3>
+              <h3 className="mt-2 font-display-wide text-[clamp(1.4rem,2.6vw,2.1rem)] leading-[1] uppercase">
+                {entry.title}
+              </h3>
               <p className="mt-2 text-sm text-muted">{entry.context}</p>
               {entry.points.length > 0 && (
                 <ul className="mt-5 space-y-2">

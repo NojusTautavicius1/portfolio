@@ -2,7 +2,7 @@ import { redSuits, suitSymbol, type Suit } from "@/content/areas";
 
 // Built from <span>s only, so a card can live inside a <button> (phrasing content).
 
-/** Engraved medallion behind the centre suit: rings + 36 tick marks, in silver hairlines. */
+// Rings + 36 tick marks behind the centre suit.
 function Medallion() {
   const ticks = Array.from({ length: 36 }, (_, index) => {
     const angle = (index / 36) * Math.PI * 2;
@@ -11,7 +11,13 @@ function Medallion() {
   }).join("");
 
   return (
-    <svg aria-hidden viewBox="-46 -46 92 92" className="absolute inset-0 m-auto h-[62%] w-[62%]" fill="none" stroke="rgb(214 214 214 / 0.32)">
+    <svg
+      aria-hidden
+      viewBox="-46 -46 92 92"
+      className="absolute inset-0 m-auto h-[62%] w-[62%]"
+      fill="none"
+      stroke="rgb(214 214 214 / 0.32)"
+    >
       <circle r="44" strokeWidth="0.6" />
       <circle r="40" strokeWidth="0.4" strokeDasharray="1 2.2" />
       <path d={ticks} strokeWidth="0.5" />
@@ -28,7 +34,6 @@ type CardFrontProps = {
   label?: string;
 };
 
-/** Front face: foil rank + suit in two corners, an engraved medallion with the suit in the middle. */
 export function CardFront({ suit, rank, label }: CardFrontProps) {
   const foil = redSuits.includes(suit) ? "foil-red" : "foil";
   const symbol = suitSymbol[suit];
@@ -42,16 +47,19 @@ export function CardFront({ suit, rank, label }: CardFrontProps) {
   return (
     <span className="card-face card-front">
       <span className="card-frame" />
-      <span className="absolute left-[0.62em] top-[0.6em]">{corner}</span>
-      <span className="absolute bottom-[0.6em] right-[0.62em] rotate-180">{corner}</span>
+      <span className="absolute top-[0.6em] left-[0.62em]">{corner}</span>
+      <span className="absolute right-[0.62em] bottom-[0.6em] rotate-180">{corner}</span>
       <span className="absolute inset-0">
         <Medallion />
-        <span aria-hidden className={`absolute inset-0 m-auto grid h-fit place-items-center text-[3.6em] leading-none ${foil}`}>
+        <span
+          aria-hidden
+          className={`absolute inset-0 m-auto grid h-fit place-items-center text-[3.6em] leading-none ${foil}`}
+        >
           {symbol}
         </span>
       </span>
       {label && (
-        <span className="absolute inset-x-0 bottom-[3.1em] mx-auto max-w-[62%] text-center font-mono text-[0.56em] font-medium uppercase leading-tight tracking-[0.14em] text-[#b9b7b2]">
+        <span className="absolute inset-x-0 bottom-[3.1em] mx-auto max-w-[62%] text-center font-mono text-[0.56em] leading-tight font-medium tracking-[0.14em] text-[#b9b7b2] uppercase">
           {label}
         </span>
       )}
@@ -60,14 +68,15 @@ export function CardFront({ suit, rank, label }: CardFrontProps) {
   );
 }
 
-/** Red guilloche back with a silver frame and an engraved N·T medallion. */
 export function CardPatternBack({ className = "card-back" }: { className?: string }) {
   return (
     <span className={`card-face card-pattern ${className}`}>
       <span className="card-frame" />
       <span className="absolute inset-0">
         <Medallion />
-        <span className="foil absolute inset-0 m-auto grid h-fit place-items-center font-display-wide text-[1.35em] tracking-tight">N·T</span>
+        <span className="foil absolute inset-0 m-auto grid h-fit place-items-center font-display-wide text-[1.35em] tracking-tight">
+          N·T
+        </span>
       </span>
       <span className="card-sheen" />
     </span>

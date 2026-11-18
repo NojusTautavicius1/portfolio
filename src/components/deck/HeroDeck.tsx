@@ -20,18 +20,40 @@ export type HeroCardData = {
 // `aim` is the angle the card points at its corner while clustered in the centre before take-off.
 // On phones the bottom cards sit lower so they clear the buttons.
 const slots = [
-  { end: "[--end-x:-38cqw] [--end-y:-30cqh] sm:[--end-y:-26cqh]", aim: -45, dir: [-1, -1], rot: -14, depth: 18, delay: 0 },
-  { end: "[--end-x:38cqw] [--end-y:-31cqh] sm:[--end-y:-28cqh]", aim: 45, dir: [1, -1], rot: 11, depth: 26, delay: 0.04 },
-  { end: "[--end-x:-37cqw] [--end-y:37cqh] sm:[--end-y:25cqh]", aim: -135, dir: [-1, 1], rot: 9, depth: 22, delay: 0.08 },
-  { end: "[--end-x:37cqw] [--end-y:36cqh] sm:[--end-y:23cqh]", aim: 135, dir: [1, 1], rot: -9, depth: 14, delay: 0.12 },
+  {
+    end: "[--end-x:-38cqw] [--end-y:-30cqh] sm:[--end-y:-26cqh]",
+    aim: -45,
+    dir: [-1, -1],
+    rot: -14,
+    depth: 18,
+    delay: 0,
+  },
+  {
+    end: "[--end-x:38cqw] [--end-y:-31cqh] sm:[--end-y:-28cqh]",
+    aim: 45,
+    dir: [1, -1],
+    rot: 11,
+    depth: 26,
+    delay: 0.04,
+  },
+  {
+    end: "[--end-x:-37cqw] [--end-y:37cqh] sm:[--end-y:25cqh]",
+    aim: -135,
+    dir: [-1, 1],
+    rot: 9,
+    depth: 22,
+    delay: 0.08,
+  },
+  {
+    end: "[--end-x:37cqw] [--end-y:36cqh] sm:[--end-y:23cqh]",
+    aim: 135,
+    dir: [1, 1],
+    rot: -9,
+    depth: 14,
+    delay: 0.12,
+  },
 ];
 
-
-
-/**
- * The four direction cards around the name. Each card is a real button: hover tilts it
- * (fine pointers only), click / Enter flips it and brings it to the centre at a readable size.
- */
 export function HeroDeck({ cards, flipHint }: { cards: HeroCardData[]; flipHint: string }) {
   const stage = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<number | null>(null);
@@ -74,7 +96,7 @@ export function HeroDeck({ cards, flipHint }: { cards: HeroCardData[]; flipHint:
     // Container for cqw/cqh; --cw is the card width (also scales the clustered offsets).
     <div
       ref={stage}
-      className="absolute inset-0 [--cw:clamp(72px,11vw,176px)] [--open-scale:3] [container-type:size] sm:[--open-scale:2]"
+      className="[container-type:size] absolute inset-0 [--cw:clamp(72px,11vw,176px)] [--open-scale:3] sm:[--open-scale:2]"
     >
       {cards.map((card, index) => {
         const slot = slots[index];
@@ -83,7 +105,7 @@ export function HeroDeck({ cards, flipHint }: { cards: HeroCardData[]; flipHint:
           <div
             key={card.suit}
             data-open={isOpen}
-            className={`deal ${slot.end} ${isOpen ? "z-30" : "z-0 hover:z-20 focus-within:z-20"}`}
+            className={`deal ${slot.end} ${isOpen ? "z-30" : "z-0 focus-within:z-20 hover:z-20"}`}
             style={
               {
                 "--rot": `${slot.rot}deg`,
@@ -105,26 +127,38 @@ export function HeroDeck({ cards, flipHint }: { cards: HeroCardData[]; flipHint:
               onPointerLeave={resetTilt}
               className="card cursor-pointer [--card-w:var(--cw)]"
             >
-              <span className="card-float" style={{ "--float-delay": `${index * -1.3}s` } as React.CSSProperties}>
+              <span
+                className="card-float"
+                style={{ "--float-delay": `${index * -1.3}s` } as React.CSSProperties}
+              >
                 <span className="card-tilt">
                   <span className="card-inner">
                     <CardFront suit={card.suit} rank={card.rank} label={card.name} />
                     <span className="card-face card-back flex flex-col p-[0.95em]">
                       <span className="card-frame" />
-                      <span aria-hidden className="absolute -right-[0.15em] bottom-[1.6em] text-[6.5em] leading-none opacity-[0.06]">
+                      <span
+                        aria-hidden
+                        className="absolute -right-[0.15em] bottom-[1.6em] text-[6.5em] leading-none opacity-[0.06]"
+                      >
                         {suitGlyph(card.suit)}
                       </span>
-                      <span aria-hidden className={`font-display-wide text-[0.9em] ${card.suit === "hearts" || card.suit === "diamonds" ? "foil-red" : "foil"}`}>
+                      <span
+                        aria-hidden
+                        className={`font-display-wide text-[0.9em] ${card.suit === "hearts" || card.suit === "diamonds" ? "foil-red" : "foil"}`}
+                      >
                         {card.rank}
                         {suitGlyph(card.suit)}
                       </span>
-                      <span className="mt-[0.4em] text-[0.82em] font-semibold uppercase leading-[1.05] tracking-tight [overflow-wrap:anywhere]">
+                      <span className="mt-[0.4em] text-[0.82em] leading-[1.05] font-semibold tracking-tight [overflow-wrap:anywhere] uppercase">
                         {card.name}
                       </span>
                       <span className="mt-[0.35em] text-[0.62em] leading-snug text-muted">{card.line}</span>
                       <span className="mt-auto flex flex-wrap gap-[0.25em]">
                         {card.stack.map((item) => (
-                          <span key={item} className="rounded-full border border-white/20 px-[0.45em] py-[0.1em] font-mono text-[0.48em]">
+                          <span
+                            key={item}
+                            className="rounded-full border border-white/20 px-[0.45em] py-[0.1em] font-mono text-[0.48em]"
+                          >
                             {item}
                           </span>
                         ))}

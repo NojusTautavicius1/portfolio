@@ -13,7 +13,9 @@ import { TagList } from "@/components/ui/Tag";
 type PageProps = { params: Promise<{ locale: string; slug: string }> };
 
 export function generateStaticParams() {
-  return routing.locales.flatMap((locale) => featuredProjects.map((project) => ({ locale, slug: project.slug })));
+  return routing.locales.flatMap((locale) =>
+    featuredProjects.map((project) => ({ locale, slug: project.slug })),
+  );
 }
 
 export const dynamicParams = false;
@@ -55,7 +57,7 @@ export default async function ProjectPage({ params }: PageProps) {
   ].filter((block): block is { label: string; text: string } => block !== null);
 
   return (
-    <article className={`${container} pb-24 pt-28`}>
+    <article className={`${container} pt-28 pb-24`}>
       <Link
         href={{ pathname: "/", hash: "projects" }}
         className="inline-flex min-h-11 items-center gap-2 text-sm text-muted transition-colors hover:text-text"
@@ -69,7 +71,7 @@ export default async function ProjectPage({ params }: PageProps) {
           <span className={eyebrow}>{String(index + 1).padStart(2, "0")}</span>
           <StatusBadge status={project.status} />
         </div>
-        <h1 className="mt-5 text-[clamp(2.6rem,7vw,5.5rem)] font-semibold leading-[0.98] tracking-[-0.035em]">
+        <h1 className="mt-5 text-[clamp(2.6rem,7vw,5.5rem)] leading-[0.98] font-semibold tracking-[-0.035em]">
           {project.title}
         </h1>
         <p className="mt-5 max-w-[50ch] text-xl text-muted">{localize(project.tagline, locale)}</p>
@@ -82,7 +84,10 @@ export default async function ProjectPage({ params }: PageProps) {
       <div className="mt-16 grid gap-12 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-20">
         <div>
           {blocks.map((block) => (
-            <section key={block.label} className="grid gap-3 border-t border-line py-8 md:grid-cols-[160px_minmax(0,1fr)] md:gap-10">
+            <section
+              key={block.label}
+              className="grid gap-3 border-t border-line py-8 md:grid-cols-[160px_minmax(0,1fr)] md:gap-10"
+            >
               <h2 className={eyebrow}>{block.label}</h2>
               <p className="max-w-[65ch] text-lg leading-relaxed">{block.text}</p>
             </section>

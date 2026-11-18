@@ -1,6 +1,6 @@
 const FINE_POINTER = "(pointer: fine) and (prefers-reduced-motion: no-preference)";
 
-/** Pointer-move handler: tilts a .card toward the pointer and moves its sheen / foil (--mx, --my). */
+// Tilts a .card toward the pointer and moves its sheen and foil with it.
 export function tilt(event: React.PointerEvent<HTMLElement>) {
   if (event.pointerType !== "mouse" || !matchMedia(FINE_POINTER).matches) return;
   const card = event.currentTarget;

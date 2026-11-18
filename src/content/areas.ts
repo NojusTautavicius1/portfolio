@@ -15,7 +15,7 @@ export type Area = {
   best: Localized;
 };
 
-/** The four hero cards, in the order they fly out (top-left, top-right, bottom-left, bottom-right). */
+// In the order they fly out: top-left, top-right, bottom-left, bottom-right.
 export const areas: Area[] = [
   {
     suit: "spades",

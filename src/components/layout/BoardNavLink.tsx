@@ -3,7 +3,6 @@
 import { Link, usePathname } from "@/i18n/navigation";
 import { Scribble } from "@/components/ui/Scribble";
 
-/** Nav link to the project board; on the board itself it is struck through by hand, in red. */
 export function BoardNavLink({ label, className = "" }: { label: string; className?: string }) {
   const active = usePathname() === "/projektai";
 

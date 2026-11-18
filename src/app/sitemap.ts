@@ -21,6 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     entry("/", 1),
     entry("/projektai", 0.8),
-    ...featuredProjects.map((project) => entry({ pathname: "/projektai/[slug]", params: { slug: project.slug } }, 0.7)),
+    ...featuredProjects.map((project) =>
+      entry({ pathname: "/projektai/[slug]", params: { slug: project.slug } }, 0.7),
+    ),
   ];
 }

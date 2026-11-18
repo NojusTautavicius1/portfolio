@@ -22,7 +22,10 @@ export async function Skills() {
         <h2 id="skills-title" data-reveal className={sectionTitle}>
           {t("title")}
         </h2>
-        <p data-reveal className="max-w-sm font-mono text-xs uppercase tracking-[0.12em] text-muted [@media(hover:none)]:hidden">
+        <p
+          data-reveal
+          className="max-w-sm font-mono text-xs tracking-[0.12em] text-muted uppercase [@media(hover:none)]:hidden"
+        >
           {t("deckHint")}
         </p>
       </div>
@@ -39,12 +42,19 @@ export async function Skills() {
               className="deck rounded-xl outline-offset-4"
               style={{ "--n": items.length + 1 } as React.CSSProperties}
             >
-              <div className="deck-card card-stock flex h-[2.75rem] items-center gap-3 rounded-lg px-3" style={{ "--i": 0 } as React.CSSProperties}>
+              <div
+                className="deck-card card-stock flex h-[2.75rem] items-center gap-3 rounded-lg px-3"
+                style={{ "--i": 0 } as React.CSSProperties}
+              >
                 <span aria-hidden className={`text-xl leading-none ${foil(deck.suit)}`}>
                   {glyph(deck.suit)}
                 </span>
-                <h3 className="flex-1 truncate font-display-wide text-[13px] uppercase">{localize(deck.name, locale)}</h3>
-                <span className="font-mono text-[11px] text-muted">{String(items.length).padStart(2, "0")}</span>
+                <h3 className="flex-1 truncate font-display-wide text-[13px] uppercase">
+                  {localize(deck.name, locale)}
+                </h3>
+                <span className="font-mono text-[11px] text-muted">
+                  {String(items.length).padStart(2, "0")}
+                </span>
               </div>
               <ul className="contents">
                 {items.map((item, index) => (

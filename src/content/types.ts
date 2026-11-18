@@ -43,8 +43,3 @@ export type ExperienceItem = {
   period: Localized;
   points: Localized<string[]>;
 };
-
-export type SkillGroup = {
-  name: Localized;
-  items: Term[];
-};

@@ -67,11 +67,15 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
 
   return (
     // suppressHydrationWarning: client code sets data-* flags on <html> (e.g. data-deck="ready").
-    <html lang={locale} suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable}`}>
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable}`}
+    >
       <body className="min-h-dvh">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-accent-fill focus:px-4 focus:py-2 focus:text-on-accent"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-accent-fill focus:px-4 focus:py-2 focus:text-on-accent"
         >
           {t("skip")}
         </a>

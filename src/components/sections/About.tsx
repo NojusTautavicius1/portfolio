@@ -5,7 +5,7 @@ import { localize } from "@/lib/localize";
 import { container, sectionSpacing, sectionTitle } from "@/lib/styles";
 import { PlayerCard } from "@/components/deck/PlayerCard";
 
-/** Splits a paragraph into word spans (.w) that brighten on scroll (see .reveal-words in globals.css). */
+// Every word is its own span so it can brighten on scroll (.reveal-words).
 function Words({ text }: { text: string }) {
   return (
     <>
@@ -41,7 +41,7 @@ export async function About() {
           <h2 id="about-title" data-reveal className={sectionTitle}>
             {t("title")}
           </h2>
-          <div className="reveal-words mt-10 max-w-[34ch] space-y-6 text-[clamp(1.35rem,2.3vw,2rem)] font-medium leading-[1.3] tracking-[-0.01em]">
+          <div className="reveal-words mt-10 max-w-[34ch] space-y-6 text-[clamp(1.35rem,2.3vw,2rem)] leading-[1.3] font-medium tracking-[-0.01em]">
             {localize(profile.about, locale).map((paragraph) => (
               <p key={paragraph}>
                 <Words text={paragraph} />

@@ -9,7 +9,6 @@ import { Scribble } from "@/components/ui/Scribble";
 
 type Tile = { key: string; node: React.ReactNode };
 
-/** Screenshots where we have them, the project's card where we don't. */
 function tiles(): Tile[] {
   return featuredProjects.flatMap((project) => {
     const media = project.media ?? [];
@@ -43,7 +42,7 @@ function tiles(): Tile[] {
   });
 }
 
-/** One endless row, tilted in 3D. The tile list is doubled so the -50% loop is seamless. */
+// The tiles are rendered twice, so moving by -50% loops seamlessly.
 function Strip({ items, tilt, reverse }: { items: Tile[]; tilt: string; reverse?: boolean }) {
   return (
     <div aria-hidden className="pointer-events-none [perspective:1100px]">
@@ -72,14 +71,18 @@ export async function Contact() {
   ].filter((link): link is { label: string; href: string } => link !== null);
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className={`relative overflow-hidden border-t border-line ${sectionSpacing}`}>
+    <section
+      id="contact"
+      aria-labelledby="contact-title"
+      className={`relative overflow-hidden border-t border-line ${sectionSpacing}`}
+    >
       <Strip items={items} tilt="rotateX(14deg) rotateY(-16deg) rotateZ(-3deg)" />
 
       <div className={`${container} relative z-10 py-16 text-center md:py-24`}>
         <h2
           id="contact-title"
           data-reveal
-          className="mx-auto max-w-[16ch] font-display-wide text-[clamp(2.4rem,7vw,6.5rem)] uppercase leading-[0.95] tracking-[-0.02em]"
+          className="mx-auto max-w-[16ch] font-display-wide text-[clamp(2.4rem,7vw,6.5rem)] leading-[0.95] tracking-[-0.02em] uppercase"
         >
           {t.rich("titleRich", { mark: (chunks) => <Scribble kind="circle">{chunks}</Scribble> })}
         </h2>
@@ -91,7 +94,7 @@ export async function Contact() {
           <p className={`${eyebrow} mt-12`}>{t("emailLabel")}</p>
           <a
             href={`mailto:${profile.email}`}
-            className="mt-2 inline-block break-all text-[clamp(1.25rem,3.4vw,2.6rem)] font-medium text-accent underline-offset-8 hover:underline"
+            className="mt-2 inline-block text-[clamp(1.25rem,3.4vw,2.6rem)] font-medium break-all text-accent underline-offset-8 hover:underline"
           >
             {profile.email}
           </a>
@@ -100,7 +103,12 @@ export async function Contact() {
         <ul data-reveal className="mt-10 flex flex-wrap justify-center gap-3">
           {links.map((link) => (
             <li key={link.href}>
-              <a href={link.href} target="_blank" rel="noopener" className={`${buttonSecondary} bg-bg/80 backdrop-blur`}>
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener"
+                className={`${buttonSecondary} bg-bg/80 backdrop-blur`}
+              >
                 {link.label}
               </a>
             </li>

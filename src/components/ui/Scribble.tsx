@@ -1,5 +1,7 @@
 const paths = {
-  circle: ["M18 34 C14 14 70 4 120 6 C176 9 198 22 192 38 C186 54 120 60 72 56 C28 52 6 42 12 28 C17 16 48 10 86 9"],
+  circle: [
+    "M18 34 C14 14 70 4 120 6 C176 9 198 22 192 38 C186 54 120 60 72 56 C28 52 6 42 12 28 C17 16 48 10 86 9",
+  ],
   underline: ["M3 38 C48 30 110 34 197 24", "M24 52 C80 44 130 48 186 42"],
   strike: ["M2 34 C50 26 120 36 198 24"],
 };
@@ -19,10 +21,11 @@ type ScribbleProps = {
   children: React.ReactNode;
 };
 
-/** A red hand-drawn mark around, under or through a word. Purely decorative (aria-hidden SVG). */
 export function Scribble({ kind, trigger = "view", delay = 0, children }: ScribbleProps) {
   return (
-    <span className={`scribble-host relative inline-block ${trigger === "load" ? "scribble-load" : "scribble-view"}`}>
+    <span
+      className={`scribble-host relative inline-block ${trigger === "load" ? "scribble-load" : "scribble-view"}`}
+    >
       {children}
       <svg
         aria-hidden
@@ -33,7 +36,15 @@ export function Scribble({ kind, trigger = "view", delay = 0, children }: Scribb
         fill="none"
       >
         {paths[kind].map((d) => (
-          <path key={d} d={d} pathLength={1} stroke="var(--accent)" strokeWidth={2.6} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+          <path
+            key={d}
+            d={d}
+            pathLength={1}
+            stroke="var(--accent)"
+            strokeWidth={2.6}
+            strokeLinecap="round"
+            vectorEffect="non-scaling-stroke"
+          />
         ))}
       </svg>
     </span>

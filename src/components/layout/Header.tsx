@@ -23,14 +23,20 @@ export async function Header() {
       <div className={`${container} flex h-16 items-center justify-between gap-4`}>
         <Link href="/" className="font-mono text-sm font-medium tracking-tight">
           {profile.initials}
-          <span className="sr-only"> — {profile.name}, {t("home")}</span>
+          <span className="sr-only">
+            {" "}
+            — {profile.name}, {t("home")}
+          </span>
         </Link>
 
         <nav aria-label={t("sections")} className="hidden md:block">
           <ul className="flex items-center gap-8 text-sm text-muted">
             {sections.map((section) => (
               <li key={section.hash}>
-                <Link href={{ pathname: "/", hash: section.hash }} className="transition-colors hover:text-text">
+                <Link
+                  href={{ pathname: "/", hash: section.hash }}
+                  className="transition-colors hover:text-text"
+                >
                   {t(section.key)}
                 </Link>
               </li>
@@ -42,7 +48,10 @@ export async function Header() {
         </nav>
 
         <div className="flex items-center gap-1">
-          <BoardNavLink label={t("board")} className="grid min-h-11 place-items-center px-2 font-mono text-xs uppercase text-muted md:hidden" />
+          <BoardNavLink
+            label={t("board")}
+            className="grid min-h-11 place-items-center px-2 font-mono text-xs text-muted uppercase md:hidden"
+          />
           <LocaleSwitch />
           <a
             href={localize(profile.cv, locale)}
@@ -52,7 +61,17 @@ export async function Header() {
             className="ml-2 inline-flex min-h-10 items-center gap-2 rounded-xl bg-accent-fill px-4 text-sm font-medium text-on-accent transition-[filter,transform] hover:brightness-110 active:translate-y-px"
           >
             {t("cv")}
-            <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              aria-hidden
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M12 4v12M6 11l6 6 6-6M5 20h14" />
             </svg>
           </a>

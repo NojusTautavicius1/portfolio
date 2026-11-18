@@ -11,7 +11,9 @@
     "model:build": "\"C:/Program Files/Blender Foundation/Blender 5.3/blender.exe\" --background --factory-startup --python blender/zondas.py -- .",
     "model:compress": "gltf-transform optimize public/models/zondas.raw.glb public/models/zondas.glb --compress meshopt --texture-compress webp --join false --flatten false --instance false --palette false --simplify false",
     "model": "npm run model:build && npm run model:compress",
-    "cv": "node scripts/generate-cv.mjs"
+    "cv": "node scripts/generate-cv.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
@@ -32,6 +34,8 @@
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.4.6",
     "playwright-core": "^1.65.1",
+    "prettier": "^3.10.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.5",
     "typescript": "^6.0.3"
   }

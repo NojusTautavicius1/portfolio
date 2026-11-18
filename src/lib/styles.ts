@@ -11,4 +11,5 @@ export const buttonSecondary = `${buttonBase} border border-line text-text hover
 
 export const eyebrow = "font-mono text-xs uppercase tracking-[0.14em] text-muted";
 
-export const sectionTitle = "font-display-wide text-[clamp(2rem,5vw,4.25rem)] uppercase leading-[0.95] tracking-[-0.02em]";
+export const sectionTitle =
+  "font-display-wide text-[clamp(2rem,5vw,4.25rem)] uppercase leading-[0.95] tracking-[-0.02em]";

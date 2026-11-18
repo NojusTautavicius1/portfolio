@@ -4,11 +4,7 @@ import { useEffect } from "react";
 
 import { loadGsap, MOTION_OK } from "@/lib/gsap";
 
-/**
- * Lenis smooth scroll driven by the GSAP ticker so ScrollTrigger (pinning, reveals) stays in sync.
- * Desktop pointers only: Lenis leaves touch scrolling native anyway, so phones skip the download.
- * Also skipped for prefers-reduced-motion.
- */
+// Desktop only: Lenis leaves touch scrolling native anyway, so phones skip the download.
 export function SmoothScroll() {
   useEffect(() => {
     if (!matchMedia(MOTION_OK).matches || matchMedia("(pointer: coarse)").matches) return;
