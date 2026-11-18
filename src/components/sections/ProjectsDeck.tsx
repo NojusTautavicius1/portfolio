@@ -12,12 +12,9 @@ export type ProjectCardData = { suit: Suit; rank: string; title: string };
 
 type ProjectsDeckProps = React.ComponentProps<"section"> & { cards: ProjectCardData[] };
 
-/**
- * Desktop with motion: pins the section; scrolling spins one big card 360° per project and shows
- * that project's text on the right (the [data-project] articles are stacked; only one is active).
- * The face is swapped while the card shows its back (at 180°), so the change is never visible.
- * Mobile / reduced motion: a plain list where each article shows its own small card.
- */
+// Desktop: the section is pinned and one big card turns 360° per project while the matching
+// article fades in. The face is swapped while the back is showing, so you never see it change.
+// Mobile and reduced motion just get the plain list.
 export function ProjectsDeck({ cards, children, ...sectionProps }: ProjectsDeckProps) {
   const section = useRef<HTMLElement>(null);
   const spinner = useRef<HTMLSpanElement>(null);
@@ -106,23 +103,31 @@ export function ProjectsDeck({ cards, children, ...sectionProps }: ProjectsDeckP
 
   const active = cards[face] ?? cards[0];
 
+  // The extra <div> matters: GSAP moves the pinned section into a "pin-spacer" wrapper. Without a
+  // parent of our own, React later tries to remove the section from <main> and navigation crashes.
   return (
-    <section ref={section} {...sectionProps}>
-      {/* Big spinning card: only shown in the pinned layout. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 left-0 hidden w-[44%] items-center justify-center pt-24 group-data-[pinned=true]/projects:flex"
-      >
-        <span className="card [--card-w:clamp(220px,21vw,320px)]">
-          <span className="card-float">
-            <span ref={spinner} className="card-inner" style={{ transition: "none" }} data-egg="project-card">
-              <CardFront suit={active.suit} rank={active.rank} label={active.title} />
-              <CardPatternBack />
+    <div>
+      <section ref={section} {...sectionProps}>
+        <div
+          aria-hidden
+          className="projects-spinner pointer-events-none absolute inset-y-0 left-0 hidden w-[44%] items-center justify-center pt-24"
+        >
+          <span className="card [--card-w:clamp(220px,21vw,320px)]">
+            <span className="card-float">
+              <span
+                ref={spinner}
+                className="card-inner"
+                style={{ transition: "none" }}
+                data-egg="project-card"
+              >
+                <CardFront suit={active.suit} rank={active.rank} label={active.title} />
+                <CardPatternBack />
+              </span>
             </span>
           </span>
-        </span>
-      </div>
-      {children}
-    </section>
+        </div>
+        {children}
+      </section>
+    </div>
   );
 }
