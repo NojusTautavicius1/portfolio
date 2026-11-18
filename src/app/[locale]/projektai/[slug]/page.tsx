@@ -3,9 +3,9 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { featuredProjects, getFeaturedProject } from "@/content/projects";
-import { Link } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
-import { localize } from "@/lib/localize";
+import { getPathname, Link } from "@/i18n/navigation";
+import { routing, type Locale } from "@/i18n/routing";
+import { localize, localizeTerms } from "@/lib/localize";
 import { container, eyebrow } from "@/lib/styles";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { TagList } from "@/components/ui/Tag";
@@ -23,12 +23,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const project = getFeaturedProject(slug);
   if (!project) return {};
 
+  const path = (target: Locale) =>
+    getPathname({ locale: target, href: { pathname: "/projektai/[slug]", params: { slug } } });
+
   return {
     title: project.title,
     description: localize(project.tagline, locale),
     alternates: {
-      canonical: `/${locale}/projektai/${slug}`,
-      languages: { lt: `/lt/projektai/${slug}`, en: `/en/projektai/${slug}` },
+      canonical: path(locale as Locale),
+      languages: { lt: path("lt"), en: path("en") },
     },
   };
 }
@@ -90,7 +93,7 @@ export default async function ProjectPage({ params }: PageProps) {
           <div>
             <h2 className={eyebrow}>{t("stack")}</h2>
             <div className="mt-4">
-              <TagList items={project.stack} />
+              <TagList items={localizeTerms(project.stack, locale)} />
             </div>
           </div>
           {project.links.length > 0 && (
@@ -119,7 +122,7 @@ export default async function ProjectPage({ params }: PageProps) {
       <nav aria-label={t("next")} className="mt-20 border-t border-line pt-10">
         <p className={eyebrow}>{t("next")}</p>
         <Link
-          href={`/projektai/${nextProject.slug}`}
+          href={{ pathname: "/projektai/[slug]", params: { slug: nextProject.slug } }}
           className="mt-3 inline-flex items-center gap-3 text-[clamp(1.75rem,4vw,3rem)] font-semibold tracking-tight transition-colors hover:text-accent"
         >
           {nextProject.title}

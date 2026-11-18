@@ -3,7 +3,7 @@ import type { SkillGroup } from "./types";
 export const skillGroups: SkillGroup[] = [
   {
     name: { lt: "AI ir automatizacijos", en: "AI & automation" },
-    items: ["Claude API", "Perplexity API", "Python", "Playwright", "Puppeteer", "Telegram bots"],
+    items: ["Claude API", "Perplexity API", "Python", "Playwright", "Puppeteer", { lt: "Telegram botai", en: "Telegram bots" }],
   },
   {
     name: { lt: "Frontend", en: "Frontend" },
@@ -15,7 +15,12 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     name: { lt: "SEO", en: "SEO" },
-    items: ["Technical SEO", "Search Console", "Structured data", "GEO / AI visibility"],
+    items: [
+      { lt: "Techninis SEO", en: "Technical SEO" },
+      "Search Console",
+      { lt: "Struktūrizuoti duomenys", en: "Structured data" },
+      { lt: "GEO / AI matomumas", en: "GEO / AI visibility" },
+    ],
   },
   {
     name: { lt: "Motion ir 3D", en: "Motion & 3D" },

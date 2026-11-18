@@ -2,7 +2,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 
 import { sideProjects } from "@/content/projects";
 import { skillGroups } from "@/content/skills";
-import { localize } from "@/lib/localize";
+import { localize, localizeTerms } from "@/lib/localize";
 import { container, eyebrow, sectionSpacing, sectionTitle } from "@/lib/styles";
 import { TagList } from "@/components/ui/Tag";
 
@@ -23,7 +23,7 @@ export async function Skills() {
           <div key={group.name.en} data-reveal className={row}>
             <dt className="font-medium">{localize(group.name, locale)}</dt>
             <dd>
-              <TagList items={group.items} />
+              <TagList items={localizeTerms(group.items, locale)} />
             </dd>
           </div>
         ))}
@@ -36,7 +36,7 @@ export async function Skills() {
             <p className="font-medium">{localize(project.title, locale)}</p>
             <div className="space-y-3">
               <p className="leading-relaxed text-muted">{localize(project.description, locale)}</p>
-              <TagList items={project.stack} />
+              <TagList items={localizeTerms(project.stack, locale)} />
             </div>
           </li>
         ))}

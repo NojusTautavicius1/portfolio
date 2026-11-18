@@ -2,6 +2,9 @@ import type { Locale } from "@/i18n/routing";
 
 export type Localized<T = string> = Record<Locale, T>;
 
+/** A tag that is the same in every language ("Next.js") or needs translating ("Technical SEO"). */
+export type Term = string | Localized;
+
 export type ProjectStatus = "client" | "mvp" | "concept" | "launching" | "live";
 
 export type ProjectLink = {
@@ -19,14 +22,14 @@ export type FeaturedProject = {
   /** null = no verified result yet; the block is hidden. */
   result: Localized | null;
   role: Localized | null;
-  stack: string[];
+  stack: Term[];
   links: ProjectLink[];
 };
 
 export type SideProject = {
   title: Localized;
   description: Localized;
-  stack: string[];
+  stack: Term[];
 };
 
 export type ExperienceItem = {
@@ -39,5 +42,5 @@ export type ExperienceItem = {
 
 export type SkillGroup = {
   name: Localized;
-  items: string[];
+  items: Term[];
 };

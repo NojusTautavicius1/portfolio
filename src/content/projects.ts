@@ -128,7 +128,11 @@ export const featuredProjects: FeaturedProject[] = [
     },
     result: null,
     role: null,
-    stack: ["Google Search Console", "Technical SEO", "[kiti įrankiai]"],
+    stack: [
+      "Google Search Console",
+      { lt: "Techninis SEO", en: "Technical SEO" },
+      { lt: "[kiti įrankiai]", en: "[other tools]" },
+    ],
     links: [{ kind: "live", href: "https://zaliuzesroletai.lt" }],
   },
   {

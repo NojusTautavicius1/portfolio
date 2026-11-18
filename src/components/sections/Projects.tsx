@@ -2,7 +2,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 
 import { featuredProjects } from "@/content/projects";
 import { Link } from "@/i18n/navigation";
-import { localize } from "@/lib/localize";
+import { localize, localizeTerms } from "@/lib/localize";
 import { container, eyebrow, sectionSpacing, sectionTitle } from "@/lib/styles";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { TagList } from "@/components/ui/Tag";
@@ -65,10 +65,7 @@ export async function Projects() {
                     index % 2 === 1 ? `lg:order-2 ${horizontal.media}` : ""
                   }`}
                 >
-                  <span aria-hidden className="text-[clamp(2rem,5vw,4rem)] font-semibold tracking-tight text-line">
-                    {project.title}
-                  </span>
-                  <span className="absolute bottom-4 left-4 font-mono text-xs text-muted">{t("mediaSoon")}</span>
+                  <span className="font-mono text-xs text-muted">{t("mediaSoon")}</span>
                 </div>
 
                 <div>
@@ -80,10 +77,10 @@ export async function Projects() {
                   <p className="mt-3 text-lg">{localize(project.tagline, locale)}</p>
                   <p className="mt-4 max-w-[60ch] leading-relaxed text-muted">{localize(project.problem, locale)}</p>
                   <div className="mt-6">
-                    <TagList items={project.stack} label={t("stack")} />
+                    <TagList items={localizeTerms(project.stack, locale)} label={t("stack")} />
                   </div>
                   <Link
-                    href={`/projektai/${project.slug}`}
+                    href={{ pathname: "/projektai/[slug]", params: { slug: project.slug } }}
                     aria-label={t("moreAbout", { title: project.title })}
                     className="mt-8 inline-flex min-h-11 items-center gap-2 font-medium text-accent underline-offset-4 hover:underline"
                   >

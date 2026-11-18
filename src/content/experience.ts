@@ -38,7 +38,7 @@ export const education = {
   title: { lt: "JavaScript programuotojas", en: "JavaScript Developer" },
   school: {
     lt: "Kretingos technologijų ir verslo mokykla (KTMC)",
-    en: "Kretinga School of Technology and Business (KTMC)",
+    en: "Kretinga Technology and Business School (KTMC)",
   },
   period: { lt: "[Pradžios metai] – 2027 (baigiamasis kursas)", en: "[Start year] – 2027 (final year)" },
 } satisfies Record<string, Localized>;

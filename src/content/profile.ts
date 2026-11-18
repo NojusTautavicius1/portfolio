@@ -25,7 +25,7 @@ export const profile = {
       "[1 sakinys apie tai, kokio darbo ieškai ir kuo galėtum būti naudingas komandai.]",
     ],
     en: [
-      "I'm Nojus, a final-year JavaScript developer student at Kretinga School of Technology and Business (KTMC). What excites me most is where code meets AI: I build tools that automate tedious work and give a business a clear result.",
+      "I'm Nojus, a final-year JavaScript developer student at Kretinga Technology and Business School (KTMC). What excites me most is where code meets AI: I build tools that automate tedious work and give a business a clear result.",
       "During my internship at the Potissimus agency I built websites and AI automations and fixed technical SEO. I run a small web studio, GraspIT, with a partner, and in my spare time I build my own SaaS products and motion design work. I learn fast, I finish what I start, and I'm not afraid of tasks I don't know how to do yet.",
       "[One sentence about the kind of role you're looking for and how you could help a team.]",
     ],
