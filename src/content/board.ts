@@ -4,7 +4,7 @@ import type { Localized } from "./types";
 // One world repeats in every direction, so positions only need to be unique inside it.
 // *Starred* words in a quote get a hand-drawn circle.
 export const WORLD_W = 3600;
-export const WORLD_H = 2400;
+export const WORLD_H = 2800;
 export const GRID = 400;
 
 export type BoardItem =
@@ -45,22 +45,23 @@ export const boardItems: BoardItem[] = [
     width: 620,
     text: { lt: "Mokausi greitai. *Baigiu*, ką pradedu.", en: "I learn fast. I *finish* what I start." },
   },
-  { type: "project", slug: "greitas-kasnis", x: 2420, y: 1640 },
+  { type: "project", slug: "graspit", x: 2420, y: 1640 },
 
   {
     type: "quote",
-    x: 3020,
-    y: 1760,
+    x: 2720,
+    y: 2380,
     width: 480,
     text: { lt: "AI — ne žaislas, o *įrankis*.", en: "AI isn't a toy. It's a *tool*." },
   },
-  { type: "card", suit: "diamonds", rank: "K", x: 1060, y: 2120, rotate: -8 },
+  { type: "project", slug: "colorlisse", x: 200, y: 2320 },
   {
     type: "quote",
-    x: 1820,
-    y: 2140,
+    x: 1380,
+    y: 2400,
     width: 520,
     text: { lt: "Dizainas, kuris *juda*.", en: "Design that *moves*." },
   },
+  { type: "card", suit: "diamonds", rank: "K", x: 2260, y: 2300, rotate: -8 },
   { type: "card", suit: "clubs", rank: "J", x: 3360, y: 60, rotate: 14 },
 ];

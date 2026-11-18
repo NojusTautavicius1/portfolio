@@ -98,6 +98,42 @@ export const featuredProjects: FeaturedProject[] = [
     links: [],
   },
   {
+    slug: "graspit",
+    card: { suit: "hearts", rank: "10" },
+    title: "GraspIT",
+    tagline: {
+      lt: "Mūsų web studijos svetainė: svetainės ir el. parduotuvės vietiniam verslui",
+      en: "Our web studio's website: websites and online shops for local businesses",
+    },
+    status: "launching",
+    problem: {
+      lt: "Studijai reikėjo svetainės, kuri aiškiai parodytų, ką darome, kiek tai kainuoja ir kaip vyksta darbas, kad klientas galėtų apsispręsti be ilgo susirašinėjimo.",
+      en: "The studio needed a website that clearly shows what we do, what it costs and how the work goes, so a client can decide without a long email thread.",
+    },
+    solution: {
+      lt: "12 puslapių svetainė: paslaugos, kainos, procesas, darbai, DUK su 22 klausimais ir kontaktų forma. Visi puslapiai sugeneruojami kaip HTML, todėl turinys matomas ir be JavaScript, kiekvienas turi savo meta duomenis, o DUK puslapis turi FAQPage struktūrizuotus duomenis.",
+      en: "A 12-page website: services, prices, process, work, an FAQ with 22 questions and a contact form. Every page is prerendered to HTML, so the content is visible without JavaScript, each page has its own metadata, and the FAQ page has FAQPage structured data.",
+    },
+    result: null,
+    role: {
+      lt: "Kartu su partneriu: dizainas, tekstai ir kodas.",
+      en: "Together with my partner: design, copy and code.",
+    },
+    stack: [
+      "React",
+      "Vite",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      { lt: "Techninis SEO", en: "Technical SEO" },
+    ],
+    links: [],
+    media: [
+      { src: "/images/projects/graspit-desktop.jpg", kind: "desktop" },
+      { src: "/images/projects/graspit-mobile.jpg", kind: "mobile" },
+    ],
+  },
+  {
     slug: "kalvita",
     card: { suit: "hearts", rank: "J" },
     title: "Kalvita",
@@ -124,6 +160,38 @@ export const featuredProjects: FeaturedProject[] = [
     media: [
       { src: "/images/projects/kalvita-desktop.jpg", kind: "desktop" },
       { src: "/images/projects/kalvita-mobile.jpg", kind: "mobile" },
+    ],
+  },
+  {
+    slug: "colorlisse",
+    card: { suit: "hearts", rank: "9" },
+    title: "Colorlisse",
+    tagline: {
+      lt: "El. parduotuvė profesionaliai kirpėjų folijai",
+      en: "Online shop for professional hairdressing foil",
+    },
+    status: "client",
+    problem: {
+      lt: "Prekės ženklui reikėjo parduotuvės, kurioje kirpėjai ir salonai galėtų greitai užsisakyti foliją su pristatymu į paštomatą.",
+      en: "The brand needed a shop where hairdressers and salons can quickly order foil with delivery to a parcel locker.",
+    },
+    solution: {
+      lt: "Ryški, prekės ženklo stiliaus el. parduotuvė: krepšelis ir užsakymas su LP Express ar Omniva paštomatais, atskiras puslapis salonams, galerija, DUK ir anglų kalbos versija.",
+      en: "A bold, on-brand online shop: cart and checkout with LP Express or Omniva parcel lockers, a separate page for salons, a gallery, an FAQ and an English version.",
+    },
+    result: {
+      lt: "Parduotuvė veikia adresu colorlisse.lt.",
+      en: "The shop is live at colorlisse.lt.",
+    },
+    role: {
+      lt: "Kūriau kartu su Nojumi Šiauliu.",
+      en: "Built together with Nojus Šiaulys.",
+    },
+    stack: ["React", "Vite", "Cloudflare", { lt: "El. parduotuvė", en: "E-commerce" }],
+    links: [{ kind: "live", href: "https://colorlisse.lt" }],
+    media: [
+      { src: "/images/projects/colorlisse-desktop.jpg", kind: "desktop" },
+      { src: "/images/projects/colorlisse-mobile.jpg", kind: "mobile" },
     ],
   },
   {
@@ -154,32 +222,6 @@ export const featuredProjects: FeaturedProject[] = [
     media: [
       { src: "/images/projects/zaliuzesroletai-desktop.jpg", kind: "desktop" },
       { src: "/images/projects/zaliuzesroletai-mobile.jpg", kind: "mobile" },
-    ],
-  },
-  {
-    slug: "greitas-kasnis",
-    card: { suit: "diamonds", rank: "9" },
-    title: "Greitas Kąsnis",
-    tagline: {
-      lt: "Koncepcinė svetainė kebabinių tinklui",
-      en: "Concept website for a kebab restaurant chain",
-    },
-    status: "concept",
-    problem: {
-      lt: "Vietinės užkandinės dažnai turi tik Facebook puslapį, todėl meniu ir kontaktus sunku rasti.",
-      en: "Local takeaways often only have a Facebook page, so the menu and contacts are hard to find.",
-    },
-    solution: {
-      lt: "Koncepcinė svetainė kebabinių tinklui su dviem padaliniais (Kretinga, Ginduliai): meniu, kiekvieno padalinio puslapis, naujienos, automatiškai generuojami nuorodų peržiūros paveikslėliai ir SEO.",
-      en: "A concept site for a chain with two locations (Kretinga, Ginduliai): menu, a page per location, news, auto-generated link preview images and SEO.",
-    },
-    result: null,
-    role: null,
-    stack: ["Next.js", "TypeScript", "Vercel"],
-    links: [{ kind: "demo", href: "https://greitas-kasnis-v2.vercel.app" }],
-    media: [
-      { src: "/images/projects/greitas-kasnis-desktop.jpg", kind: "desktop" },
-      { src: "/images/projects/greitas-kasnis-mobile.jpg", kind: "mobile" },
     ],
   },
 ];
