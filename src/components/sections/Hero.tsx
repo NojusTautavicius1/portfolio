@@ -37,7 +37,8 @@ export async function Hero() {
   }));
 
   return (
-    <section aria-labelledby="hero-title" className="relative isolate flex min-h-dvh flex-col overflow-x-clip pb-6 pt-20">
+    // Bottom padding keeps the facts clear of the fixed card-thrower toggle (bottom-left).
+    <section aria-labelledby="hero-title" className="relative isolate flex min-h-dvh flex-col overflow-x-clip pb-20 pt-20 md:pb-24">
       {/* HUD row */}
       <div className={`${container} flex flex-wrap items-center justify-between gap-x-6 gap-y-1 pt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-muted`}>
         <p className="flex items-center gap-2 text-text" data-egg="status">

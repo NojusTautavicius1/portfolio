@@ -95,6 +95,12 @@
   "footer": {
     "built": "Built with Next.js and React Three Fiber."
   },
+  "thrower": {
+    "off": "Throw a card",
+    "on": "Aim!",
+    "hint": "Click anywhere · Esc to stop",
+    "jackpot": "Jackpot"
+  },
   "cv": {
     "metaTitle": "CV",
     "role": "Web & AI developer",

@@ -95,6 +95,12 @@
   "footer": {
     "built": "Sukurta su Next.js ir React Three Fiber."
   },
+  "thrower": {
+    "off": "Mesk kortą",
+    "on": "Taikyk!",
+    "hint": "Spausk bet kur · Esc — išjungti",
+    "jackpot": "Jackpot"
+  },
   "cv": {
     "metaTitle": "CV",
     "role": "Web ir AI programuotojas",

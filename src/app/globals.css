@@ -39,11 +39,10 @@
   --font-display: var(--font-archivo), var(--font-geist-sans), sans-serif;
 }
 
-/* Extra-wide black display face (Archivo variable, width axis at its maximum). */
+/* Extra-wide black display face (a static Archivo instance at width 125 / weight 900). */
 @utility font-display-wide {
   font-family: var(--font-display);
   font-weight: 900;
-  font-stretch: 125%;
 }
 
 html {
@@ -218,6 +217,57 @@ body {
       transition: none;
     }
   }
+}
+
+/* Card thrower effects */
+@keyframes crack-life {
+  0% {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+  4% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  72% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.crack {
+  z-index: 47;
+  filter: drop-shadow(0 0 2px rgb(255 255 255 / 0.4));
+  animation: crack-life 3.6s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+@keyframes jackpot-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(-6deg);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1.08) rotate(2deg);
+  }
+  30% {
+    transform: scale(1) rotate(0deg);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+.jackpot {
+  animation: jackpot-pop 1.6s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+  text-shadow: 0 0.05em 0 #0a0a0a;
 }
 
 @keyframes status-pulse {

@@ -1,5 +1,6 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { CardThrower } from "@/components/deck/CardThrower";
 import { Reveal } from "@/components/motion/Reveal";
 import { About } from "@/components/sections/About";
 import { Contact } from "@/components/sections/Contact";
@@ -12,6 +13,7 @@ import { StudioMotion } from "@/components/sections/StudioMotion";
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("thrower");
 
   return (
     <>
@@ -24,6 +26,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Contact />
       {/* After the sections: Reveal looks up elements that must already exist. */}
       <Reveal />
+      <CardThrower labels={{ off: t("off"), on: t("on"), hint: t("hint"), jackpot: t("jackpot") }} />
     </>
   );
 }

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Archivo, Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -17,8 +18,13 @@ import "../globals.css";
 
 const geistSans = Geist({ subsets: ["latin", "latin-ext"], variable: "--font-geist-sans" });
 const geistMono = Geist_Mono({ subsets: ["latin", "latin-ext"], variable: "--font-geist-mono" });
-// Variable font with the width axis, used at 125% width / 900 weight for the giant name.
-const archivo = Archivo({ subsets: ["latin", "latin-ext"], axes: ["wdth"], variable: "--font-archivo" });
+// Archivo frozen at width 125 / weight 900 and subset to Latin + Lithuanian: 7 KB instead of the
+// 170 KB variable font. Rebuild it with the script in src/assets/fonts/README.md.
+const archivo = localFont({
+  src: "../../assets/fonts/ArchivoExpanded-Black.woff2",
+  weight: "900",
+  variable: "--font-archivo",
+});
 
 type LayoutProps = {
   children: React.ReactNode;
