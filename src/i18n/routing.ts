@@ -7,6 +7,7 @@ export const routing = defineRouting({
   pathnames: {
     "/": "/",
     "/cv": "/cv",
+    "/projektai": { lt: "/projektai", en: "/projects" },
     "/projektai/[slug]": { lt: "/projektai/[slug]", en: "/projects/[slug]" },
   },
 });

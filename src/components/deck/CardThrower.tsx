@@ -12,7 +12,8 @@ type Flight = Point & { fromX: number; fromY: number; suit: Suit; rank: string }
 
 const SUITS: Suit[] = ["spades", "hearts", "diamonds", "clubs"];
 const RANKS = ["A", "K", "Q", "J", "10", "9", "8", "7"];
-const FLIGHT_MS = 430;
+const FLIGHT_MS = 540;
+const HOLD_MS = 1100;
 const CRACK_MS = 3800;
 const CROSSHAIR = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36' fill='none' stroke='%23ff5446' stroke-width='2'><circle cx='18' cy='18' r='11'/><path d='M18 2v9M18 25v9M2 18h9M25 18h9'/></svg>") 18 18, crosshair`;
 
@@ -100,9 +101,12 @@ export function CardThrower({ labels }: { labels: Labels }) {
         </>
       )}
 
-      {flights.map((flight) => (
-        <ThrownCard key={flight.id} flight={flight} onLand={land} onDone={finish} />
-      ))}
+      {/* Shared 3D space for flying cards (perspective gives the tumble and the "stuck" tilt depth). */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-[46] [perspective:1100px]">
+        {flights.map((flight) => (
+          <ThrownCard key={flight.id} flight={flight} onLand={land} onDone={finish} />
+        ))}
+      </div>
       {cracks.map((crack) => (
         <Crack key={crack.id} x={crack.x} y={crack.y} seed={crack.id * 7919} />
       ))}
@@ -158,7 +162,11 @@ function react(x: number, y: number): "burst" | "jackpot" | null {
   }
 }
 
-/** One card flying along an arc from the toggle to the target, then dropping off screen. */
+/**
+ * One card thrown from the toggle: it spins flat like a frisbee along a ballistic arc, flips to
+ * show its face, sticks into the "glass" at a steep angle with a damped quiver, hangs for a
+ * moment and then drops off screen.
+ */
 function ThrownCard({ flight, onLand, onDone }: { flight: Flight; onLand: (flight: Flight) => void; onDone: (id: number) => void }) {
   const card = useRef<HTMLSpanElement>(null);
 
@@ -166,45 +174,71 @@ function ThrownCard({ flight, onLand, onDone }: { flight: Flight; onLand: (fligh
     const element = card.current;
     if (!element) return;
     const start = performance.now();
-    const dx = flight.x - flight.fromX;
-    const dy = flight.y - flight.fromY;
-    const controlX = flight.fromX + dx / 2;
-    const controlY = flight.fromY + dy / 2 - Math.min(260, Math.hypot(dx, dy) * 0.35);
+    const distance = Math.hypot(flight.x - flight.fromX, flight.y - flight.fromY);
+    const arc = Math.min(240, distance * 0.32);
+    // Each card sticks at its own angle.
+    const stickX = 34 + Math.random() * 12;
+    const stickZ = (Math.random() - 0.5) * 60;
     let frame = 0;
+    let holdTimer: ReturnType<typeof setTimeout> | undefined;
+    const animations: Animation[] = [];
 
-    const place = (x: number, y: number, spin: number, scale: number) => {
-      element.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) rotate(${spin}deg) scale(${scale})`;
-    };
+    const pose = (x: number, y: number, z: number, rotateZ: number, rotateX: number, rotateY: number, scale: number) =>
+      `translate3d(${x}px, ${y}px, ${z}px) translate(-50%, -50%) rotateZ(${rotateZ}deg) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+
+    // Lands showing its red back: it reads far better than a black face against the black page.
+    const stuck = (rotateX: number, z = -18) => pose(flight.x, flight.y, z, stickZ, rotateX, 180, 1);
 
     const step = (now: number) => {
       const t = Math.min(1, (now - start) / FLIGHT_MS);
-      const e = 1 - (1 - t) * (1 - t);
-      const x = (1 - e) ** 2 * flight.fromX + 2 * (1 - e) * e * controlX + e * e * flight.x;
-      const y = (1 - e) ** 2 * flight.fromY + 2 * (1 - e) * e * controlY + e * e * flight.y;
-      place(x, y, (1 - e) * -620 + 8, 0.45 + 0.55 * e);
+      const travel = 1 - (1 - t) ** 2.2; // slight drag: fast out, slower in
+      const x = flight.fromX + (flight.x - flight.fromX) * travel;
+      const y = flight.fromY + (flight.y - flight.fromY) * travel - arc * 4 * travel * (1 - travel);
+      const spin = stickZ + (1 - travel) * 900; // spins down to its sticking angle
+      const tilt = stickX + Math.sin(t * Math.PI * 3) * 8 * (1 - t); // frisbee wobble settling
+      element.style.transform = pose(x, y, -380 * (1 - travel), spin, tilt, 180 * travel, 0.6 + 0.4 * travel);
       if (t < 1) {
         frame = requestAnimationFrame(step);
         return;
       }
+
       onLand(flight);
-      const drop = element.animate(
-        [
-          { transform: element.style.transform, opacity: 1 },
-          { transform: `translate(${flight.x}px, ${flight.y + 24}px) translate(-50%, -50%) rotate(14deg) scale(1)`, opacity: 1, offset: 0.25 },
-          { transform: `translate(${flight.x + 40}px, ${window.innerHeight + 240}px) translate(-50%, -50%) rotate(65deg) scale(1)`, opacity: 0.2 },
-        ],
-        { duration: 1300, easing: "cubic-bezier(0.55, 0, 0.8, 0.4)", fill: "forwards" },
+      // Damped quiver after the hit.
+      const quiver = element.animate(
+        [stickX + 9, stickX - 6, stickX + 4, stickX - 2, stickX + 1, stickX].map((angle) => ({ transform: stuck(angle) })),
+        { duration: 460, easing: "ease-out", fill: "forwards" },
       );
-      drop.onfinish = () => onDone(flight.id);
+      animations.push(quiver);
+      quiver.onfinish = () => {
+        holdTimer = setTimeout(() => {
+          const drop = element.animate(
+            [
+              { transform: stuck(stickX), opacity: 1 },
+              { transform: stuck(stickX - 30, 0), opacity: 1, offset: 0.18 },
+              {
+                transform: `translate3d(${flight.x + 50}px, ${window.innerHeight + 260}px, 0) translate(-50%, -50%) rotateZ(${stickZ + 70}deg) rotateX(20deg) rotateY(180deg) scale(1)`,
+                opacity: 0.25,
+              },
+            ],
+            { duration: 1150, easing: "cubic-bezier(0.55, 0, 0.85, 0.35)", fill: "forwards" },
+          );
+          animations.push(drop);
+          drop.onfinish = () => onDone(flight.id);
+        }, HOLD_MS);
+      };
     };
 
-    place(flight.fromX, flight.fromY, 0, 0.45);
+    element.style.transform = pose(flight.fromX, flight.fromY, -380, stickZ + 900, stickX, 0, 0.6);
     frame = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(holdTimer);
+      animations.forEach((animation) => animation.cancel());
+    };
   }, [flight, onLand, onDone]);
 
   return (
-    <span ref={card} aria-hidden className="card pointer-events-none fixed left-0 top-0 z-[46] [--card-w:clamp(64px,7vw,92px)]">
+    <span ref={card} className="card absolute left-0 top-0 [--card-w:clamp(78px,8.5vw,118px)] [transform-style:preserve-3d]">
       <span className="card-inner">
         <CardFront suit={flight.suit} rank={flight.rank} />
         <CardPatternBack />

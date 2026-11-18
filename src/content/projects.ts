@@ -113,6 +113,10 @@ export const featuredProjects: FeaturedProject[] = [
     role: null,
     stack: ["React", "Vite", "Tailwind", "Motion", "EmailJS", "Vercel"],
     links: [{ kind: "live", href: "https://kalvita.lt" }],
+    media: [
+      { src: "/images/projects/kalvita-desktop.jpg", kind: "desktop" },
+      { src: "/images/projects/kalvita-mobile.jpg", kind: "mobile" },
+    ],
   },
   {
     slug: "zaliuzesroletai",
@@ -139,6 +143,10 @@ export const featuredProjects: FeaturedProject[] = [
       { lt: "[kiti įrankiai]", en: "[other tools]" },
     ],
     links: [{ kind: "live", href: "https://zaliuzesroletai.lt" }],
+    media: [
+      { src: "/images/projects/zaliuzesroletai-desktop.jpg", kind: "desktop" },
+      { src: "/images/projects/zaliuzesroletai-mobile.jpg", kind: "mobile" },
+    ],
   },
   {
     slug: "greitas-kasnis",

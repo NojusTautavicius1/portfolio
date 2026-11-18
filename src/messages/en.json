@@ -12,15 +12,15 @@
     "cvLabel": "Download CV (PDF)",
     "language": "Lietuviškai",
     "languageLabel": "Perjungti į lietuvių kalbą",
-    "themeToLight": "Switch to light theme",
-    "themeToDark": "Switch to dark theme",
     "home": "Home",
-    "sections": "Sections"
+    "sections": "Sections",
+    "board": "Board"
   },
   "hero": {
     "status": "Open to jobs and paid internships",
     "statusDetail": "Klaipėda region / remote",
     "headline": "I build web apps and AI automations.",
+    "headlineRich": "I build web apps and <mark>AI automations</mark>.",
     "subtitle": "Final-year JavaScript developer student (KTMC). I work with Next.js, TypeScript, Python and the Claude API, and in my spare time I make motion design and video ads.",
     "ctaProjects": "View projects",
     "ctaCv": "Download CV",
@@ -46,6 +46,8 @@
     "links": "Links",
     "next": "Next project",
     "mediaSoon": "Screenshot / video coming soon",
+    "screenshot": "website screenshot",
+    "openBoard": "Open the project board",
     "linkKinds": {
       "live": "Website",
       "demo": "Demo",
@@ -87,13 +89,20 @@
   },
   "contact": {
     "title": "Let's work together",
+    "titleRich": "Let's work <mark>together</mark>",
     "body": "I'm looking for a job or a paid internship. Write to me — I reply within 24 hours.",
     "emailLabel": "Email",
     "cvLt": "CV (LT, PDF)",
     "cvEn": "CV (EN, PDF)"
   },
   "footer": {
-    "built": "Built with Next.js and React Three Fiber."
+    "built": "Built with Next.js, CSS 3D and GSAP."
+  },
+  "board": {
+    "title": "Project board",
+    "description": "All of Nojus Tautavičius's projects on one infinite board: drag in any direction.",
+    "label": "Project board. Drag with the mouse, scroll, or use the arrow keys.",
+    "hint": "Drag the board in any direction"
   },
   "thrower": {
     "off": "Throw a card",

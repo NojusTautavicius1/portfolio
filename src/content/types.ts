@@ -26,6 +26,8 @@ export type FeaturedProject = {
   role: Localized | null;
   stack: Term[];
   links: ProjectLink[];
+  /** Screenshots in /public. Desktop shots are 16:10, mobile shots 1:2. */
+  media?: { src: string; kind: "desktop" | "mobile" }[];
 };
 
 export type SideProject = {

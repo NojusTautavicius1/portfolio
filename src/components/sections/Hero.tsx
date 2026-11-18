@@ -7,6 +7,7 @@ import { localize, localizeTerms } from "@/lib/localize";
 import { buttonPrimary, buttonSecondary, container } from "@/lib/styles";
 import { HeroDeck } from "@/components/deck/HeroDeck";
 import { LocalClock } from "@/components/deck/LocalClock";
+import { Scribble } from "@/components/ui/Scribble";
 
 /** Each letter is its own element so thrown cards can knock single letters (see CardThrower). */
 function Letters({ word }: { word: string }) {
@@ -69,7 +70,13 @@ export async function Hero() {
         </h1>
 
         <p className="relative z-10 mt-8 max-w-xl text-balance text-center text-lg leading-relaxed md:text-xl">
-          {t("headline")}
+          {t.rich("headlineRich", {
+            mark: (chunks) => (
+              <Scribble kind="underline" trigger="load" delay={1.7}>
+                {chunks}
+              </Scribble>
+            ),
+          })}
         </p>
         <div className="relative z-10 mt-7 flex flex-wrap justify-center gap-3">
           <Link href={{ pathname: "/", hash: "projects" }} className={buttonPrimary}>

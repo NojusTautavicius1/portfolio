@@ -40,6 +40,13 @@ export async function Projects() {
           <p data-reveal className="text-muted">
             {t("intro")}
           </p>
+          <Link
+            href="/projektai"
+            className="inline-flex min-h-11 w-fit items-center gap-2 rounded-xl border border-line px-4 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+          >
+            {t("openBoard")}
+            <span aria-hidden>→</span>
+          </Link>
           <div aria-hidden className={`hidden items-center gap-3 font-mono text-xs text-muted ${pinned.counter}`}>
             <span data-counter className="text-text">
               01

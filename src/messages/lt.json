@@ -12,15 +12,15 @@
     "cvLabel": "Atsisiųsti CV (PDF)",
     "language": "English",
     "languageLabel": "Switch to English",
-    "themeToLight": "Įjungti šviesią temą",
-    "themeToDark": "Įjungti tamsią temą",
     "home": "Pradžia",
-    "sections": "Sekcijos"
+    "sections": "Sekcijos",
+    "board": "Lenta"
   },
   "hero": {
     "status": "Atviras darbui ir apmokamai praktikai",
     "statusDetail": "Klaipėdos regionas / nuotoliu",
     "headline": "Kuriu web aplikacijas ir AI automatizacijas.",
+    "headlineRich": "Kuriu web aplikacijas ir <mark>AI automatizacijas</mark>.",
     "subtitle": "JavaScript programuotojo specialybės studentas (KTMC, baigiamasis kursas). Dirbu su Next.js, TypeScript, Python ir Claude API, o laisvalaikiu kuriu motion design ir video reklamas.",
     "ctaProjects": "Peržiūrėti projektus",
     "ctaCv": "Atsisiųsti CV",
@@ -46,6 +46,8 @@
     "links": "Nuorodos",
     "next": "Kitas projektas",
     "mediaSoon": "Ekrano nuotrauka / video — netrukus",
+    "screenshot": "svetainės ekrano nuotrauka",
+    "openBoard": "Atidaryti projektų lentą",
     "linkKinds": {
       "live": "Svetainė",
       "demo": "Demo",
@@ -87,13 +89,20 @@
   },
   "contact": {
     "title": "Dirbkime kartu",
+    "titleRich": "Dirbkime <mark>kartu</mark>",
     "body": "Ieškau darbo arba apmokamos praktikos. Parašyk — atsakau per 24 valandas.",
     "emailLabel": "El. paštas",
     "cvLt": "CV (LT, PDF)",
     "cvEn": "CV (EN, PDF)"
   },
   "footer": {
-    "built": "Sukurta su Next.js ir React Three Fiber."
+    "built": "Sukurta su Next.js, CSS 3D ir GSAP."
+  },
+  "board": {
+    "title": "Projektų lenta",
+    "description": "Visi Nojaus Tautavičiaus projektai vienoje begalinėje lentoje: tempk bet kuria kryptimi.",
+    "label": "Projektų lenta. Tempk pele, slink arba naudok rodyklių klavišus.",
+    "hint": "Tempk lentą bet kuria kryptimi"
   },
   "thrower": {
     "off": "Mesk kortą",

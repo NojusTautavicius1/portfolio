@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { localize } from "@/lib/localize";
 import { container } from "@/lib/styles";
 
+import { BoardNavLink } from "./BoardNavLink";
 import { LocaleSwitch } from "./LocaleSwitch";
 
 const sections = [
@@ -34,10 +35,14 @@ export async function Header() {
                 </Link>
               </li>
             ))}
+            <li>
+              <BoardNavLink label={t("board")} />
+            </li>
           </ul>
         </nav>
 
         <div className="flex items-center gap-1">
+          <BoardNavLink label={t("board")} className="grid min-h-11 place-items-center px-2 font-mono text-xs uppercase text-muted md:hidden" />
           <LocaleSwitch />
           <a
             href={localize(profile.cv, locale)}

@@ -20,6 +20,7 @@ function entry(href: Href, priority: number): MetadataRoute.Sitemap[number] {
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     entry("/", 1),
+    entry("/projektai", 0.8),
     ...featuredProjects.map((project) => entry({ pathname: "/projektai/[slug]", params: { slug: project.slug } }, 0.7)),
   ];
 }

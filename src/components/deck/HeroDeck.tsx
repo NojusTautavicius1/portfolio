@@ -117,11 +117,12 @@ export function HeroDeck({ cards, flipHint }: { cards: HeroCardData[]; flipHint:
                 <span className="card-tilt">
                   <span className="card-inner">
                     <CardFront suit={card.suit} rank={card.rank} label={card.name} />
-                    <span className="card-face card-back flex flex-col p-[0.75em]">
-                      <span aria-hidden className="absolute -right-[0.15em] bottom-[1.6em] text-[6.5em] leading-none opacity-[0.07]">
+                    <span className="card-face card-back flex flex-col p-[0.95em]">
+                      <span className="card-frame" />
+                      <span aria-hidden className="absolute -right-[0.15em] bottom-[1.6em] text-[6.5em] leading-none opacity-[0.06]">
                         {suitGlyph(card.suit)}
                       </span>
-                      <span aria-hidden className={`font-display-wide text-[0.9em] ${card.suit === "hearts" || card.suit === "diamonds" ? "text-accent" : ""}`}>
+                      <span aria-hidden className={`font-display-wide text-[0.9em] ${card.suit === "hearts" || card.suit === "diamonds" ? "foil-red" : "foil"}`}>
                         {card.rank}
                         {suitGlyph(card.suit)}
                       </span>
