@@ -2,6 +2,19 @@ import type { ExperienceItem, Localized } from "./types";
 
 export const experience: ExperienceItem[] = [
   {
+    role: { lt: "IT praktikantas", en: "IT Intern" },
+    organization: "IT Perspective Sp. z o.o.",
+    context: {
+      lt: "IT įmonė, Wasilkówas (Lenkija) · profesinio mokymo praktika per KTMC",
+      en: "IT company, Wasilków (Poland) · vocational training placement via KTMC",
+    },
+    period: { lt: "2026 m. spalis – dabar", en: "Oct 2026 – present" },
+    points: {
+      lt: ["[1–2 konkretūs darbai, kuriuos darai praktikoje]"],
+      en: ["[1–2 concrete things you work on during the internship]"],
+    },
+  },
+  {
     role: { lt: "Web & AI praktikantas", en: "Web & AI Intern" },
     organization: "Potissimus",
     context: {
