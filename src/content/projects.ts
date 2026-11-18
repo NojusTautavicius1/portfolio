@@ -1,9 +1,6 @@
 import type { FeaturedProject, SideProject } from "./types";
 
-/**
- * Featured projects, in display order. Each one gets a detail page at
- * /[locale]/projektai/[slug]. To add a project, copy an entry and change the slug.
- */
+// In display order. Each project gets a page at /[locale]/projektai/[slug].
 export const featuredProjects: FeaturedProject[] = [
   {
     slug: "aiscan",
@@ -20,7 +17,7 @@ export const featuredProjects: FeaturedProject[] = [
     },
     solution: {
       lt: "Sistema sugeneruoja realistiškus klausimus pagal įmonės nišą, užduoda juos AI paieškos varikliams ir analizuoja atsakymus: ar minimas prekės ženklas, kurioje vietoje, kokie šaltiniai cituojami ir kurie konkurentai pasirodo dažniausiai. Atpažįsta ir lietuviškus linksnius („Kalvita“, „Kalvitos“, „Kalvitą“).",
-      en: "The system generates realistic questions for the company's niche, asks AI search engines and analyses the answers: is the brand mentioned, in which position, which sources are cited and which competitors show up most. It also handles Lithuanian word endings (\"Kalvita\", \"Kalvitos\", \"Kalvitą\").",
+      en: 'The system generates realistic questions for the company\'s niche, asks AI search engines and analyses the answers: is the brand mentioned, in which position, which sources are cited and which competitors show up most. It also handles Lithuanian word endings ("Kalvita", "Kalvitos", "Kalvitą").',
     },
     result: {
       lt: "Veikiantis analizės variklis su automatiniais testais ir foniniu darbų apdorojimu. [Po paleidimo: kiek auditų atlikta / pirmi vartotojai.]",
@@ -60,6 +57,7 @@ export const featuredProjects: FeaturedProject[] = [
     },
     stack: ["Next.js", "TypeScript", "Claude API", "Puppeteer", "Supabase", "Stripe", "Upstash", "Resend"],
     links: [],
+    media: [{ src: "/images/projects/pitchcraft-desktop.jpg", kind: "desktop" }],
   },
   {
     slug: "sonara",
@@ -72,11 +70,11 @@ export const featuredProjects: FeaturedProject[] = [
     status: "live",
     problem: {
       lt: "[1 sakinys, kodėl kūrei — pvz. „Norėjau suprasti, kaip veikia Spotify tipo rekomendacijos, ir sukurti jas pats.“]",
-      en: "[One sentence on why you built it — e.g. \"I wanted to understand how Spotify-style recommendations work and build them myself.\"]",
+      en: '[One sentence on why you built it — e.g. "I wanted to understand how Spotify-style recommendations work and build them myself."]',
     },
     solution: {
       lt: "Pilna muzikos klausymosi platforma: dainų įkėlimas ir grojimas su bangos vizualizacija, automatiškai atsinaujinantys „Daily Mix“ ir „Discover Weekly“, grojaraščiai, dainų žodžiai, klausymo statistika. „Ask Sonara“ leidžia ieškoti natūralia kalba — pvz. „dainos lietingam vakarui“.",
-      en: "A complete music streaming platform: upload and play songs with a waveform view, auto-refreshing Daily Mix and Discover Weekly, playlists, lyrics and listening stats. \"Ask Sonara\" lets you search in plain language, e.g. \"songs for a rainy evening\".",
+      en: 'A complete music streaming platform: upload and play songs with a waveform view, auto-refreshing Daily Mix and Discover Weekly, playlists, lyrics and listening stats. "Ask Sonara" lets you search in plain language, e.g. "songs for a rainy evening".',
     },
     result: {
       lt: "Veikianti platforma su atskiru muzikos agento servisu.",
@@ -86,7 +84,17 @@ export const featuredProjects: FeaturedProject[] = [
       lt: "Viskas: full-stack kūrimas ir AI dalis.",
       en: "Everything: full-stack development and the AI layer.",
     },
-    stack: ["Next.js 15", "TypeScript", "Tailwind", "PostgreSQL", "Prisma", "Auth.js", "Claude API", "Ruby (Sinatra)", "Railway"],
+    stack: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind",
+      "PostgreSQL",
+      "Prisma",
+      "Auth.js",
+      "Claude API",
+      "Ruby (Sinatra)",
+      "Railway",
+    ],
     links: [],
   },
   {
@@ -168,7 +176,11 @@ export const featuredProjects: FeaturedProject[] = [
     result: null,
     role: null,
     stack: ["Next.js", "TypeScript", "Vercel"],
-    links: [],
+    links: [{ kind: "demo", href: "https://greitas-kasnis-v2.vercel.app" }],
+    media: [
+      { src: "/images/projects/greitas-kasnis-desktop.jpg", kind: "desktop" },
+      { src: "/images/projects/greitas-kasnis-mobile.jpg", kind: "mobile" },
+    ],
   },
 ];
 

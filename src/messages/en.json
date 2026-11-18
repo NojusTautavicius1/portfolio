@@ -71,8 +71,8 @@
   "motion": {
     "eyebrow": "When I'm not coding",
     "title": "Motion design & video",
-    "body": "I make video ads and animations, from 2D motion graphics to 3D scenes. When a campaign needs many variants, I generate the videos with code.",
-    "worksSoon": "[3–6 best video pieces go here]"
+    "body": "I make video ads and animations for social media, from motion graphics on real footage to 3D scenes in Blender. When a campaign needs many variants, I generate the videos with code.",
+    "campaign": "Black Friday campaign for {client}"
   },
   "experience": {
     "title": "Experience",
@@ -85,7 +85,6 @@
   },
   "about": {
     "title": "About me",
-    "languages": "Languages",
     "photoAlt": "Nojus Tautavičius",
     "player": {
       "studies": "Studies",
