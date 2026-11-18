@@ -9,6 +9,9 @@ import { localize, localizeTerms } from "@/lib/localize";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
+// Concept work stays on the website; the one-page CV only lists real projects.
+const cvProjects = featuredProjects.filter((project) => project.status !== "concept");
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "cv" });
@@ -95,7 +98,7 @@ export default async function CvPage({ params }: PageProps) {
             <section>
               <h2 className={heading}>{t("projects")}</h2>
               <ol className="mt-2 space-y-2">
-                {featuredProjects.map((project) => (
+                {cvProjects.map((project) => (
                   <li key={project.slug} className="break-inside-avoid">
                     <h3 className="font-semibold">
                       {project.title}{" "}
