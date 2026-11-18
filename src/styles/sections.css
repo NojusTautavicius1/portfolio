@@ -97,3 +97,26 @@
     animation: none;
   }
 }
+
+/* Project board: 400px grid and the floating HUD pills. */
+@layer components {
+  .board-grid {
+    background-image:
+      linear-gradient(to right, var(--line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 400px 400px;
+  }
+
+  .board-pill {
+    pointer-events: none;
+    z-index: 10;
+    border: 1px solid var(--line);
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--bg) 85%, transparent);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    backdrop-filter: blur(12px);
+  }
+}
