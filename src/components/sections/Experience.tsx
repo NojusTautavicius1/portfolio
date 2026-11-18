@@ -3,7 +3,6 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { education, experience } from "@/content/experience";
 import { localize } from "@/lib/localize";
 import { container, eyebrow, sectionSpacing, sectionTitle } from "@/lib/styles";
-import { ProbeAnchor } from "@/components/three/ProbeAnchor";
 
 const row = "grid gap-2 border-t border-line py-8 md:grid-cols-[220px_minmax(0,1fr)] md:gap-10";
 
@@ -17,7 +16,6 @@ export async function Experience() {
         <h2 id="experience-title" data-reveal className={sectionTitle}>
           {t("title")}
         </h2>
-        <ProbeAnchor yaw={-0.6} pitch={0.2} className="size-24 shrink-0 md:size-32" />
       </div>
 
       <ol className="mt-12">

@@ -6,7 +6,6 @@ import { localize, localizeTerms } from "@/lib/localize";
 import { container, eyebrow, sectionSpacing, sectionTitle } from "@/lib/styles";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { TagList } from "@/components/ui/Tag";
-import { ProbeAnchor } from "@/components/three/ProbeAnchor";
 
 import { ProjectsTrack } from "./ProjectsTrack";
 
@@ -37,7 +36,6 @@ export async function Projects() {
           <h2 id="projects-title" data-reveal className={sectionTitle}>
             {t("title")}
           </h2>
-          <ProbeAnchor yaw={-0.55} pitch={0.2} className="size-24 shrink-0 md:size-32" />
         </div>
         <div className="flex max-w-md flex-col gap-4">
           <p data-reveal className="text-muted">

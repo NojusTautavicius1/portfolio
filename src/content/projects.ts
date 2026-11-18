@@ -7,6 +7,7 @@ import type { FeaturedProject, SideProject } from "./types";
 export const featuredProjects: FeaturedProject[] = [
   {
     slug: "aiscan",
+    card: { suit: "spades", rank: "A" },
     title: "aiscan",
     tagline: {
       lt: "AI matomumo auditas: ar AI atsakymuose minimas tavo verslas",
@@ -34,6 +35,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     slug: "pitchcraft",
+    card: { suit: "spades", rank: "K" },
     title: "PitchCraft",
     tagline: {
       lt: "Iš svetainės URL — personalizuoti pardavimų laiškai su Claude",
@@ -61,6 +63,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     slug: "sonara",
+    card: { suit: "hearts", rank: "Q" },
     title: "Sonara",
     tagline: {
       lt: "Muzikos platforma su AI rekomendacijomis ir paieška natūralia kalba",
@@ -88,6 +91,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     slug: "kalvita",
+    card: { suit: "hearts", rank: "J" },
     title: "Kalvita",
     tagline: {
       lt: "Svetainė kalvystės įmonei Klaipėdoje ir Kretingoje",
@@ -112,6 +116,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     slug: "zaliuzesroletai",
+    card: { suit: "clubs", rank: "10" },
     title: "zaliuzesroletai.lt",
     tagline: {
       lt: "Techninis SEO, turinys ir nuolatinė priežiūra",
@@ -137,6 +142,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     slug: "greitas-kasnis",
+    card: { suit: "diamonds", rank: "9" },
     title: "Greitas Kąsnis",
     tagline: {
       lt: "Koncepcinė svetainė kebabinių tinklui",

@@ -15,6 +15,8 @@ export type ProjectLink = {
 export type FeaturedProject = {
   slug: string;
   title: string;
+  /** Card shown for the project: suit = its main direction (see areas.ts), rank = its order. */
+  card: { suit: "spades" | "hearts" | "diamonds" | "clubs"; rank: string };
   tagline: Localized;
   status: ProjectStatus;
   problem: Localized;

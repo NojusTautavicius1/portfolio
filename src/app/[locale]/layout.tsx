@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo, Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -17,9 +17,8 @@ import "../globals.css";
 
 const geistSans = Geist({ subsets: ["latin", "latin-ext"], variable: "--font-geist-sans" });
 const geistMono = Geist_Mono({ subsets: ["latin", "latin-ext"], variable: "--font-geist-mono" });
-
-// Runs before first paint so the stored / system theme never flashes.
-const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="dark"}})()`;
+// Variable font with the width axis, used at 125% width / 900 weight for the giant name.
+const archivo = Archivo({ subsets: ["latin", "latin-ext"], axes: ["wdth"], variable: "--font-archivo" });
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -61,14 +60,12 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const t = await getTranslations({ locale, namespace: "nav" });
 
   return (
-    <html lang={locale} data-theme="dark" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
+    // suppressHydrationWarning: client code sets data-* flags on <html> (e.g. data-deck="ready").
+    <html lang={locale} suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable}`}>
       <body className="min-h-dvh">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-on-accent"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-accent-fill focus:px-4 focus:py-2 focus:text-on-accent"
         >
           {t("skip")}
         </a>

@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import { profile } from "@/content/profile";
 import { buttonSecondary, container, eyebrow, sectionSpacing } from "@/lib/styles";
-import { ProbeAnchor } from "@/components/three/ProbeAnchor";
+import { CardFront, CardPatternBack } from "@/components/deck/PlayingCard";
 
 export async function Contact() {
   const t = await getTranslations("contact");
@@ -53,8 +53,22 @@ export async function Contact() {
         </ul>
       </div>
 
-      {/* Final stop: the probe lands next to the contact links, looking at them. */}
-      <ProbeAnchor yaw={-0.75} pitch={0.1} className="mx-auto aspect-square w-48 lg:w-full lg:max-w-md" />
+      {/* Closing hand: a fanned trio of cards. */}
+      <div aria-hidden className="relative mx-auto grid h-[min(24rem,78vw)] w-full max-w-md place-items-center">
+        {[
+          { rotate: "-14deg", x: "-38%", face: <CardFront suit="spades" rank="A" /> },
+          { rotate: "12deg", x: "38%", face: <CardFront suit="diamonds" rank="K" /> },
+          { rotate: "-1deg", x: "0%", face: <CardPatternBack className="" /> },
+        ].map((card, index) => (
+          <span
+            key={index}
+            className="card absolute [--card-w:clamp(120px,24vw,210px)]"
+            style={{ transform: `translateX(${card.x}) rotate(${card.rotate})` }}
+          >
+            <span className="card-inner">{card.face}</span>
+          </span>
+        ))}
+      </div>
     </section>
   );
 }

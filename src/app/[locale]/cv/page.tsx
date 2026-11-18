@@ -44,7 +44,7 @@ export default async function CvPage({ params }: PageProps) {
   return (
     <div className="bg-bg pb-16 pt-24 print:p-0">
       <article
-        data-theme="light"
+        data-theme="paper"
         className="mx-auto min-h-[297mm] w-[210mm] max-w-full bg-surface px-[14mm] py-[10.5mm] text-[9.25pt] leading-[1.4] text-text shadow-2xl print:shadow-none"
       >
         <header className="flex items-end justify-between gap-8 border-b border-line pb-5">

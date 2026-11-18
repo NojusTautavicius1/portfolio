@@ -3,7 +3,6 @@ import { getTranslations } from "next-intl/server";
 import { motionTools } from "@/content/skills";
 import { container, eyebrow, sectionSpacing } from "@/lib/styles";
 import { TagList } from "@/components/ui/Tag";
-import { ProbeAnchor } from "@/components/three/ProbeAnchor";
 
 export async function StudioMotion() {
   const studio = await getTranslations("studio");
@@ -28,8 +27,6 @@ export async function StudioMotion() {
               {motion("title")}
             </h2>
           </div>
-          {/* The probe itself is a Blender piece, so it parks next to the motion work. */}
-          <ProbeAnchor yaw={-0.7} pitch={0.15} className="size-24 shrink-0 md:size-28" />
         </div>
         <p className="mt-4 max-w-[60ch] leading-relaxed text-muted">{motion("body")}</p>
         <div className="mt-6">

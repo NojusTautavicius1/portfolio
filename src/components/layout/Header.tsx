@@ -6,7 +6,6 @@ import { localize } from "@/lib/localize";
 import { container } from "@/lib/styles";
 
 import { LocaleSwitch } from "./LocaleSwitch";
-import { ThemeToggle } from "./ThemeToggle";
 
 const sections = [
   { hash: "projects", key: "projects" },
@@ -40,13 +39,12 @@ export async function Header() {
 
         <div className="flex items-center gap-1">
           <LocaleSwitch />
-          <ThemeToggle />
           <a
             href={localize(profile.cv, locale)}
             target="_blank"
             rel="noopener"
             aria-label={t("cvLabel")}
-            className="ml-2 inline-flex min-h-10 items-center gap-2 rounded-xl bg-accent px-4 text-sm font-medium text-on-accent transition-[filter,transform] hover:brightness-110 active:translate-y-px"
+            className="ml-2 inline-flex min-h-10 items-center gap-2 rounded-xl bg-accent-fill px-4 text-sm font-medium text-on-accent transition-[filter,transform] hover:brightness-110 active:translate-y-px"
           >
             {t("cv")}
             <svg aria-hidden width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
