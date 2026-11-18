@@ -3,6 +3,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 
 import { motionClient, motionWorks } from "@/content/motion";
 import { motionTools } from "@/content/skills";
+import { Link } from "@/i18n/navigation";
 import { localize } from "@/lib/localize";
 import { container, eyebrow, sectionSpacing } from "@/lib/styles";
 import { TagList } from "@/components/ui/Tag";
@@ -26,6 +27,13 @@ export async function StudioMotion() {
           </h2>
           <p className="mt-4 max-w-[60ch] leading-relaxed text-muted">{studio("body")}</p>
           <p className="mt-4 max-w-[60ch] leading-relaxed">{studio("role")}</p>
+          <Link
+            href={{ pathname: "/projektai/[slug]", params: { slug: "graspit" } }}
+            className="mt-6 inline-flex min-h-11 items-center gap-2 font-medium text-accent underline-offset-4 hover:underline"
+          >
+            {studio("project")}
+            <span aria-hidden>→</span>
+          </Link>
         </div>
 
         <div aria-labelledby="motion-title" role="group" data-reveal>
