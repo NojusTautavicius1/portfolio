@@ -7,7 +7,7 @@ export async function Footer() {
   const t = await getTranslations("footer");
 
   return (
-    <footer className="border-t border-line">
+    <footer className="border-t border-line print:hidden">
       <div className={`${container} flex flex-col gap-2 py-8 font-mono text-xs text-muted sm:flex-row sm:justify-between`}>
         <p>
           © {new Date().getFullYear()} {profile.name}

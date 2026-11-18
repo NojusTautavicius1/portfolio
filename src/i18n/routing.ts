@@ -6,6 +6,7 @@ export const routing = defineRouting({
   // Internal route (folder name) → public URL per locale.
   pathnames: {
     "/": "/",
+    "/cv": "/cv",
     "/projektai/[slug]": { lt: "/projektai/[slug]", en: "/projects/[slug]" },
   },
 });

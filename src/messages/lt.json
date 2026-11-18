@@ -92,5 +92,17 @@
   },
   "footer": {
     "built": "Sukurta su Next.js ir React Three Fiber."
+  },
+  "cv": {
+    "metaTitle": "CV",
+    "role": "Web ir AI programuotojas",
+    "summary": "Profilis",
+    "experience": "Patirtis",
+    "projects": "Projektai",
+    "education": "Išsilavinimas",
+    "skills": "Įgūdžiai",
+    "languages": "Kalbos",
+    "contact": "Kontaktai",
+    "portfolio": "Interaktyvus portfolio su projektų detalėmis: {url}"
   }
 }

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -36,6 +38,14 @@ export async function generateMetadata({ params }: Omit<LayoutProps, "children">
     metadataBase: new URL(SITE_URL),
     title: { default: t("title"), template: `%s — Nojus Tautavičius` },
     description: t("description"),
+    openGraph: {
+      type: "website",
+      siteName: "Nojus Tautavičius",
+      locale: locale === "lt" ? "lt_LT" : "en_US",
+      title: t("title"),
+      description: t("description"),
+    },
+    twitter: { card: "summary_large_image", title: t("title"), description: t("description") },
     alternates: {
       canonical: `/${locale}`,
       languages: { lt: "/lt", en: "/en" },
@@ -68,6 +78,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           <main id="main">{children}</main>
           <Footer />
         </NextIntlClientProvider>
+        {/* Cookieless; only reports on Vercel deployments. Shows whether companies open the link. */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

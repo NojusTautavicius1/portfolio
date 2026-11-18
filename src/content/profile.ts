@@ -4,6 +4,7 @@ export const profile = {
   name: "Nojus Tautavičius",
   initials: "N.T.",
   email: "nojustautavicius007@gmail.com",
+  website: "ntdev.lt",
   github: "https://github.com/NojusTautavicius1",
   /** Add your LinkedIn URL here once the profile is updated. */
   linkedin: null as string | null,
