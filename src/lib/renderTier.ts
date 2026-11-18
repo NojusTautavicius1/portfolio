@@ -17,18 +17,11 @@ type NavigatorHints = Navigator & {
 const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
 
 let cached: RenderTier | null = null;
-let webglSupport: boolean | null = null;
 
+// API presence only. Creating a real WebGL context here would cost 100+ ms on the main thread
+// during hydration; if the GPU later refuses a context, the hero simply keeps its poster.
 function hasWebGL() {
-  if (webglSupport === null) {
-    try {
-      const canvas = document.createElement("canvas");
-      webglSupport = Boolean(canvas.getContext("webgl2") ?? canvas.getContext("webgl"));
-    } catch {
-      webglSupport = false;
-    }
-  }
-  return webglSupport;
+  return "WebGL2RenderingContext" in window || "WebGLRenderingContext" in window;
 }
 
 function computeTier(): RenderTier {

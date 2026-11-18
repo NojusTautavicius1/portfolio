@@ -21,8 +21,9 @@ export async function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-line/60 bg-bg/75 backdrop-blur-md print:hidden">
       <div className={`${container} flex h-16 items-center justify-between gap-4`}>
-        <Link href="/" aria-label={t("home")} className="font-mono text-sm font-medium tracking-tight">
+        <Link href="/" className="font-mono text-sm font-medium tracking-tight">
           {profile.initials}
+          <span className="sr-only"> — {profile.name}, {t("home")}</span>
         </Link>
 
         <nav aria-label={t("sections")} className="hidden md:block">

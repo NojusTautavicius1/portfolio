@@ -78,9 +78,14 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           <main id="main">{children}</main>
           <Footer />
         </NextIntlClientProvider>
-        {/* Cookieless; only reports on Vercel deployments. Shows whether companies open the link. */}
-        <Analytics />
-        <SpeedInsights />
+        {/* Cookieless; shows whether companies open the link. The scripts only exist on Vercel
+            (VERCEL=1 at build), so they are skipped locally instead of 404-ing. */}
+        {process.env.VERCEL && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   );

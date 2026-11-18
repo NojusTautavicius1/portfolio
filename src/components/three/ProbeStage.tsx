@@ -15,7 +15,8 @@ export function ProbeStage({ className = "" }: { className?: string }) {
         src="/images/zondas-poster.webp"
         alt=""
         fill
-        loading="eager"
+        preload
+        unoptimized // already a 26 KB WebP; skipping /_next/image avoids a resize round-trip
         sizes="(min-width: 1024px) 560px, 80vw"
         className="probe-poster object-contain"
       />

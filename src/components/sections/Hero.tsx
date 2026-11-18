@@ -49,7 +49,8 @@ export async function Hero() {
         </div>
       </div>
 
-      <ProbeStage className="mx-auto max-w-80 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-140 lg:self-center" />
+      {/* Kept smaller than the headline on phones so the text, not the poster, is the LCP element. */}
+      <ProbeStage className="mx-auto max-w-64 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-140 lg:self-center" />
 
       <ol className="max-w-xl divide-y divide-line border-y border-line lg:col-start-1 lg:row-start-2">
         {facts.map((fact, index) => (

@@ -20,10 +20,11 @@ export function LocaleSwitch() {
       href={href}
       locale={other}
       hrefLang={other}
-      aria-label={t("languageLabel")}
       className="grid h-11 min-w-11 place-items-center rounded-xl px-2 font-mono text-xs uppercase text-muted transition-colors hover:text-text"
     >
+      {/* Visible text stays first in the accessible name, so voice control ("click EN") works. */}
       {other}
+      <span className="sr-only"> — {t("languageLabel")}</span>
     </Link>
   );
 }
