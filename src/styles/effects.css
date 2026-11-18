@@ -1,0 +1,107 @@
+/* Hand-drawn red marks (Scribble). Visible by default; animated where supported and motion is OK. */
+.scribble path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+@keyframes scribble-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scribble-load .scribble path {
+    animation: scribble-draw 0.9s cubic-bezier(0.6, 0, 0.3, 1) both;
+    animation-delay: var(--scribble-delay, 0s);
+  }
+
+  .scribble-load .scribble path + path {
+    animation-delay: calc(var(--scribble-delay, 0s) + 0.35s);
+  }
+
+  @supports (animation-timeline: view()) {
+    .scribble-view {
+      view-timeline: --scribble block;
+    }
+    .scribble-view .scribble path {
+      animation: scribble-draw linear both;
+      animation-timeline: --scribble;
+      animation-range: entry 30% cover 45%;
+    }
+  }
+}
+
+/* Card thrower effects */
+@keyframes crack-life {
+  0% {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+  4% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  72% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.crack {
+  z-index: 47;
+  filter: drop-shadow(0 0 2px rgb(255 255 255 / 0.4));
+  animation: crack-life 3.6s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+@keyframes jackpot-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(-6deg);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1.08) rotate(2deg);
+  }
+  30% {
+    transform: scale(1) rotate(0deg);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+.jackpot {
+  animation: jackpot-pop 1.6s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+  text-shadow: 0 0.05em 0 #0a0a0a;
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.status-dot {
+  animation: status-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot {
+    animation: none;
+  }
+}

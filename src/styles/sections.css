@@ -1,0 +1,99 @@
+/* Experience timeline: the red rail fills as the list scrolls through the viewport. */
+@keyframes rail-grow {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+.timeline-fill {
+  transform-origin: top;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .timeline {
+      view-timeline: --timeline block;
+    }
+    .timeline-fill {
+      animation: rail-grow linear both;
+      animation-timeline: --timeline;
+      animation-range: cover 15% cover 65%;
+    }
+  }
+}
+
+/* Skill decks: a squared pile that deals itself into a column on hover / focus.
+   Touch screens and reduced motion get the dealt column straight away. */
+.deck {
+  --step: 3.15rem;
+  position: relative;
+  height: calc(var(--step) + 1.4rem);
+}
+
+.deck-card {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: calc(40 - var(--i));
+  transform: translateY(calc(var(--i) * 0.32rem)) rotate(calc((var(--i) - 2) * 1.3deg));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: calc(var(--i) * 22ms);
+}
+
+.deck:hover,
+.deck:focus-within {
+  z-index: 20;
+}
+
+.deck:hover .deck-card,
+.deck:focus-within .deck-card {
+  transform: translateY(calc(var(--i) * var(--step))) rotate(0deg);
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .deck {
+    height: calc(var(--n) * var(--step));
+  }
+  .deck .deck-card {
+    transform: translateY(calc(var(--i) * var(--step)));
+    transition: none;
+  }
+}
+
+/* About: words brighten one by one as they scroll into the reading zone. */
+@keyframes word-in {
+  from {
+    opacity: 0.16;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal-words .w {
+      animation: word-in linear both;
+      animation-timeline: view();
+      animation-range: entry 90% cover 40%;
+    }
+  }
+}
+
+/* Endless image strip (contact). Content is doubled, so moving by -50% loops seamlessly. */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  animation: marquee 48s linear infinite;
+}
+
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+  }
+}

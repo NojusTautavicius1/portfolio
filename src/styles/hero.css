@@ -1,0 +1,78 @@
+/* Hero intro: cards cluster in the centre, then fly out to their corners while the name rises in. */
+
+@layer components {
+  @keyframes deal-out {
+    0% {
+      transform: translate(-50%, -50%) translate(var(--aim-x), var(--aim-y)) rotate(var(--aim)) scale(0.2);
+      opacity: 0;
+      animation-timing-function: cubic-bezier(0.2, 0.8, 0.3, 1);
+    }
+    16% {
+      transform: translate(-50%, -50%) translate(var(--aim-x), var(--aim-y)) rotate(var(--aim)) scale(0.82);
+      opacity: 1;
+      animation-timing-function: linear;
+    }
+    42% {
+      transform: translate(-50%, -50%) translate(var(--aim-x), var(--aim-y)) rotate(var(--aim)) scale(0.82);
+      animation-timing-function: cubic-bezier(0.7, 0, 0.2, 1.12);
+    }
+    100% {
+      transform: translate(-50%, -50%) translate(var(--end-x), var(--end-y)) rotate(var(--rot)) scale(1);
+      opacity: 1;
+    }
+  }
+
+  .deal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translate(var(--end-x), var(--end-y)) rotate(var(--rot));
+    translate: calc(var(--px, 0) * var(--depth, 12) * 1px) calc(var(--py, 0) * var(--depth, 12) * 1px);
+    transition:
+      transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+      translate 0.4s ease-out;
+    /* backwards (not both): after the intro the normal transform applies again, so opening works. */
+    animation: deal-out 1.8s backwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .deal[data-open="true"] {
+    transform: translate(-50%, -50%) rotate(0deg) scale(var(--open-scale, 2));
+  }
+
+  /* The name rises in, letter by letter, as the cards leave the centre. */
+  @keyframes letter-rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.45em) rotate(4deg);
+      filter: blur(6px);
+    }
+  }
+
+  .hero-letter {
+    display: inline-block;
+    animation: letter-rise 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+    animation-delay: calc(0.85s + var(--i, 0) * 0.035s);
+  }
+
+  @keyframes intro-fade {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+  }
+
+  .intro-fade {
+    animation: intro-fade 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+    animation-delay: var(--intro-delay, 1.45s);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .deal,
+    .hero-letter,
+    .intro-fade {
+      animation: none;
+      transition: none;
+    }
+  }
+}
