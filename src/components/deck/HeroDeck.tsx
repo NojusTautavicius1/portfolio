@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Suit } from "@/content/areas";
 
 import { CardFront } from "./PlayingCard";
+import { FINE_POINTER_QUERY as FINE_POINTER, resetTilt, tilt } from "./tilt";
 
 export type HeroCardData = {
   suit: Suit;
@@ -22,8 +23,6 @@ const slots = [
   { position: "left-[3%] bottom-[2%] sm:left-[9%] sm:bottom-[7%]", rot: 9, from: ["32vw", "-18vh"], depth: 22, delay: 0.39 },
   { position: "right-[3%] bottom-[4%] sm:right-[8%] sm:bottom-[9%]", rot: -9, from: ["-34vw", "-20vh"], depth: 14, delay: 0.51 },
 ];
-
-const FINE_POINTER = "(pointer: fine) and (prefers-reduced-motion: no-preference)";
 
 /**
  * The four direction cards around the name. Each card is a real button: hover tilts it
@@ -153,23 +152,4 @@ export function HeroDeck({ cards, flipHint }: { cards: HeroCardData[]; flipHint:
 
 function suitGlyph(suit: Suit) {
   return { spades: "♠", hearts: "♥", diamonds: "♦", clubs: "♣" }[suit];
-}
-
-function tilt(event: React.PointerEvent<HTMLElement>) {
-  if (event.pointerType !== "mouse" || !matchMedia(FINE_POINTER).matches) return;
-  const card = event.currentTarget;
-  const rect = card.getBoundingClientRect();
-  const x = (event.clientX - rect.left) / rect.width;
-  const y = (event.clientY - rect.top) / rect.height;
-  card.style.setProperty("--ry", `${(x - 0.5) * 26}deg`);
-  card.style.setProperty("--rx", `${(0.5 - y) * 22}deg`);
-  card.style.setProperty("--mx", `${x * 100}%`);
-  card.style.setProperty("--my", `${y * 100}%`);
-  card.style.setProperty("--lift", "28px");
-  card.style.setProperty("--sheen", "0.75");
-}
-
-function resetTilt(event: React.PointerEvent<HTMLElement>) {
-  const card = event.currentTarget;
-  for (const name of ["--ry", "--rx", "--mx", "--my", "--lift", "--sheen"]) card.style.removeProperty(name);
 }
