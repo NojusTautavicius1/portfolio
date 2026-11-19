@@ -20,8 +20,8 @@ export const featuredProjects: FeaturedProject[] = [
       en: 'The system generates realistic questions for the company\'s niche, asks AI search engines and analyses the answers: is the brand mentioned, in which position, which sources are cited and which competitors show up most. It also handles Lithuanian word endings ("Kalvita", "Kalvitos", "Kalvitą").',
     },
     result: {
-      lt: "Veikiantis analizės variklis su automatiniais testais ir foniniu darbų apdorojimu. [Po paleidimo: kiek auditų atlikta / pirmi vartotojai.]",
-      en: "A working analysis engine with automated tests and background job processing. [After launch: number of audits / first users.]",
+      lt: "Veikiantis analizės variklis su automatiniais testais ir foniniu darbų apdorojimu.",
+      en: "A working analysis engine with automated tests and background job processing.",
     },
     role: {
       lt: "Viskas: idėja, architektūra, backend, frontend.",
@@ -48,8 +48,8 @@ export const featuredProjects: FeaturedProject[] = [
       en: "Paste a prospect's website address: the system captures a screenshot, a Claude vision model reviews the design and finds specific weaknesses, then writes a 3-email sequence based on that site's real problems. It can mirror the user's writing style, find a contact email and process several URLs at once.",
     },
     result: {
-      lt: "Pilnas procesas veikia nuo pradžios iki galo: skenavimas → AI analizė → laiškai → mokėjimai (Stripe freemium). [Po paleidimo: demo nuoroda.]",
-      en: "The full pipeline works end to end: scan → AI analysis → emails → payments (Stripe freemium). [After launch: demo link.]",
+      lt: "Pilnas procesas veikia nuo pradžios iki galo: skenavimas → AI analizė → laiškai → mokėjimai (Stripe freemium).",
+      en: "The full pipeline works end to end: scan → AI analysis → emails → payments (Stripe freemium).",
     },
     role: {
       lt: "Viskas: produktas, kodas, AI promptai, mokėjimų integracija.",
@@ -58,6 +58,42 @@ export const featuredProjects: FeaturedProject[] = [
     stack: ["Next.js", "TypeScript", "Claude API", "Puppeteer", "Supabase", "Stripe", "Upstash", "Resend"],
     links: [],
     media: [{ src: "/images/projects/pitchcraft-desktop.jpg", kind: "desktop" }],
+  },
+  {
+    slug: "idea-radar",
+    card: { suit: "spades", rank: "Q" },
+    title: "Idea radar",
+    tagline: {
+      lt: "Kasdienė idėjų atranka: Claude išrenka 5 idėjas ir siunčia jas į Telegram",
+      en: "A daily idea digest: Claude picks 5 ideas and sends them to Telegram",
+    },
+    status: "live",
+    problem: {
+      lt: "Norėjau kasdien matyti, kokias problemas žmonės aptaria Hacker News, GitHub ir Product Hunt, bet viską perskaityti užtrunka per ilgai, o dauguma įrašų man neaktualūs.",
+      en: "I wanted to see every day what problems people discuss on Hacker News, GitHub and Product Hunt, but reading it all takes too long and most posts don't matter to me.",
+    },
+    solution: {
+      lt: "Kiekvieną rytą GitHub Actions surenka naujus įrašus, atmeta jau matytus ir iš kiekvieno šaltinio palieka populiariausius. Vienas Claude kvietimas iš apie 100 įrašų išrenka 5 idėjas pagal mano profilį ir ankstesnius balsus, o atsakymą patikrina Zod schema. Idėjos ateina į Telegram su 👍/👎 mygtukais, ir kitos dienos atranka į tuos balsus atsižvelgia.",
+      en: "Every morning GitHub Actions collects new posts, drops the ones it has already seen and keeps the hottest from each source. A single Claude call picks 5 ideas out of about 100 posts based on my profile and earlier votes, and a Zod schema validates the answer. The ideas arrive in Telegram with 👍/👎 buttons, and the next day's picks take those votes into account.",
+    },
+    result: {
+      lt: "Veikia kasdien be serverio ir duomenų bazės: būsena laikoma viename JSON faile repozitorijoje, o kiekviena atranka išsaugoma kaip Markdown failas. Jei modelis nurodo šaltinį, kurio nebuvo įvestyje, tokia idėja atmetama. 19 automatinių testų, CI per GitHub Actions.",
+      en: "It runs every day with no server and no database: state is one JSON file in the repo, and every digest is saved as a Markdown file. If the model points at a source that wasn't in its input, that idea is dropped. 19 automated tests, CI on GitHub Actions.",
+    },
+    role: {
+      lt: "Viskas: idėja, kodas, promptas ir automatizacija.",
+      en: "Everything: idea, code, prompt and automation.",
+    },
+    stack: ["TypeScript", "Claude API", "GitHub Actions", "Telegram Bot API", "Zod", "Vitest"],
+    links: [{ kind: "github", href: "https://github.com/NojusTautavicius1/idea-radar" }],
+    media: [
+      { src: "/images/projects/idea-radar-digest.jpg", kind: "desktop" },
+      {
+        src: "/images/projects/idea-radar-readme.jpg",
+        kind: "page",
+        caption: { lt: "Kaip veikia (iš README)", en: "How it works (from the README)" },
+      },
+    ],
   },
   {
     slug: "sonara",
@@ -95,12 +131,19 @@ export const featuredProjects: FeaturedProject[] = [
       "Claude API",
       "Vercel",
     ],
-    links: [{ kind: "live", href: "https://music-platform-woad-nine.vercel.app" }],
+    links: [
+      { kind: "live", href: "https://music-platform-woad-nine.vercel.app" },
+      { kind: "github", href: "https://github.com/NojusTautavicius1/music-platform" },
+    ],
     media: [
       { src: "/images/projects/sonara-desktop.jpg", kind: "desktop" },
       { src: "/images/projects/sonara-mobile.jpg", kind: "mobile" },
       { src: "/images/projects/sonara-home.jpg", kind: "page", caption: { lt: "Pradžia", en: "Home" } },
-      { src: "/images/projects/sonara-browse.jpg", kind: "page", caption: { lt: "Visos dainos", en: "Browse" } },
+      {
+        src: "/images/projects/sonara-browse.jpg",
+        kind: "page",
+        caption: { lt: "Visos dainos", en: "Browse" },
+      },
     ],
   },
   {
@@ -138,7 +181,11 @@ export const featuredProjects: FeaturedProject[] = [
       { src: "/images/projects/graspit-desktop.jpg", kind: "desktop" },
       { src: "/images/projects/graspit-mobile.jpg", kind: "mobile" },
       { src: "/images/projects/graspit-kainos.jpg", kind: "page", caption: { lt: "Kainos", en: "Pricing" } },
-      { src: "/images/projects/graspit-procesas.jpg", kind: "page", caption: { lt: "Darbo procesas", en: "How we work" } },
+      {
+        src: "/images/projects/graspit-procesas.jpg",
+        kind: "page",
+        caption: { lt: "Darbo procesas", en: "How we work" },
+      },
     ],
   },
   {
@@ -159,8 +206,8 @@ export const featuredProjects: FeaturedProject[] = [
       en: "A fast website with a product gallery, a spam-protected enquiry form and a structure built for local SEO (city keywords, sitemap, Open Graph), plus security headers (Content Security Policy).",
     },
     result: {
-      lt: "Svetainė veikia adresu kalvita.lt. [Jei klientas sutiktų — 1 sakinys atsiliepimo arba kiek užklausų gauna per mėnesį.]",
-      en: "The site is live at kalvita.lt. [If the client agrees: a one-line testimonial or monthly enquiries.]",
+      lt: "Svetainė veikia adresu kalvita.lt.",
+      en: "The site is live at kalvita.lt.",
     },
     role: null,
     stack: ["React", "Vite", "Tailwind", "Motion", "EmailJS", "Vercel"],
@@ -168,8 +215,16 @@ export const featuredProjects: FeaturedProject[] = [
     media: [
       { src: "/images/projects/kalvita-desktop.jpg", kind: "desktop" },
       { src: "/images/projects/kalvita-mobile.jpg", kind: "mobile" },
-      { src: "/images/projects/kalvita-galerija.jpg", kind: "page", caption: { lt: "Darbų galerija", en: "Work gallery" } },
-      { src: "/images/projects/kalvita-paslaugos.jpg", kind: "page", caption: { lt: "Paslaugos", en: "Services" } },
+      {
+        src: "/images/projects/kalvita-galerija.jpg",
+        kind: "page",
+        caption: { lt: "Darbų galerija", en: "Work gallery" },
+      },
+      {
+        src: "/images/projects/kalvita-paslaugos.jpg",
+        kind: "page",
+        caption: { lt: "Paslaugos", en: "Services" },
+      },
     ],
   },
   {
@@ -202,8 +257,16 @@ export const featuredProjects: FeaturedProject[] = [
     media: [
       { src: "/images/projects/colorlisse-desktop.jpg", kind: "desktop" },
       { src: "/images/projects/colorlisse-mobile.jpg", kind: "mobile" },
-      { src: "/images/projects/colorlisse-produktas.jpg", kind: "page", caption: { lt: "Produkto puslapis", en: "Product page" } },
-      { src: "/images/projects/colorlisse-salonams.jpg", kind: "page", caption: { lt: "Puslapis salonams", en: "Page for salons" } },
+      {
+        src: "/images/projects/colorlisse-produktas.jpg",
+        kind: "page",
+        caption: { lt: "Produkto puslapis", en: "Product page" },
+      },
+      {
+        src: "/images/projects/colorlisse-salonams.jpg",
+        kind: "page",
+        caption: { lt: "Puslapis salonams", en: "Page for salons" },
+      },
     ],
   },
   {
@@ -228,14 +291,23 @@ export const featuredProjects: FeaturedProject[] = [
     stack: [
       "Google Search Console",
       { lt: "Techninis SEO", en: "Technical SEO" },
-      { lt: "[kiti įrankiai]", en: "[other tools]" },
+      { lt: "Struktūrizuoti duomenys", en: "Structured data" },
+      { lt: "Raktinių žodžių tyrimas", en: "Keyword research" },
     ],
     links: [{ kind: "live", href: "https://zaliuzesroletai.lt" }],
     media: [
       { src: "/images/projects/zaliuzesroletai-desktop.jpg", kind: "desktop" },
       { src: "/images/projects/zaliuzesroletai-mobile.jpg", kind: "mobile" },
-      { src: "/images/projects/zaliuzesroletai-produkcija.jpg", kind: "page", caption: { lt: "Produkcija", en: "Products" } },
-      { src: "/images/projects/zaliuzesroletai-roletai.jpg", kind: "page", caption: { lt: "Kategorijos puslapis", en: "Category page" } },
+      {
+        src: "/images/projects/zaliuzesroletai-produkcija.jpg",
+        kind: "page",
+        caption: { lt: "Produkcija", en: "Products" },
+      },
+      {
+        src: "/images/projects/zaliuzesroletai-roletai.jpg",
+        kind: "page",
+        caption: { lt: "Kategorijos puslapis", en: "Category page" },
+      },
     ],
   },
 ];

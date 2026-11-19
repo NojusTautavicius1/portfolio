@@ -6,6 +6,7 @@ export const profile = {
   email: "nojustautavicius007@gmail.com",
   website: "ntdev.lt",
   github: "https://github.com/NojusTautavicius1",
+  repo: "https://github.com/NojusTautavicius1/portfolio",
   /** Add your LinkedIn URL here once the profile is updated. */
   linkedin: null as string | null,
   /** Path inside /public, e.g. "/images/nojus.webp". null shows initials instead. */

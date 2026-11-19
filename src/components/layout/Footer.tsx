@@ -14,7 +14,17 @@ export async function Footer() {
         <p>
           © {new Date().getFullYear()} {profile.name}
         </p>
-        <p>{t("built")}</p>
+        <p>
+          {t("built")}{" "}
+          <a
+            href={profile.repo}
+            target="_blank"
+            rel="noopener"
+            className="text-text underline-offset-4 transition-colors hover:text-accent hover:underline"
+          >
+            {t("source")} ↗
+          </a>
+        </p>
       </div>
     </footer>
   );

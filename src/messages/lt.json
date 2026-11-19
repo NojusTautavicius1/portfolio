@@ -109,7 +109,8 @@
     "cvEn": "CV (EN, PDF)"
   },
   "footer": {
-    "built": "Sukurta su Next.js, CSS 3D ir GSAP."
+    "built": "Sukurta su Next.js, CSS 3D ir GSAP.",
+    "source": "Svetainės kodas GitHub"
   },
   "board": {
     "title": "Projektų lenta",

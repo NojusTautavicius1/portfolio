@@ -4,7 +4,7 @@ import type { Localized } from "./types";
 // One world repeats in every direction, so positions only need to be unique inside it.
 // *Starred* words in a quote get a hand-drawn circle.
 export const WORLD_W = 3600;
-export const WORLD_H = 2800;
+export const WORLD_H = 3600;
 export const GRID = 400;
 
 export type BoardItem =
@@ -64,4 +64,14 @@ export const boardItems: BoardItem[] = [
   },
   { type: "card", suit: "diamonds", rank: "K", x: 2260, y: 2300, rotate: -8 },
   { type: "card", suit: "clubs", rank: "J", x: 3360, y: 60, rotate: 14 },
+
+  { type: "card", suit: "spades", rank: "Q", x: 420, y: 3080, rotate: 10 },
+  { type: "project", slug: "idea-radar", x: 1180, y: 3040 },
+  {
+    type: "quote",
+    x: 2480,
+    y: 3120,
+    width: 720,
+    text: { lt: "Kartojasi? *Automatizuoju*.", en: "Repeats? I *automate* it." },
+  },
 ];

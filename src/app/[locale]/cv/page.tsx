@@ -10,9 +10,11 @@ import { pageMetadata } from "@/lib/metadata";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
-// GraspIT is already listed under experience. The full stacks are on the website.
+// GraspIT is already listed under experience; idea-radar would push the CV onto a second page.
+// The full stacks are on the website.
 const CV_STACK_LIMIT = 5;
-const cvProjects = featuredProjects.filter((project) => project.slug !== "graspit");
+const cvSkipped = ["graspit", "idea-radar"];
+const cvProjects = featuredProjects.filter((project) => !cvSkipped.includes(project.slug));
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
@@ -22,7 +24,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: t("metaTitle"),
     robots: { index: false, follow: true },
-    ...pageMetadata(locale, "/cv", { title: `${t("metaTitle")} — Nojus Tautavičius`, description: meta("description") }),
+    ...pageMetadata(locale, "/cv", {
+      title: `${t("metaTitle")} — Nojus Tautavičius`,
+      description: meta("description"),
+    }),
   };
 }
 

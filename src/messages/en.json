@@ -109,7 +109,8 @@
     "cvEn": "CV (EN, PDF)"
   },
   "footer": {
-    "built": "Built with Next.js, CSS 3D and GSAP."
+    "built": "Built with Next.js, CSS 3D and GSAP.",
+    "source": "Site source on GitHub"
   },
   "board": {
     "title": "Project board",
