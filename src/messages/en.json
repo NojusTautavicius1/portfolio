@@ -55,7 +55,9 @@
       "github": "GitHub",
       "video": "Video"
     },
-    "learned": "What I learned"
+    "learned": "What I learned",
+    "cardStatus": "Status",
+    "cardStack": "Stack"
   },
   "status": {
     "client": "Client",
@@ -66,7 +68,7 @@
   "studio": {
     "eyebrow": "My web studio",
     "title": "GraspIT",
-    "body": "With my partner I build websites, online shops and AI automations for small and medium businesses in Lithuania. Fixed price, a clear process, and the client gets the full source code.",
+    "body": "With my partner I build websites, online shops and automations for small businesses. A website starts at €350, an online shop at €700, and the client gets all the code.",
     "role": "My partner and I do everything together: design, code and talking to clients. We split the work per project.",
     "project": "About the studio website"
   },
@@ -123,7 +125,7 @@
     "off": "Throw a card",
     "on": "Aim!",
     "hint": "Click anywhere · Esc to stop",
-    "jackpot": "Jackpot"
+    "jackpot": "Bullseye"
   },
   "cv": {
     "metaTitle": "CV",

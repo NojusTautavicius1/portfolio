@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Nojus Tautavičius — web ir AI programuotojas",
-    "description": "JavaScript programuotojo specialybės studentas (KTMC). Kuriu web aplikacijas su Next.js ir AI automatizacijas su Python bei Claude API. Ieškau darbo arba apmokamos praktikos."
+    "description": "Baigiu JavaScript programuotojo mokslus KTMC. Kuriu web aplikacijas su Next.js ir AI automatizacijas su Python bei Claude API. Ieškau darbo arba apmokamos praktikos."
   },
   "nav": {
     "skip": "Pereiti prie turinio",
@@ -21,20 +21,20 @@
     "statusDetail": "Kretinga, Klaipėda / nuotoliu",
     "headline": "Kuriu web aplikacijas ir AI automatizacijas.",
     "headlineRich": "Kuriu web aplikacijas ir <mark>AI automatizacijas</mark>.",
-    "subtitle": "JavaScript programuotojo specialybės studentas (KTMC, baigiamasis kursas). Dirbu su Next.js, TypeScript, Python ir Claude API, o laisvalaikiu kuriu motion design ir video reklamas.",
+    "subtitle": "Baigiu JavaScript programuotojo mokslus KTMC. Dirbu su Next.js, TypeScript, Python ir Claude API, o laisvalaikiu kuriu motion design ir video reklamas.",
     "ctaProjects": "Peržiūrėti projektus",
     "ctaCv": "Atsisiųsti CV",
     "city": "Kretinga",
     "flipHint": "apversti kortą",
     "facts": [
-      "4 savi AI produktai — nuo idėjos iki veikiančio kodo",
+      "4 savi AI produktai: nuo idėjos iki veikiančio kodo",
       "Praktika IT Perspective (Lenkija) ir SEO agentūroje Potissimus",
       "Svetainės realiems klientams ir sava web studija GraspIT"
     ]
   },
   "projects": {
     "title": "Projektai",
-    "intro": "Problema → sprendimas → rezultatas. Pirmiausia — AI produktai, tada darbai klientams.",
+    "intro": "Prie kiekvieno projekto: kokia buvo problema, ką padariau ir koks rezultatas. Pirmiausia AI produktai, po jų darbai klientams.",
     "more": "Plačiau",
     "moreAbout": "Plačiau apie {title}",
     "back": "Visi projektai",
@@ -55,7 +55,9 @@
       "github": "GitHub",
       "video": "Video"
     },
-    "learned": "Ką išmokau"
+    "learned": "Ką išmokau",
+    "cardStatus": "Būsena",
+    "cardStack": "Įrankiai"
   },
   "status": {
     "client": "Klientas",
@@ -66,7 +68,7 @@
   "studio": {
     "eyebrow": "Mano web studija",
     "title": "GraspIT",
-    "body": "Su partneriu kuriame svetaines, el. parduotuves ir AI automatizacijas mažoms ir vidutinėms įmonėms Lietuvoje. Fiksuota kaina, aiškus procesas, klientui atiduodamas visas kodas.",
+    "body": "Su partneriu kuriame svetaines, el. parduotuves ir automatizacijas smulkiam verslui. Svetainė kainuoja nuo 350 €, el. parduotuvė nuo 700 €, o klientas gauna visą kodą.",
     "role": "Su partneriu darome viską kartu: dizainą, kodą ir bendravimą su klientais. Darbus pasiskirstome pagal projektą.",
     "project": "Apie studijos svetainę"
   },
@@ -83,7 +85,7 @@
   "skills": {
     "title": "Įgūdžiai",
     "side": "Kiti projektai",
-    "deckHint": "Užvesk pelę ant kaladės — ji išsidalins"
+    "deckHint": "Užveskite pelę ant kaladės: ji išsidalins"
   },
   "about": {
     "title": "Apie mane",
@@ -104,7 +106,7 @@
   "contact": {
     "title": "Dirbkime kartu",
     "titleRich": "Dirbkime <mark>kartu</mark>",
-    "body": "Ieškau vietos, kur galėčiau augti: Klaipėdoje, Kretingoje arba nuotoliu. Parašyk, atsakau per 24 valandas.",
+    "body": "Ieškau vietos, kur galėčiau augti: Klaipėdoje, Kretingoje arba nuotoliu. Parašykite, atsakysiu per 24 valandas.",
     "emailLabel": "El. paštas",
     "cvLt": "CV (LT, PDF)",
     "cvEn": "CV (EN, PDF)"
@@ -115,15 +117,15 @@
   },
   "board": {
     "title": "Projektų lenta",
-    "description": "Visi Nojaus Tautavičiaus projektai vienoje begalinėje lentoje: tempk bet kuria kryptimi.",
-    "label": "Projektų lenta. Tempk pele, slink arba naudok rodyklių klavišus.",
-    "hint": "Tempk lentą bet kuria kryptimi"
+    "description": "Visi Nojaus Tautavičiaus projektai vienoje begalinėje lentoje: tempkite bet kuria kryptimi.",
+    "label": "Projektų lenta. Tempkite pele, slinkite arba naudokite rodyklių klavišus.",
+    "hint": "Tempkite lentą bet kuria kryptimi"
   },
   "thrower": {
-    "off": "Mesk kortą",
-    "on": "Taikyk!",
-    "hint": "Spausk bet kur · Esc — išjungti",
-    "jackpot": "Jackpot"
+    "off": "Mesti kortą",
+    "on": "Taikykite!",
+    "hint": "Spauskite bet kur · Esc išjungia",
+    "jackpot": "Taiklu!"
   },
   "cv": {
     "metaTitle": "CV",

@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 import { ImageResponse } from "next/og";
+import sharp from "sharp";
 
 import { profile } from "@/content/profile";
 import { featuredProjects, getFeaturedProject } from "@/content/projects";
@@ -18,8 +19,9 @@ export function generateStaticParams() {
 
 const font = (file: string) => readFile(join(process.cwd(), "src", "assets", "fonts", file));
 
+// Screenshots are 2x WebP; the OG renderer wants JPEG and only needs ~1200px.
 async function screenshot(src: string) {
-  const data = await readFile(join(process.cwd(), "public", src));
+  const data = await sharp(join(process.cwd(), "public", src)).resize(1200).jpeg({ quality: 80 }).toBuffer();
   return `data:image/jpeg;base64,${data.toString("base64")}`;
 }
 

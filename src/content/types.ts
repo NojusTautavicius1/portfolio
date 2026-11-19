@@ -16,7 +16,7 @@ export type FeaturedProject = {
   slug: string;
   title: string;
   /** Card shown for the project: suit = its main direction (see areas.ts), rank = its order. */
-  card: { suit: "spades" | "hearts" | "diamonds" | "clubs"; rank: string };
+  card: { suit: "spades" | "hearts" | "diamonds" | "clubs"; rank: string; line: Localized };
   tagline: Localized;
   status: ProjectStatus;
   problem: Localized;

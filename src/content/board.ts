@@ -43,7 +43,10 @@ export const boardItems: BoardItem[] = [
     x: 1560,
     y: 1700,
     width: 620,
-    text: { lt: "Mokausi greitai. *Baigiu*, ką pradedu.", en: "I learn fast. I *finish* what I start." },
+    text: {
+      lt: "Kai nemoku, *išsiaiškinu*. Tada darau.",
+      en: "If I don't know it, I *figure it out*. Then I build.",
+    },
   },
   { type: "project", slug: "graspit", x: 2420, y: 1640 },
 
@@ -52,7 +55,7 @@ export const boardItems: BoardItem[] = [
     x: 2720,
     y: 2380,
     width: 480,
-    text: { lt: "AI — ne žaislas, o *įrankis*.", en: "AI isn't a toy. It's a *tool*." },
+    text: { lt: "AI rašo greitai. *Tikrinu* aš.", en: "AI writes fast. I *check* it." },
   },
   { type: "project", slug: "colorlisse", x: 200, y: 2320 },
   {

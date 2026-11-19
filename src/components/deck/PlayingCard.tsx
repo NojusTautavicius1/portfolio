@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { redSuits, suitSymbol, type Suit } from "@/content/areas";
 
 // Built from <span>s only, so a card can live inside a <button> (phrasing content).
@@ -77,6 +79,69 @@ export function CardPatternBack({ className = "card-back" }: { className?: strin
         <span className="foil absolute inset-0 m-auto grid h-fit place-items-center font-display-wide text-[1.35em] tracking-tight">
           N·T
         </span>
+      </span>
+      <span className="card-sheen" />
+    </span>
+  );
+}
+
+type ProjectCardFrontProps = {
+  suit: Suit;
+  rank: string;
+  title: string;
+  /** Two or three words on what the project is, under the title. */
+  line: string;
+  /** Screenshot shown in the card's picture window. */
+  art?: string;
+  /** Short facts under the title, like the rows on the About card. */
+  rows?: { label: string; value: string }[];
+  hidden?: boolean;
+};
+
+// A "picture card" for one project: its screenshot in the window, the name and what it is.
+export function ProjectCardFront({ suit, rank, title, line, art, rows = [], hidden }: ProjectCardFrontProps) {
+  const foil = redSuits.includes(suit) ? "foil-red" : "foil";
+  const index = (
+    <span aria-hidden className={`font-display-wide text-[0.75em] leading-none ${foil}`}>
+      {rank}
+      {suitSymbol[suit]}
+    </span>
+  );
+
+  return (
+    <span hidden={hidden} className="card-face card-front flex flex-col p-[0.9em]">
+      <span className="card-frame" />
+      <span className="flex items-center justify-between">
+        {index}
+        <span className="font-mono text-[0.32em] tracking-[0.14em] text-[#b9b7b2] uppercase">{line}</span>
+      </span>
+
+      <span className="relative mt-[0.5em] block aspect-4/3 overflow-hidden rounded-[0.35em] border border-white/15 bg-[radial-gradient(circle_at_50%_35%,#262626,#0d0d0d)]">
+        {art ? (
+          <Image src={art} alt="" fill sizes="320px" loading="eager" className="object-cover object-top" />
+        ) : (
+          <span className={`absolute inset-0 grid place-items-center text-[2.2em] ${foil}`}>
+            {suitSymbol[suit]}
+          </span>
+        )}
+      </span>
+
+      <span className="mt-[0.55em] font-display-wide text-[0.62em] leading-[1.05] uppercase">{title}</span>
+      {rows.length > 0 && (
+        <span className="mt-[0.4em] block space-y-[0.2em] font-mono text-[0.32em] tracking-[0.08em] uppercase">
+          {rows.map((row) => (
+            <span
+              key={row.label}
+              className="flex justify-between gap-[1em] border-b border-white/10 pb-[0.2em]"
+            >
+              <span className="text-muted">{row.label}</span>
+              <span className="truncate text-right">{row.value}</span>
+            </span>
+          ))}
+        </span>
+      )}
+      <span className="mt-auto flex justify-end">
+        <span className="rotate-180">{index}</span>
       </span>
       <span className="card-sheen" />
     </span>

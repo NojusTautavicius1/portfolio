@@ -4,7 +4,7 @@ import { featuredProjects } from "@/content/projects";
 import { Link } from "@/i18n/navigation";
 import { localize, localizeTerms } from "@/lib/localize";
 import { eyebrow, sectionSpacing, sectionTitle } from "@/lib/styles";
-import { CardFront } from "@/components/deck/PlayingCard";
+import { ProjectCardFront } from "@/components/deck/PlayingCard";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { TagList } from "@/components/ui/Tag";
 
@@ -12,18 +12,27 @@ import { ProjectsDeck } from "./ProjectsDeck";
 
 export async function Projects() {
   const t = await getTranslations("projects");
+  const status = await getTranslations("status");
   const locale = await getLocale();
   const total = String(featuredProjects.length).padStart(2, "0");
+  // What every project card shows: picture, what it is, status and the main tools.
+  const cardOf = (project: (typeof featuredProjects)[number]) => ({
+    suit: project.card.suit,
+    rank: project.card.rank,
+    title: project.title,
+    line: localize(project.card.line, locale),
+    art: project.media?.find((item) => item.kind === "desktop")?.src,
+    rows: [
+      { label: t("cardStatus"), value: status(project.status) },
+      { label: t("cardStack"), value: localizeTerms(project.stack, locale).slice(0, 2).join(" · ") },
+    ],
+  });
 
   return (
     <ProjectsDeck
       id="projects"
       aria-labelledby="projects-title"
-      cards={featuredProjects.map((project) => ({
-        suit: project.card.suit,
-        rank: project.card.rank,
-        title: project.title,
-      }))}
+      cards={featuredProjects.map(cardOf)}
       className={`projects relative ${sectionSpacing}`}
     >
       <div className="projects-header relative z-10 mx-auto flex w-full max-w-[1400px] flex-wrap items-end justify-between gap-6 px-5 md:px-10">
@@ -66,7 +75,7 @@ export async function Projects() {
             <article className="grid items-start gap-6 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-10">
               <span aria-hidden className="projects-small-card card [--card-w:clamp(104px,26vw,150px)]">
                 <span className="card-inner">
-                  <CardFront suit={project.card.suit} rank={project.card.rank} label={project.title} />
+                  <ProjectCardFront {...cardOf(project)} />
                 </span>
               </span>
 

@@ -4,11 +4,18 @@ import { useEffect, useRef, useState } from "react";
 
 import type { Suit } from "@/content/areas";
 import { loadGsap } from "@/lib/gsap";
-import { CardFront, CardPatternBack } from "@/components/deck/PlayingCard";
+import { CardPatternBack, ProjectCardFront } from "@/components/deck/PlayingCard";
 
 const PINNED = "(min-width: 1024px) and (prefers-reduced-motion: no-preference)";
 
-export type ProjectCardData = { suit: Suit; rank: string; title: string };
+export type ProjectCardData = {
+  suit: Suit;
+  rank: string;
+  title: string;
+  line: string;
+  art?: string;
+  rows?: { label: string; value: string }[];
+};
 
 type ProjectsDeckProps = React.ComponentProps<"section"> & { cards: ProjectCardData[] };
 
@@ -101,8 +108,6 @@ export function ProjectsDeck({ cards, children, ...sectionProps }: ProjectsDeckP
     };
   }, [cards.length]);
 
-  const active = cards[face] ?? cards[0];
-
   // The extra <div> matters: GSAP moves the pinned section into a "pin-spacer" wrapper. Without a
   // parent of our own, React later tries to remove the section from <main> and navigation crashes.
   return (
@@ -120,7 +125,10 @@ export function ProjectsDeck({ cards, children, ...sectionProps }: ProjectsDeckP
                 style={{ transition: "none" }}
                 data-egg="project-card"
               >
-                <CardFront suit={active.suit} rank={active.rank} label={active.title} />
+                {/* Every face is mounted so its screenshot is loaded before the card turns to it. */}
+                {cards.map((card, index) => (
+                  <ProjectCardFront key={card.title} {...card} hidden={index !== face} />
+                ))}
                 <CardPatternBack />
               </span>
             </span>

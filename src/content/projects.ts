@@ -4,7 +4,7 @@ import type { FeaturedProject, SideProject } from "./types";
 export const featuredProjects: FeaturedProject[] = [
   {
     slug: "aiscan",
-    card: { suit: "spades", rank: "A" },
+    card: { suit: "spades", rank: "A", line: { lt: "AI matomumas", en: "AI visibility" } },
     title: "aiscan",
     tagline: {
       lt: "AI matomumo auditas: ar AI atsakymuose minimas tavo verslas",
@@ -12,16 +12,16 @@ export const featuredProjects: FeaturedProject[] = [
     },
     status: "launching",
     problem: {
-      lt: "Vis daugiau žmonių klausia ne Google, o AI asistentų. Įmonės nežino, ar AI atsakymuose jos apskritai minimos, o įprasti SEO įrankiai to nematuoja.",
-      en: "More and more people ask AI assistants instead of Google. Businesses have no idea whether AI answers mention them at all, and classic SEO tools don't measure it.",
+      lt: "Dalis žmonių paslaugų dabar ieško per ChatGPT ar Perplexity. Įmonės nežino, ar AI atsakymuose jos apskritai minimos, o įprasti SEO įrankiai to nematuoja.",
+      en: "Some people now look for services through ChatGPT or Perplexity. Businesses have no idea whether AI answers mention them at all, and classic SEO tools don't measure it.",
     },
     solution: {
       lt: "Sistema sugeneruoja realistiškus klausimus pagal įmonės nišą, užduoda juos AI paieškos varikliams ir analizuoja atsakymus: ar minimas prekės ženklas, kurioje vietoje, kokie šaltiniai cituojami ir kurie konkurentai pasirodo dažniausiai. Atpažįsta ir lietuviškus linksnius („Kalvita“, „Kalvitos“, „Kalvitą“).",
       en: 'The system generates realistic questions for the company\'s niche, asks AI search engines and analyses the answers: is the brand mentioned, in which position, which sources are cited and which competitors show up most. It also handles Lithuanian word endings ("Kalvita", "Kalvitos", "Kalvitą").',
     },
     result: {
-      lt: "Veikiantis analizės variklis su automatiniais testais ir foniniu darbų apdorojimu.",
-      en: "A working analysis engine with automated tests and background job processing.",
+      lt: "Analizės variklis veikia, jį dengia 448 automatiniai testai: klausimų generavimas, Perplexity užklausos, paminėjimų ir citatų atpažinimas, darbai fone. Vartotojo sąsajos dar nėra.",
+      en: "The analysis engine works and is covered by 448 automated tests: question generation, Perplexity requests, mention and citation matching, background jobs. There is no user interface yet.",
     },
     role: {
       lt: "Viskas: idėja, architektūra, backend, frontend.",
@@ -33,13 +33,21 @@ export const featuredProjects: FeaturedProject[] = [
     },
     stack: ["Next.js", "TypeScript", "Supabase", "Upstash Redis", "Perplexity API", "Vitest", "Vercel"],
     links: [],
+    media: [
+      { src: "/images/projects/aiscan-schema.webp", kind: "desktop" },
+      {
+        src: "/images/projects/aiscan-testai.webp",
+        kind: "page",
+        caption: { lt: "Testų paleidimas (vitest)", en: "Test run (vitest)" },
+      },
+    ],
   },
   {
     slug: "pitchcraft",
-    card: { suit: "spades", rank: "K" },
+    card: { suit: "spades", rank: "K", line: { lt: "AI pardavimų laiškai", en: "AI sales emails" } },
     title: "PitchCraft",
     tagline: {
-      lt: "Iš svetainės URL — personalizuoti pardavimų laiškai su Claude",
+      lt: "Pardavimų laiškai, parašyti pagal tikras kliento svetainės problemas",
       en: "From a website URL to personalised sales emails with Claude",
     },
     status: "mvp",
@@ -48,11 +56,11 @@ export const featuredProjects: FeaturedProject[] = [
       en: "Web designers and agencies spend hours writing cold emails to prospects, and template emails go unanswered.",
     },
     solution: {
-      lt: "Įklijuoji kliento svetainės adresą — sistema padaro jos ekrano nuotrauką, Claude vision modelis įvertina dizainą ir randa konkrečias silpnas vietas, o tada parašo 3 laiškų seką, kuri remiasi tikromis tos svetainės problemomis. Gali mėgdžioti vartotojo rašymo stilių, rasti kontaktinį el. paštą ir apdoroti kelis URL iš karto.",
+      lt: "Įklijuoji kliento svetainės adresą. Sistema padaro jos ekrano nuotrauką, Claude vision modelis įvertina dizainą ir randa konkrečias silpnas vietas, o tada parašo 3 laiškų seką, kuri remiasi tikromis tos svetainės problemomis. Gali mėgdžioti vartotojo rašymo stilių, rasti kontaktinį el. paštą ir apdoroti kelis URL iš karto.",
       en: "Paste a prospect's website address: the system captures a screenshot, a Claude vision model reviews the design and finds specific weaknesses, then writes a 3-email sequence based on that site's real problems. It can mirror the user's writing style, find a contact email and process several URLs at once.",
     },
     result: {
-      lt: "Pilnas procesas veikia nuo pradžios iki galo: skenavimas → AI analizė → laiškai → mokėjimai (Stripe freemium).",
+      lt: "Visas procesas veikia nuo pradžios iki galo: skenavimas → AI analizė → laiškai → mokėjimai (Stripe freemium).",
       en: "The full pipeline works end to end: scan → AI analysis → emails → payments (Stripe freemium).",
     },
     role: {
@@ -61,11 +69,11 @@ export const featuredProjects: FeaturedProject[] = [
     },
     stack: ["Next.js", "TypeScript", "Claude API", "Puppeteer", "Supabase", "Stripe", "Upstash", "Resend"],
     links: [],
-    media: [{ src: "/images/projects/pitchcraft-desktop.jpg", kind: "desktop" }],
+    media: [{ src: "/images/projects/pitchcraft-desktop.webp", kind: "desktop" }],
   },
   {
     slug: "idea-radar",
-    card: { suit: "spades", rank: "Q" },
+    card: { suit: "spades", rank: "Q", line: { lt: "Kasdienė AI atranka", en: "Daily AI digest" } },
     title: "Idea radar",
     tagline: {
       lt: "Kasdienė idėjų atranka: Claude išrenka 5 idėjas ir siunčia jas į Telegram",
@@ -95,9 +103,9 @@ export const featuredProjects: FeaturedProject[] = [
     stack: ["TypeScript", "Claude API", "GitHub Actions", "Telegram Bot API", "Zod", "Vitest"],
     links: [{ kind: "github", href: "https://github.com/NojusTautavicius1/idea-radar" }],
     media: [
-      { src: "/images/projects/idea-radar-digest.jpg", kind: "desktop" },
+      { src: "/images/projects/idea-radar-digest.webp", kind: "desktop" },
       {
-        src: "/images/projects/idea-radar-readme.jpg",
+        src: "/images/projects/idea-radar-readme.webp",
         kind: "page",
         caption: { lt: "Kaip veikia (iš README)", en: "How it works (from the README)" },
       },
@@ -105,7 +113,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     slug: "sonara",
-    card: { suit: "hearts", rank: "Q" },
+    card: { suit: "hearts", rank: "Q", line: { lt: "Muzika ir AI paieška", en: "Music and AI search" } },
     title: "Sonara",
     tagline: {
       lt: "Muzikos platforma su AI rekomendacijomis ir paieška natūralia kalba",
@@ -117,11 +125,11 @@ export const featuredProjects: FeaturedProject[] = [
       en: "I started it as a piece of work to show a company what I can do. Later I kept going on my own because I wanted to understand how AI works: how it changes its answers and how to prompt it properly.",
     },
     solution: {
-      lt: "Pilna muzikos klausymosi platforma: dainų įkėlimas ir grojimas su bangos vizualizacija, automatiškai atsinaujinantys „Daily Mix“ ir „Discover Weekly“, grojaraščiai, dainų žodžiai, klausymo statistika. „Ask Sonara“ leidžia ieškoti natūralia kalba — pvz. „dainos lietingam vakarui“.",
+      lt: "Muzikos klausymosi platforma: dainų įkėlimas ir grojimas su bangos vizualizacija, automatiškai atsinaujinantys „Daily Mix“ ir „Discover Weekly“, grojaraščiai, dainų žodžiai, klausymo statistika. „Ask Sonara“ leidžia ieškoti paprastais žodžiais, pvz., „dainos lietingam vakarui“.",
       en: 'A complete music streaming platform: upload and play songs with a waveform view, auto-refreshing Daily Mix and Discover Weekly, playlists, lyrics and listening stats. "Ask Sonara" lets you search in plain language, e.g. "songs for a rainy evening".',
     },
     result: {
-      lt: "Platforma veikia: 176 dainos, o „Ask Sonara“ agentas pats renkasi, kaip ieškoti — pagal žanrą, tempą ar prasmę (vektorinė paieška per embeddings).",
+      lt: "Platforma veikia: 176 dainos, o „Ask Sonara“ agentas pats renkasi, kaip ieškoti: pagal žanrą, tempą ar prasmę (vektorinė paieška per embeddings).",
       en: 'The platform is live with 176 songs, and the "Ask Sonara" agent decides how to search on its own: by genre, tempo or meaning (vector search over embeddings).',
     },
     role: {
@@ -148,11 +156,15 @@ export const featuredProjects: FeaturedProject[] = [
       { kind: "github", href: "https://github.com/NojusTautavicius1/music-platform" },
     ],
     media: [
-      { src: "/images/projects/sonara-desktop.jpg", kind: "desktop" },
+      { src: "/images/projects/sonara-desktop.webp", kind: "desktop" },
       { src: "/images/projects/sonara-mobile.jpg", kind: "mobile" },
-      { src: "/images/projects/sonara-home.jpg", kind: "page", caption: { lt: "Pradžia", en: "Home" } },
       {
-        src: "/images/projects/sonara-browse.jpg",
+        src: "/images/projects/sonara-search.webp",
+        kind: "page",
+        caption: { lt: "Paieška pagal žanrą", en: "Browse by genre" },
+      },
+      {
+        src: "/images/projects/sonara-browse.webp",
         kind: "page",
         caption: { lt: "Visos dainos", en: "Browse" },
       },
@@ -160,7 +172,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     slug: "graspit",
-    card: { suit: "hearts", rank: "10" },
+    card: { suit: "hearts", rank: "10", line: { lt: "Mūsų web studija", en: "Our web studio" } },
     title: "GraspIT",
     tagline: {
       lt: "Mūsų web studijos svetainė: svetainės ir el. parduotuvės vietiniam verslui",
@@ -194,19 +206,19 @@ export const featuredProjects: FeaturedProject[] = [
     ],
     links: [],
     media: [
-      { src: "/images/projects/graspit-desktop.jpg", kind: "desktop" },
-      { src: "/images/projects/graspit-mobile.jpg", kind: "mobile" },
-      { src: "/images/projects/graspit-kainos.jpg", kind: "page", caption: { lt: "Kainos", en: "Pricing" } },
+      { src: "/images/projects/graspit-desktop.webp", kind: "desktop" },
+      { src: "/images/projects/graspit-mobile.webp", kind: "mobile" },
+      { src: "/images/projects/graspit-kainos.webp", kind: "page", caption: { lt: "Kainos", en: "Pricing" } },
       {
-        src: "/images/projects/graspit-procesas.jpg",
+        src: "/images/projects/graspit-darbai.webp",
         kind: "page",
-        caption: { lt: "Darbo procesas", en: "How we work" },
+        caption: { lt: "Atlikti darbai", en: "Our work" },
       },
     ],
   },
   {
     slug: "kalvita",
-    card: { suit: "hearts", rank: "J" },
+    card: { suit: "hearts", rank: "J", line: { lt: "Kalvystės svetainė", en: "Blacksmith website" } },
     title: "Kalvita",
     tagline: {
       lt: "Svetainė kalvystės įmonei Klaipėdoje ir Kretingoje",
@@ -229,15 +241,15 @@ export const featuredProjects: FeaturedProject[] = [
     stack: ["React", "Vite", "Tailwind", "Motion", "EmailJS", "Vercel"],
     links: [{ kind: "live", href: "https://kalvita.lt" }],
     media: [
-      { src: "/images/projects/kalvita-desktop.jpg", kind: "desktop" },
+      { src: "/images/projects/kalvita-desktop.webp", kind: "desktop" },
       { src: "/images/projects/kalvita-mobile.jpg", kind: "mobile" },
       {
-        src: "/images/projects/kalvita-galerija.jpg",
+        src: "/images/projects/kalvita-galerija.webp",
         kind: "page",
         caption: { lt: "Darbų galerija", en: "Work gallery" },
       },
       {
-        src: "/images/projects/kalvita-paslaugos.jpg",
+        src: "/images/projects/kalvita-paslaugos.webp",
         kind: "page",
         caption: { lt: "Paslaugos", en: "Services" },
       },
@@ -245,7 +257,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     slug: "colorlisse",
-    card: { suit: "hearts", rank: "9" },
+    card: { suit: "hearts", rank: "9", line: { lt: "El. parduotuvė", en: "Online shop" } },
     title: "Colorlisse",
     tagline: {
       lt: "El. parduotuvė profesionaliai kirpėjų folijai",
@@ -271,15 +283,15 @@ export const featuredProjects: FeaturedProject[] = [
     stack: ["React", "Vite", "Cloudflare", { lt: "El. parduotuvė", en: "E-commerce" }],
     links: [{ kind: "live", href: "https://colorlisse.lt" }],
     media: [
-      { src: "/images/projects/colorlisse-desktop.jpg", kind: "desktop" },
+      { src: "/images/projects/colorlisse-desktop.webp", kind: "desktop" },
       { src: "/images/projects/colorlisse-mobile.jpg", kind: "mobile" },
       {
-        src: "/images/projects/colorlisse-produktas.jpg",
+        src: "/images/projects/colorlisse-produktas.webp",
         kind: "page",
         caption: { lt: "Produkto puslapis", en: "Product page" },
       },
       {
-        src: "/images/projects/colorlisse-salonams.jpg",
+        src: "/images/projects/colorlisse-salonams.webp",
         kind: "page",
         caption: { lt: "Puslapis salonams", en: "Page for salons" },
       },
@@ -287,7 +299,7 @@ export const featuredProjects: FeaturedProject[] = [
   },
   {
     slug: "zaliuzesroletai",
-    card: { suit: "clubs", rank: "10" },
+    card: { suit: "clubs", rank: "10", line: { lt: "Techninis SEO", en: "Technical SEO" } },
     title: "zaliuzesroletai.lt",
     tagline: {
       lt: "Techninis SEO, turinys ir nuolatinė priežiūra",
@@ -312,15 +324,15 @@ export const featuredProjects: FeaturedProject[] = [
     ],
     links: [{ kind: "live", href: "https://zaliuzesroletai.lt" }],
     media: [
-      { src: "/images/projects/zaliuzesroletai-desktop.jpg", kind: "desktop" },
+      { src: "/images/projects/zaliuzesroletai-desktop.webp", kind: "desktop" },
       { src: "/images/projects/zaliuzesroletai-mobile.jpg", kind: "mobile" },
       {
-        src: "/images/projects/zaliuzesroletai-produkcija.jpg",
+        src: "/images/projects/zaliuzesroletai-produkcija.webp",
         kind: "page",
         caption: { lt: "Produkcija", en: "Products" },
       },
       {
-        src: "/images/projects/zaliuzesroletai-roletai.jpg",
+        src: "/images/projects/zaliuzesroletai-roletai.webp",
         kind: "page",
         caption: { lt: "Kategorijos puslapis", en: "Category page" },
       },
