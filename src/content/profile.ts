@@ -9,8 +9,8 @@ export const profile = {
   repo: "https://github.com/NojusTautavicius1/portfolio",
   /** Add your LinkedIn URL here once the profile is updated. */
   linkedin: null as string | null,
-  /** Path inside /public, e.g. "/images/nojus.webp". null shows initials instead. */
-  photo: null as string | null,
+  /** Path inside /public, e.g. "/images/nojus-portrait.webp". null shows initials instead. */
+  photo: "/images/nojus-portrait.webp" as string | null,
   location: { lt: "Kretinga", en: "Kretinga" } satisfies Localized,
   cv: {
     lt: "/cv/nojus-tautavicius-cv-lt.pdf",

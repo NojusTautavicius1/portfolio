@@ -21,6 +21,7 @@ function personSchema(locale: string, jobTitle: string) {
     name: profile.name,
     url: `${SITE_URL}/${locale}`,
     jobTitle,
+    ...(profile.photo && { image: `${SITE_URL}${profile.photo}` }),
     email: `mailto:${profile.email}`,
     address: { "@type": "PostalAddress", addressLocality: "Kretinga", addressCountry: "LT" },
     affiliation: { "@type": "EducationalOrganization", name: "Klaipėdos technologijų mokymo centras (KTMC)" },
