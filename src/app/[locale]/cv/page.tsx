@@ -6,6 +6,7 @@ import { profile } from "@/content/profile";
 import { featuredProjects } from "@/content/projects";
 import { skillDecks } from "@/content/skills";
 import { localize, localizeTerms } from "@/lib/localize";
+import { pageMetadata } from "@/lib/metadata";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
@@ -17,7 +18,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "cv" });
   // The PDF is the shareable artefact; this page only exists to print it.
-  return { title: t("metaTitle"), robots: { index: false, follow: true } };
+  const meta = await getTranslations({ locale, namespace: "meta" });
+  return {
+    title: t("metaTitle"),
+    robots: { index: false, follow: true },
+    ...pageMetadata(locale, "/cv", { title: `${t("metaTitle")} — Nojus Tautavičius`, description: meta("description") }),
+  };
 }
 
 const heading = "font-mono text-[7.5pt] uppercase tracking-[0.16em] text-accent";

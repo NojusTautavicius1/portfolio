@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { GRID, WORLD_H, WORLD_W } from "@/content/board";
-import { getPathname } from "@/i18n/navigation";
-import type { Locale } from "@/i18n/routing";
+import { pageMetadata } from "@/lib/metadata";
 import { BoardWorld } from "@/components/board/BoardWorld";
 import { ProjectBoard } from "@/components/board/ProjectBoard";
 import { CardThrower } from "@/components/thrower/CardThrower";
@@ -13,11 +12,9 @@ type PageProps = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "board" });
-  const path = (target: Locale) => getPathname({ locale: target, href: "/projektai" });
   return {
     title: t("title"),
-    description: t("description"),
-    alternates: { canonical: path(locale as Locale), languages: { lt: path("lt"), en: path("en") } },
+    ...pageMetadata(locale, "/projektai", { title: t("title"), description: t("description") }),
   };
 }
 

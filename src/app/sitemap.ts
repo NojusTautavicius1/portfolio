@@ -13,7 +13,12 @@ function entry(href: Href, priority: number): MetadataRoute.Sitemap[number] {
     url: url(routing.defaultLocale),
     lastModified: new Date(),
     priority,
-    alternates: { languages: Object.fromEntries(routing.locales.map((locale) => [locale, url(locale)])) },
+    alternates: {
+      languages: {
+        ...Object.fromEntries(routing.locales.map((locale) => [locale, url(locale)])),
+        "x-default": url(routing.defaultLocale),
+      },
+    },
   };
 }
 

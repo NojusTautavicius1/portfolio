@@ -8,6 +8,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
+import { pageMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -42,19 +43,8 @@ export async function generateMetadata({ params }: Omit<LayoutProps, "children">
   return {
     metadataBase: new URL(SITE_URL),
     title: { default: t("title"), template: `%s — Nojus Tautavičius` },
-    description: t("description"),
-    openGraph: {
-      type: "website",
-      siteName: "Nojus Tautavičius",
-      locale: locale === "lt" ? "lt_LT" : "en_US",
-      title: t("title"),
-      description: t("description"),
-    },
-    twitter: { card: "summary_large_image", title: t("title"), description: t("description") },
-    alternates: {
-      canonical: `/${locale}`,
-      languages: { lt: "/lt", en: "/en" },
-    },
+    authors: [{ name: "Nojus Tautavičius", url: SITE_URL }],
+    ...pageMetadata(locale, "/", { title: t("title"), description: t("description") }),
   };
 }
 

@@ -4,9 +4,10 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { featuredProjects, getFeaturedProject } from "@/content/projects";
-import { getPathname, Link } from "@/i18n/navigation";
-import { routing, type Locale } from "@/i18n/routing";
+import { Link } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
 import { localize, localizeTerms } from "@/lib/localize";
+import { pageMetadata } from "@/lib/metadata";
 import { container, eyebrow } from "@/lib/styles";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { TagList } from "@/components/ui/Tag";
@@ -42,17 +43,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const project = getFeaturedProject(slug);
   if (!project) return {};
 
-  const path = (target: Locale) =>
-    getPathname({ locale: target, href: { pathname: "/projektai/[slug]", params: { slug } } });
-
+  const description = clip(`${localize(project.tagline, locale)}. ${localize(project.problem, locale)}`, 160);
   return {
     title: project.title,
-    description: localize(project.tagline, locale),
-    alternates: {
-      canonical: path(locale as Locale),
-      languages: { lt: path("lt"), en: path("en") },
-    },
+    ...pageMetadata(
+      locale,
+      { pathname: "/projektai/[slug]", params: { slug } },
+      {
+        title: `${project.title} — Nojus Tautavičius`,
+        description,
+        // Internal route path: the image route isn't covered by the localized pathnames.
+        image: `/${locale}/projektai/${slug}/opengraph-image`,
+      },
+    ),
   };
+}
+
+// Search snippets stop around 160 characters; cut at a word instead of mid-word.
+function clip(text: string, max: number) {
+  if (text.length <= max) return text;
+  return text.slice(0, text.lastIndexOf(" ", max - 1)).replace(/[,.;:]$/, "") + "…";
 }
 
 export default async function ProjectPage({ params }: PageProps) {
