@@ -24,6 +24,8 @@ export type FeaturedProject = {
   /** null = no verified result yet; the block is hidden. */
   result: Localized | null;
   role: Localized | null;
+  /** Optional: what the project taught me. Only for things that really happened. */
+  learned?: Localized;
   stack: Term[];
   links: ProjectLink[];
   /**

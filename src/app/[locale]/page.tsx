@@ -6,6 +6,7 @@ import { About } from "@/components/sections/About";
 import { Contact } from "@/components/sections/Contact";
 import { Experience } from "@/components/sections/Experience";
 import { Hero } from "@/components/sections/Hero";
+import { HowIWork } from "@/components/sections/HowIWork";
 import { Projects } from "@/components/sections/Projects";
 import { Skills } from "@/components/sections/Skills";
 import { StudioMotion } from "@/components/sections/StudioMotion";
@@ -24,7 +25,16 @@ function personSchema(locale: string, jobTitle: string) {
     address: { "@type": "PostalAddress", addressLocality: "Kretinga", addressCountry: "LT" },
     affiliation: { "@type": "EducationalOrganization", name: "Klaipėdos technologijų mokymo centras (KTMC)" },
     sameAs: [profile.github, profile.linkedin].filter(Boolean),
-    knowsAbout: ["Next.js", "React", "TypeScript", "Node.js", "Python", "Claude API", "AI automation", "Technical SEO"],
+    knowsAbout: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Python",
+      "Claude API",
+      "AI automation",
+      "Technical SEO",
+    ],
     knowsLanguage: ["lt", "en"],
   };
 }
@@ -34,7 +44,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   setRequestLocale(locale);
   const t = await getTranslations("thrower");
   const meta = await getTranslations("meta");
-  const jsonLd = JSON.stringify(personSchema(locale, meta("title").split(" — ")[1] ?? "")).replace(/</g, "\\u003c");
+  const jsonLd = JSON.stringify(personSchema(locale, meta("title").split(" — ")[1] ?? "")).replace(
+    /</g,
+    "\\u003c",
+  );
 
   return (
     <>
@@ -45,6 +58,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Experience />
       <Skills />
       <About />
+      <HowIWork />
       <Contact />
       {/* After the sections: Reveal looks up elements that must already exist. */}
       <Reveal />

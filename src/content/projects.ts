@@ -27,6 +27,10 @@ export const featuredProjects: FeaturedProject[] = [
       lt: "Viskas: idėja, architektūra, backend, frontend.",
       en: "Everything: idea, architecture, backend, frontend.",
     },
+    learned: {
+      lt: "Lietuvių kalba apgauna paprastą paiešką: prekės ženklas atsakyme būna „Kalvita“, „Kalvitos“ ar „Kalvitą“, todėl reikėjo atpažinti linksnius. O kelių AI užklausų auditas netelpa į vieną HTTP užklausą, todėl darbai vykdomi fone per eilę.",
+      en: 'Lithuanian breaks naive search: a brand shows up as "Kalvita", "Kalvitos" or "Kalvitą", so the matcher had to handle word endings. And an audit made of many AI calls doesn\'t fit into one HTTP request, so the work runs in the background through a queue.',
+    },
     stack: ["Next.js", "TypeScript", "Supabase", "Upstash Redis", "Perplexity API", "Vitest", "Vercel"],
     links: [],
   },
@@ -84,6 +88,10 @@ export const featuredProjects: FeaturedProject[] = [
       lt: "Viskas: idėja, kodas, promptas ir automatizacija.",
       en: "Everything: idea, code, prompt and automation.",
     },
+    learned: {
+      lt: "Modelio atsakymu negalima aklai pasitikėti: jis gali nurodyti šaltinį, kurio nebuvo. Todėl grąžintus įrašų ID sutikrinu su įvestimi ir tai padengiau testais. Dar išmokau, kad kiekvienas šaltinis gali nulūžti atskirai (Reddit blokuoja anonimines užklausas), ir tai neturi sustabdyti visos atrankos.",
+      en: "You can't trust a model's answer blindly: it may cite a source that wasn't there. So I check the returned post ids against the input and cover that with tests. I also learned that every source can fail on its own (Reddit blocks anonymous requests), and that must not stop the whole digest.",
+    },
     stack: ["TypeScript", "Claude API", "GitHub Actions", "Telegram Bot API", "Zod", "Vitest"],
     links: [{ kind: "github", href: "https://github.com/NojusTautavicius1/idea-radar" }],
     media: [
@@ -119,6 +127,10 @@ export const featuredProjects: FeaturedProject[] = [
     role: {
       lt: "Viskas: full-stack kūrimas ir AI dalis.",
       en: "Everything: full-stack development and the AI layer.",
+    },
+    learned: {
+      lt: "Kai baigėsi duomenų bazės planas, platforma nustojo veikti. Perkėliau duomenis į Neon (PostgreSQL su pgvector), AI agentą iš atskiro Ruby serviso perrašiau į patį Next.js ir supratau, kad net demo projektą reikia prižiūrėti kaip produkciją.",
+      en: "When the database plan ran out, the platform went down. I moved the data to Neon (PostgreSQL with pgvector), rewrote the AI agent from a separate Ruby service into the Next.js app itself, and learned that even a demo project needs to be run like production.",
     },
     stack: [
       "Next.js 16",
@@ -167,6 +179,10 @@ export const featuredProjects: FeaturedProject[] = [
     role: {
       lt: "Kartu su partneriu: dizainas, tekstai ir kodas.",
       en: "Together with my partner: design, copy and code.",
+    },
+    learned: {
+      lt: "React svetainė be prerenderinimo paieškos botams atrodo beveik tuščia, nes turinys atsiranda tik paleidus JavaScript. Todėl kiekvienas puslapis sugeneruojamas kaip HTML iš anksto.",
+      en: "A React site without prerendering looks almost empty to search bots, because the content only appears once JavaScript runs. So every page is generated as HTML ahead of time.",
     },
     stack: [
       "React",

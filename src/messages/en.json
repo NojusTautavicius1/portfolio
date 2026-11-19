@@ -27,7 +27,7 @@
     "city": "Kretinga",
     "flipHint": "flip the card",
     "facts": [
-      "3 of my own AI / SaaS products — from idea to working MVP",
+      "4 AI products of my own — from idea to working code",
       "Internships at IT Perspective (Poland) and the SEO agency Potissimus",
       "Websites for real clients and my own web studio, GraspIT"
     ]
@@ -54,7 +54,8 @@
       "demo": "Demo",
       "github": "GitHub",
       "video": "Video"
-    }
+    },
+    "learned": "What I learned"
   },
   "status": {
     "client": "Client",
@@ -135,5 +136,15 @@
     "languages": "Languages",
     "contact": "Contact",
     "portfolio": "Interactive portfolio with project details: {url}"
+  },
+  "howIWork": {
+    "title": "How I work"
+  },
+  "notFound": {
+    "code": "404 · this card isn't in the deck",
+    "title": "This page doesn't exist",
+    "body": "The link may be out of date or the address has a typo. Projects and contacts are on the home page.",
+    "home": "Back home",
+    "projects": "Project board"
   }
 }

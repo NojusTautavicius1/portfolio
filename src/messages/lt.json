@@ -27,7 +27,7 @@
     "city": "Kretinga",
     "flipHint": "apversti kortą",
     "facts": [
-      "3 savo AI / SaaS produktai — nuo idėjos iki veikiančio MVP",
+      "4 savi AI produktai — nuo idėjos iki veikiančio kodo",
       "Praktika IT Perspective (Lenkija) ir SEO agentūroje Potissimus",
       "Svetainės realiems klientams ir sava web studija GraspIT"
     ]
@@ -54,7 +54,8 @@
       "demo": "Demo",
       "github": "GitHub",
       "video": "Video"
-    }
+    },
+    "learned": "Ką išmokau"
   },
   "status": {
     "client": "Klientas",
@@ -135,5 +136,15 @@
     "languages": "Kalbos",
     "contact": "Kontaktai",
     "portfolio": "Interaktyvus portfolio su projektų detalėmis: {url}"
+  },
+  "howIWork": {
+    "title": "Kaip dirbu"
+  },
+  "notFound": {
+    "code": "404 · korta ne iš šios kaladės",
+    "title": "Tokio puslapio nėra",
+    "body": "Galbūt nuoroda pasenusi arba adrese yra klaida. Projektai ir kontaktai — pradžios puslapyje.",
+    "home": "Į pradžią",
+    "projects": "Projektų lenta"
   }
 }

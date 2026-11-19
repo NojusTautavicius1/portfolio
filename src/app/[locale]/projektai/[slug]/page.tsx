@@ -88,6 +88,7 @@ export default async function ProjectPage({ params }: PageProps) {
     { label: t("solution"), text: localize(project.solution, locale) },
     project.result ? { label: t("result"), text: localize(project.result, locale) } : null,
     project.role ? { label: t("role"), text: localize(project.role, locale) } : null,
+    project.learned ? { label: t("learned"), text: localize(project.learned, locale) } : null,
   ].filter((block): block is { label: string; text: string } => block !== null);
 
   return (
