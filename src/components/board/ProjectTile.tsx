@@ -72,7 +72,7 @@ export async function ProjectTile({ project, x, y, locale }: Props) {
 }
 
 // No screenshot yet: show the project's own card instead.
-function CardPlaceholder({ project, label }: { project: FeaturedProject; label: string }) {
+export function CardPlaceholder({ project, label }: { project: FeaturedProject; label: string }) {
   return (
     <div className="grid h-full w-full place-items-center rounded-xl border border-line bg-surface">
       <span aria-hidden className="card -rotate-5 [--card-w:190px]">

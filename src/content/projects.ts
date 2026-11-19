@@ -131,6 +131,8 @@ export const featuredProjects: FeaturedProject[] = [
     media: [
       { src: "/images/projects/graspit-desktop.jpg", kind: "desktop" },
       { src: "/images/projects/graspit-mobile.jpg", kind: "mobile" },
+      { src: "/images/projects/graspit-kainos.jpg", kind: "page", caption: { lt: "Kainos", en: "Pricing" } },
+      { src: "/images/projects/graspit-procesas.jpg", kind: "page", caption: { lt: "Darbo procesas", en: "How we work" } },
     ],
   },
   {
@@ -160,6 +162,8 @@ export const featuredProjects: FeaturedProject[] = [
     media: [
       { src: "/images/projects/kalvita-desktop.jpg", kind: "desktop" },
       { src: "/images/projects/kalvita-mobile.jpg", kind: "mobile" },
+      { src: "/images/projects/kalvita-galerija.jpg", kind: "page", caption: { lt: "Darbų galerija", en: "Work gallery" } },
+      { src: "/images/projects/kalvita-paslaugos.jpg", kind: "page", caption: { lt: "Paslaugos", en: "Services" } },
     ],
   },
   {
@@ -192,6 +196,8 @@ export const featuredProjects: FeaturedProject[] = [
     media: [
       { src: "/images/projects/colorlisse-desktop.jpg", kind: "desktop" },
       { src: "/images/projects/colorlisse-mobile.jpg", kind: "mobile" },
+      { src: "/images/projects/colorlisse-produktas.jpg", kind: "page", caption: { lt: "Produkto puslapis", en: "Product page" } },
+      { src: "/images/projects/colorlisse-salonams.jpg", kind: "page", caption: { lt: "Puslapis salonams", en: "Page for salons" } },
     ],
   },
   {
@@ -222,6 +228,8 @@ export const featuredProjects: FeaturedProject[] = [
     media: [
       { src: "/images/projects/zaliuzesroletai-desktop.jpg", kind: "desktop" },
       { src: "/images/projects/zaliuzesroletai-mobile.jpg", kind: "mobile" },
+      { src: "/images/projects/zaliuzesroletai-produkcija.jpg", kind: "page", caption: { lt: "Produkcija", en: "Products" } },
+      { src: "/images/projects/zaliuzesroletai-roletai.jpg", kind: "page", caption: { lt: "Kategorijos puslapis", en: "Category page" } },
     ],
   },
 ];

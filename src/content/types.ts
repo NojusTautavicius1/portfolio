@@ -26,8 +26,11 @@ export type FeaturedProject = {
   role: Localized | null;
   stack: Term[];
   links: ProjectLink[];
-  /** Screenshots in /public. Desktop shots are 16:10, mobile shots 1:2. */
-  media?: { src: string; kind: "desktop" | "mobile" }[];
+  /**
+   * Screenshots in /public. Desktop and page shots are 16:10, mobile shots 1:2.
+   * The first desktop + mobile shot open the project page; "page" shots are its other pages, shown below.
+   */
+  media?: { src: string; kind: "desktop" | "mobile" | "page"; caption?: Localized }[];
 };
 
 export type SideProject = {

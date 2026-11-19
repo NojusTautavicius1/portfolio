@@ -32,9 +32,9 @@ function tiles(): Tile[] {
         <Image
           src={item.src}
           alt=""
-          width={item.kind === "desktop" ? 272 : 83}
+          width={item.kind === "mobile" ? 83 : 272}
           height={165}
-          sizes={item.kind === "desktop" ? "272px" : "83px"}
+          sizes={item.kind === "mobile" ? "83px" : "272px"}
           className="h-[165px] w-auto rounded-lg border border-line object-cover object-top"
         />
       ),
