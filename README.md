@@ -3,7 +3,7 @@
 My personal site: projects, experience and a CV that is generated from the same data as the site.
 Lithuanian and English.
 
-**Live:** https://portfolio-six-kappa-2y8qmno6j3.vercel.app
+**Live:** [ntdev.lt](https://ntdev.lt)
 
 ![Home page](docs/screenshot.jpg)
 
