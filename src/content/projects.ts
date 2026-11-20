@@ -234,8 +234,8 @@ export const featuredProjects: FeaturedProject[] = [
       en: "A fast website with a product gallery, a spam-protected enquiry form and a structure built for local SEO (city keywords, sitemap, Open Graph), plus security headers (Content Security Policy).",
     },
     result: {
-      lt: "Svetainė veikia adresu kalvita.lt.",
-      en: "The site is live at kalvita.lt.",
+      lt: "Per nepilnus metus svetainė atvedė apie 50 naujų klientų (savininko skaičiavimu). Savininkas liko patenkintas: darbas padarytas greitai ir tvarkingai, o susirašinėjimas buvo aiškus.",
+      en: "In under a year the site brought in about 50 new customers (the owner's estimate). The owner was happy with the work: it was done quickly and neatly, and communication was clear.",
     },
     role: null,
     stack: ["React", "Vite", "Tailwind", "Motion", "EmailJS", "Vercel"],
