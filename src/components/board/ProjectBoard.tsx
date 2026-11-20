@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useInfinitePan } from "./useInfinitePan";
 
@@ -17,7 +17,8 @@ const ORIGIN = { x: 0, y: 0 };
 const pad = (value: number) => String(Math.round(value)).padStart(4, "0");
 
 // The world is rendered 2 × 2 and the plane wraps, so it looks endless in every direction.
-// Only the first copy is visible to screen readers; the other three are inert.
+// Only the first copy is visible to screen readers. The other three stay clickable (the view
+// often shows them after panning past an edge) but are hidden from screen readers and Tab.
 export function ProjectBoard({ width, height, label, hint, start = ORIGIN, children }: ProjectBoardProps) {
   const coords = useRef<HTMLSpanElement>(null);
   const [touched, setTouched] = useState(false);
@@ -35,6 +36,12 @@ export function ProjectBoard({ width, height, label, hint, start = ORIGIN, child
     onFirstInteraction: hideHint,
   });
 
+  useEffect(() => {
+    plane.current
+      ?.querySelectorAll<HTMLElement>('[data-copy]:not([data-copy="0"]) :is(a, button, [tabindex])')
+      .forEach((element) => (element.tabIndex = -1));
+  }, [plane]);
+
   return (
     <div
       ref={viewport}
@@ -51,8 +58,8 @@ export function ProjectBoard({ width, height, label, hint, start = ORIGIN, child
         {[0, 1, 2, 3].map((copy) => (
           <div
             key={copy}
+            data-copy={copy}
             aria-hidden={copy > 0 || undefined}
-            inert={copy > 0}
             className="board-grid absolute"
             style={{ left: (copy % 2) * width, top: Math.floor(copy / 2) * height, width, height }}
           >

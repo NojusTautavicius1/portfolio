@@ -12,6 +12,12 @@ import { TagList } from "@/components/ui/Tag";
 
 type Props = { project: FeaturedProject; x: number; y: number; locale: string };
 
+// The board has room for one line of the result; the project page has the rest.
+function firstSentence(text: string) {
+  const end = text.search(/[.:](\s|$)/);
+  return end === -1 ? text : text.slice(0, end + 1).replace(/:$/, ".");
+}
+
 export async function ProjectTile({ project, x, y, locale }: Props) {
   const t = await getTranslations("projects");
   const number = String(featuredProjects.indexOf(project) + 1).padStart(2, "0");
@@ -56,16 +62,38 @@ export async function ProjectTile({ project, x, y, locale }: Props) {
         <h2 className="mt-3 font-display-wide text-[34px] leading-[0.95] uppercase">{project.title}</h2>
         <p className="mt-3 text-[15px] leading-snug">{localize(project.tagline, locale)}</p>
         <p className="mt-3 text-sm leading-relaxed text-muted">{localize(project.problem, locale)}</p>
+        {project.result && (
+          <p className="mt-3 text-sm leading-relaxed">
+            <span className="mr-2 font-mono text-[11px] tracking-[0.12em] text-accent uppercase">
+              {t("result")}
+            </span>
+            {firstSentence(localize(project.result, locale))}
+          </p>
+        )}
         <div className="mt-4">
           <TagList items={localizeTerms(project.stack, locale).slice(0, 5)} />
         </div>
-        <Link
-          href={{ pathname: "/projektai/[slug]", params: { slug: project.slug } }}
-          className="mt-5 inline-flex min-h-11 items-center gap-2 font-medium text-accent underline-offset-4 hover:underline"
-        >
-          {t("more")}
-          <span aria-hidden>→</span>
-        </Link>
+        <div className="mt-4 flex flex-wrap items-center gap-x-5">
+          <Link
+            href={{ pathname: "/projektai/[slug]", params: { slug: project.slug } }}
+            className="inline-flex min-h-11 items-center gap-2 font-medium text-accent underline-offset-4 hover:underline"
+          >
+            {t("more")}
+            <span aria-hidden>→</span>
+          </Link>
+          {project.links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex min-h-11 items-center gap-1 text-sm text-muted transition-colors hover:text-text"
+            >
+              {t(`linkKinds.${link.kind}`)}
+              <span aria-hidden>↗</span>
+            </a>
+          ))}
+        </div>
       </div>
     </article>
   );
