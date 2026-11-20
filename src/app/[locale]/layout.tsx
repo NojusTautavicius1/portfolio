@@ -13,6 +13,7 @@ import { SITE_URL } from "@/lib/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 import "lenis/dist/lenis.css";
 import "../globals.css";
@@ -75,6 +76,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           <Header />
           <main id="main">{children}</main>
           <Footer />
+          <GoogleAnalytics />
         </NextIntlClientProvider>
         {/* Cookieless; shows whether companies open the link. The scripts only exist on Vercel
             (VERCEL=1 at build), so they are skipped locally instead of 404-ing. */}

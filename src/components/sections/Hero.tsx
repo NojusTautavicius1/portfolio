@@ -46,6 +46,7 @@ export async function Hero() {
     // Bottom padding keeps the facts clear of the fixed card-thrower toggle (bottom-left).
     <section
       aria-labelledby="hero-title"
+      data-section="hero"
       className="relative isolate flex min-h-dvh flex-col overflow-x-clip pt-20 pb-20 md:pb-24"
     >
       {/* HUD row */}

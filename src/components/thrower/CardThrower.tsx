@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { Suit } from "@/content/areas";
+import { trackOnce } from "@/lib/analytics";
 
 import { Crack } from "./Crack";
 import { SuitBurst } from "./SuitBurst";
@@ -58,6 +59,7 @@ export function CardThrower({ labels }: { labels: Labels }) {
 
   function throwAt(event: React.PointerEvent<HTMLDivElement>) {
     event.preventDefault();
+    trackOnce("card_throw");
     const origin = toggle.current?.getBoundingClientRect();
     if (!origin) return;
 
@@ -81,6 +83,7 @@ export function CardThrower({ labels }: { labels: Labels }) {
       const reaction = hit(x, y);
       if (reaction) addBurst({ id, x, y });
       if (reaction === "jackpot") {
+        trackOnce("card_jackpot");
         setJackpot(id);
         setTimeout(() => setJackpot((current) => (current === id ? null : current)), JACKPOT_MS);
       }

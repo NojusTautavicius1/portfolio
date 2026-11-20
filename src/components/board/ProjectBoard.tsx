@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { trackOnce } from "@/lib/analytics";
 import { useInfinitePan } from "./useInfinitePan";
 
 type ProjectBoardProps = {
@@ -26,7 +27,10 @@ export function ProjectBoard({ width, height, label, hint, start = ORIGIN, child
   const showCoords = useCallback((x: number, y: number) => {
     if (coords.current) coords.current.textContent = `X ${pad(x)} · Y ${pad(y)}`;
   }, []);
-  const hideHint = useCallback(() => setTouched(true), []);
+  const hideHint = useCallback(() => {
+    setTouched(true);
+    trackOnce("board_drag");
+  }, []);
 
   const { viewport, plane } = useInfinitePan({
     width,

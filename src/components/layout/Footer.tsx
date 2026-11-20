@@ -1,6 +1,8 @@
 import { getTranslations } from "next-intl/server";
 
+import { ConsentSettingsButton } from "@/components/analytics/ConsentSettingsButton";
 import { profile } from "@/content/profile";
+import { GA_ID } from "@/lib/consent";
 import { container } from "@/lib/styles";
 
 export async function Footer() {
@@ -15,6 +17,12 @@ export async function Footer() {
           © {new Date().getFullYear()} {profile.name}
         </p>
         <p>
+          {GA_ID && (
+            <>
+              <ConsentSettingsButton label={t("cookies")} />
+              <span aria-hidden> · </span>
+            </>
+          )}
           {t("built")}{" "}
           <a
             href={profile.repo}

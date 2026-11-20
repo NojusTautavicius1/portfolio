@@ -7,26 +7,26 @@ import { SITE_URL } from "@/lib/site";
 
 type Href = Parameters<typeof getPathname>[0]["href"];
 
-function entry(href: Href, priority: number): MetadataRoute.Sitemap[number] {
+// One <url> per language version, each listing all alternates (Google wants every version listed).
+function entry(href: Href, priority: number): MetadataRoute.Sitemap {
   const url = (locale: Locale) => SITE_URL + getPathname({ locale, href });
-  return {
-    url: url(routing.defaultLocale),
+  const languages = {
+    ...Object.fromEntries(routing.locales.map((locale) => [locale, url(locale)])),
+    "x-default": url(routing.defaultLocale),
+  };
+  return routing.locales.map((locale) => ({
+    url: url(locale),
     lastModified: new Date(),
     priority,
-    alternates: {
-      languages: {
-        ...Object.fromEntries(routing.locales.map((locale) => [locale, url(locale)])),
-        "x-default": url(routing.defaultLocale),
-      },
-    },
-  };
+    alternates: { languages },
+  }));
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    entry("/", 1),
-    entry("/projektai", 0.8),
-    ...featuredProjects.map((project) =>
+    ...entry("/", 1),
+    ...entry("/projektai", 0.8),
+    ...featuredProjects.flatMap((project) =>
       entry({ pathname: "/projektai/[slug]", params: { slug: project.slug } }, 0.7),
     ),
   ];

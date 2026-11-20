@@ -120,6 +120,7 @@ export function HeroDeck({ cards, flipHint }: { cards: HeroCardData[]; flipHint:
             <button
               type="button"
               data-hero-card=""
+              data-track-label={card.name}
               aria-pressed={isOpen}
               data-flipped={isOpen}
               onClick={() => setOpen(isOpen ? null : index)}

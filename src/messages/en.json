@@ -113,7 +113,14 @@
   },
   "footer": {
     "built": "Built with Next.js, CSS 3D and GSAP.",
-    "source": "Site source on GitHub"
+    "source": "Site source on GitHub",
+    "cookies": "Cookie settings"
+  },
+  "consent": {
+    "label": "Cookies",
+    "text": "I use Google Analytics to see how many people visit and what they look at. Cookies are only set if you agree.",
+    "accept": "Accept",
+    "deny": "No thanks"
   },
   "board": {
     "title": "Project board",

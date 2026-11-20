@@ -29,6 +29,7 @@ export function MotionClip({ src, poster, label }: Props) {
       src={src}
       poster={poster}
       aria-label={label}
+      data-track="motion_click"
       muted
       loop
       playsInline

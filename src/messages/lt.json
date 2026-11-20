@@ -113,7 +113,14 @@
   },
   "footer": {
     "built": "Sukurta su Next.js, CSS 3D ir GSAP.",
-    "source": "Svetainės kodas GitHub"
+    "source": "Svetainės kodas GitHub",
+    "cookies": "Slapukų nustatymai"
+  },
+  "consent": {
+    "label": "Slapukai",
+    "text": "Naudoju Google Analytics, kad matyčiau, kiek žmonių užsuka ir ką jie peržiūri. Slapukai įrašomi tik jums sutikus.",
+    "accept": "Sutinku",
+    "deny": "Ne, ačiū"
   },
   "board": {
     "title": "Projektų lenta",
