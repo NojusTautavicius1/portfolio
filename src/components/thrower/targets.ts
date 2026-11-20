@@ -14,12 +14,6 @@ const knockLetter = (letter: HTMLElement) =>
     { duration: 2600, easing: "cubic-bezier(0.3, 1.3, 0.5, 1)" },
   );
 
-const spinCard = (card: HTMLElement) =>
-  card.parentElement?.animate([{ transform: "rotateY(0deg)" }, { transform: "rotateY(360deg)" }], {
-    duration: 900,
-    easing: "cubic-bezier(0.2, 0.8, 0.2, 1)",
-  });
-
 // Hit-testing by geometry instead of elementFromPoint: some targets have pointer-events: none.
 function findTarget(x: number, y: number) {
   const hits = Array.from(document.querySelectorAll<HTMLElement>("[data-egg], [data-hero-card]"))
@@ -43,9 +37,6 @@ export function hit(x: number, y: number): Reaction {
   switch (target.dataset.egg) {
     case "letter":
       knockLetter(target);
-      return null;
-    case "project-card":
-      spinCard(target);
       return null;
     case "status":
       return "burst";

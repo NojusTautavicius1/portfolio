@@ -59,6 +59,9 @@ html {
 }
 
 body {
+  /* Decorations (timeline markers, 3D strips) must never widen the page on phones. "clip" instead
+     of "hidden" so body doesn't become a scroll container (Lenis and sticky keep working). */
+  overflow-x: clip;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);

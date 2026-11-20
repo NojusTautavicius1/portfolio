@@ -3,6 +3,144 @@ import type { FeaturedProject, SideProject } from "./types";
 // In display order. Each project gets a page at /[locale]/projektai/[slug].
 export const featuredProjects: FeaturedProject[] = [
   {
+    slug: "sonara",
+    card: { suit: "hearts", rank: "Q", line: { lt: "Muzika ir AI paieška", en: "Music and AI search" } },
+    title: "Sonara",
+    tagline: {
+      lt: "Muzikos platforma su AI rekomendacijomis ir paieška natūralia kalba",
+      en: "A music platform with AI recommendations and natural-language search",
+    },
+    status: "live",
+    problem: {
+      lt: "Pradėjau ją kaip darbą, kuriuo norėjau parodyti įmonei, ką sugebu. Vėliau tęsiau pats, nes norėjau suprasti, kaip veikia AI: kaip jis keičia atsakymus ir kaip jį teisingai promptinti.",
+      en: "I started it as a piece of work to show a company what I can do. Later I kept going on my own because I wanted to understand how AI works: how it changes its answers and how to prompt it properly.",
+    },
+    solution: {
+      lt: "Muzikos klausymosi platforma: dainų įkėlimas ir grojimas su bangos vizualizacija, automatiškai atsinaujinantys „Daily Mix“ ir „Discover Weekly“, grojaraščiai, dainų žodžiai, klausymo statistika. „Ask Sonara“ leidžia ieškoti paprastais žodžiais, pvz., „dainos lietingam vakarui“.",
+      en: 'A complete music streaming platform: upload and play songs with a waveform view, auto-refreshing Daily Mix and Discover Weekly, playlists, lyrics and listening stats. "Ask Sonara" lets you search in plain language, e.g. "songs for a rainy evening".',
+    },
+    result: {
+      lt: "Platforma veikia: 176 dainos, o „Ask Sonara“ agentas pats renkasi, kaip ieškoti: pagal žanrą, tempą ar prasmę (vektorinė paieška per embeddings).",
+      en: 'The platform is live with 176 songs, and the "Ask Sonara" agent decides how to search on its own: by genre, tempo or meaning (vector search over embeddings).',
+    },
+    role: {
+      lt: "Viskas: full-stack kūrimas ir AI dalis.",
+      en: "Everything: full-stack development and the AI layer.",
+    },
+    learned: {
+      lt: "Kai baigėsi duomenų bazės planas, platforma nustojo veikti. Perkėliau duomenis į Neon (PostgreSQL su pgvector), AI agentą iš atskiro Ruby serviso perrašiau į patį Next.js ir supratau, kad net demo projektą reikia prižiūrėti kaip produkciją.",
+      en: "When the database plan ran out, the platform went down. I moved the data to Neon (PostgreSQL with pgvector), rewrote the AI agent from a separate Ruby service into the Next.js app itself, and learned that even a demo project needs to be run like production.",
+    },
+    stack: [
+      "Next.js 16",
+      "TypeScript",
+      "Tailwind",
+      "PostgreSQL (Neon)",
+      "pgvector",
+      "Prisma",
+      "Auth.js",
+      "Claude API",
+      "Vercel",
+    ],
+    links: [
+      { kind: "live", href: "https://music-platform-woad-nine.vercel.app" },
+      { kind: "github", href: "https://github.com/NojusTautavicius1/music-platform" },
+    ],
+    media: [
+      { src: "/images/projects/sonara-desktop.webp", kind: "desktop" },
+      { src: "/images/projects/sonara-mobile.jpg", kind: "mobile" },
+      {
+        src: "/images/projects/sonara-search.webp",
+        kind: "page",
+        caption: { lt: "Paieška pagal žanrą", en: "Browse by genre" },
+      },
+      {
+        src: "/images/projects/sonara-browse.webp",
+        kind: "page",
+        caption: { lt: "Visos dainos", en: "Browse" },
+      },
+    ],
+  },
+  {
+    slug: "idea-radar",
+    card: { suit: "spades", rank: "Q", line: { lt: "Kasdienė AI atranka", en: "Daily AI digest" } },
+    title: "Idea radar",
+    tagline: {
+      lt: "Kasdienė idėjų atranka: Claude išrenka 5 idėjas ir siunčia jas į Telegram",
+      en: "A daily idea digest: Claude picks 5 ideas and sends them to Telegram",
+    },
+    status: "live",
+    problem: {
+      lt: "Norėjau kasdien matyti, kokias problemas žmonės aptaria Hacker News, GitHub ir Product Hunt, bet viską perskaityti užtrunka per ilgai, o dauguma įrašų man neaktualūs.",
+      en: "I wanted to see every day what problems people discuss on Hacker News, GitHub and Product Hunt, but reading it all takes too long and most posts don't matter to me.",
+    },
+    solution: {
+      lt: "Kiekvieną rytą GitHub Actions surenka naujus įrašus, atmeta jau matytus ir iš kiekvieno šaltinio palieka populiariausius. Vienas Claude kvietimas iš apie 100 įrašų išrenka 5 idėjas pagal mano profilį ir ankstesnius balsus, o atsakymą patikrina Zod schema. Idėjos ateina į Telegram su 👍/👎 mygtukais, ir kitos dienos atranka į tuos balsus atsižvelgia.",
+      en: "Every morning GitHub Actions collects new posts, drops the ones it has already seen and keeps the hottest from each source. A single Claude call picks 5 ideas out of about 100 posts based on my profile and earlier votes, and a Zod schema validates the answer. The ideas arrive in Telegram with 👍/👎 buttons, and the next day's picks take those votes into account.",
+    },
+    result: {
+      lt: "Veikia kasdien be serverio ir duomenų bazės: būsena laikoma viename JSON faile repozitorijoje, o kiekviena atranka išsaugoma kaip Markdown failas. Jei modelis nurodo šaltinį, kurio nebuvo įvestyje, tokia idėja atmetama. 19 automatinių testų, CI per GitHub Actions.",
+      en: "It runs every day with no server and no database: state is one JSON file in the repo, and every digest is saved as a Markdown file. If the model points at a source that wasn't in its input, that idea is dropped. 19 automated tests, CI on GitHub Actions.",
+    },
+    role: {
+      lt: "Viskas: idėja, kodas, promptas ir automatizacija.",
+      en: "Everything: idea, code, prompt and automation.",
+    },
+    learned: {
+      lt: "Modelio atsakymu negalima aklai pasitikėti: jis gali nurodyti šaltinį, kurio nebuvo. Todėl grąžintus įrašų ID sutikrinu su įvestimi ir tai padengiau testais. Dar išmokau, kad kiekvienas šaltinis gali nulūžti atskirai (Reddit blokuoja anonimines užklausas), ir tai neturi sustabdyti visos atrankos.",
+      en: "You can't trust a model's answer blindly: it may cite a source that wasn't there. So I check the returned post ids against the input and cover that with tests. I also learned that every source can fail on its own (Reddit blocks anonymous requests), and that must not stop the whole digest.",
+    },
+    stack: ["TypeScript", "Claude API", "GitHub Actions", "Telegram Bot API", "Zod", "Vitest"],
+    links: [{ kind: "github", href: "https://github.com/NojusTautavicius1/idea-radar" }],
+    media: [
+      { src: "/images/projects/idea-radar-digest.webp", kind: "desktop" },
+      {
+        src: "/images/projects/idea-radar-readme.webp",
+        kind: "page",
+        caption: { lt: "Kaip veikia (iš README)", en: "How it works (from the README)" },
+      },
+    ],
+  },
+  {
+    slug: "kalvita",
+    card: { suit: "hearts", rank: "J", line: { lt: "Kalvystės svetainė", en: "Blacksmith website" } },
+    title: "Kalvita",
+    tagline: {
+      lt: "Svetainė kalvystės įmonei Klaipėdoje ir Kretingoje",
+      en: "Website for a blacksmith company in Klaipėda and Kretinga",
+    },
+    status: "client",
+    problem: {
+      lt: "Kalvystės įmonei reikėjo svetainės, kuri parodytų gaminius (vartus, turėklus, tvoras, stogelius) ir atneštų užklausų iš vietinių klientų.",
+      en: "A blacksmith company needed a website that shows its products (gates, railings, fences, canopies) and brings in enquiries from local customers.",
+    },
+    solution: {
+      lt: "Greita svetainė su gaminių galerija, užklausų forma su apsauga nuo spamo ir vietiniam SEO paruošta struktūra (raktiniai žodžiai pagal miestus, sitemap, Open Graph). Pridėtos saugumo antraštės (Content Security Policy).",
+      en: "A fast website with a product gallery, a spam-protected enquiry form and a structure built for local SEO (city keywords, sitemap, Open Graph), plus security headers (Content Security Policy).",
+    },
+    result: {
+      lt: "Per nepilnus metus per svetainę atėjo apie 50 papildomų užklausų (savininko skaičiavimu). Savininkas liko patenkintas: darbas padarytas greitai ir tvarkingai, o susirašinėjimas buvo aiškus.",
+      en: "In under a year the site brought in about 50 extra enquiries (the owner's estimate). The owner was happy with the work: it was done quickly and neatly, and communication was clear.",
+    },
+    role: null,
+    stack: ["React", "Vite", "Tailwind", "Motion", "EmailJS", "Vercel"],
+    links: [{ kind: "live", href: "https://kalvita.lt" }],
+    media: [
+      { src: "/images/projects/kalvita-desktop.webp", kind: "desktop" },
+      { src: "/images/projects/kalvita-mobile.jpg", kind: "mobile" },
+      {
+        src: "/images/projects/kalvita-galerija.webp",
+        kind: "page",
+        caption: { lt: "Darbų galerija", en: "Work gallery" },
+      },
+      {
+        src: "/images/projects/kalvita-paslaugos.webp",
+        kind: "page",
+        caption: { lt: "Paslaugos", en: "Services" },
+      },
+    ],
+  },
+  {
     slug: "aiscan",
     card: { suit: "spades", rank: "A", line: { lt: "AI matomumas", en: "AI visibility" } },
     title: "aiscan",
@@ -72,105 +210,6 @@ export const featuredProjects: FeaturedProject[] = [
     media: [{ src: "/images/projects/pitchcraft-desktop.webp", kind: "desktop" }],
   },
   {
-    slug: "idea-radar",
-    card: { suit: "spades", rank: "Q", line: { lt: "Kasdienė AI atranka", en: "Daily AI digest" } },
-    title: "Idea radar",
-    tagline: {
-      lt: "Kasdienė idėjų atranka: Claude išrenka 5 idėjas ir siunčia jas į Telegram",
-      en: "A daily idea digest: Claude picks 5 ideas and sends them to Telegram",
-    },
-    status: "live",
-    problem: {
-      lt: "Norėjau kasdien matyti, kokias problemas žmonės aptaria Hacker News, GitHub ir Product Hunt, bet viską perskaityti užtrunka per ilgai, o dauguma įrašų man neaktualūs.",
-      en: "I wanted to see every day what problems people discuss on Hacker News, GitHub and Product Hunt, but reading it all takes too long and most posts don't matter to me.",
-    },
-    solution: {
-      lt: "Kiekvieną rytą GitHub Actions surenka naujus įrašus, atmeta jau matytus ir iš kiekvieno šaltinio palieka populiariausius. Vienas Claude kvietimas iš apie 100 įrašų išrenka 5 idėjas pagal mano profilį ir ankstesnius balsus, o atsakymą patikrina Zod schema. Idėjos ateina į Telegram su 👍/👎 mygtukais, ir kitos dienos atranka į tuos balsus atsižvelgia.",
-      en: "Every morning GitHub Actions collects new posts, drops the ones it has already seen and keeps the hottest from each source. A single Claude call picks 5 ideas out of about 100 posts based on my profile and earlier votes, and a Zod schema validates the answer. The ideas arrive in Telegram with 👍/👎 buttons, and the next day's picks take those votes into account.",
-    },
-    result: {
-      lt: "Veikia kasdien be serverio ir duomenų bazės: būsena laikoma viename JSON faile repozitorijoje, o kiekviena atranka išsaugoma kaip Markdown failas. Jei modelis nurodo šaltinį, kurio nebuvo įvestyje, tokia idėja atmetama. 19 automatinių testų, CI per GitHub Actions.",
-      en: "It runs every day with no server and no database: state is one JSON file in the repo, and every digest is saved as a Markdown file. If the model points at a source that wasn't in its input, that idea is dropped. 19 automated tests, CI on GitHub Actions.",
-    },
-    role: {
-      lt: "Viskas: idėja, kodas, promptas ir automatizacija.",
-      en: "Everything: idea, code, prompt and automation.",
-    },
-    learned: {
-      lt: "Modelio atsakymu negalima aklai pasitikėti: jis gali nurodyti šaltinį, kurio nebuvo. Todėl grąžintus įrašų ID sutikrinu su įvestimi ir tai padengiau testais. Dar išmokau, kad kiekvienas šaltinis gali nulūžti atskirai (Reddit blokuoja anonimines užklausas), ir tai neturi sustabdyti visos atrankos.",
-      en: "You can't trust a model's answer blindly: it may cite a source that wasn't there. So I check the returned post ids against the input and cover that with tests. I also learned that every source can fail on its own (Reddit blocks anonymous requests), and that must not stop the whole digest.",
-    },
-    stack: ["TypeScript", "Claude API", "GitHub Actions", "Telegram Bot API", "Zod", "Vitest"],
-    links: [{ kind: "github", href: "https://github.com/NojusTautavicius1/idea-radar" }],
-    media: [
-      { src: "/images/projects/idea-radar-digest.webp", kind: "desktop" },
-      {
-        src: "/images/projects/idea-radar-readme.webp",
-        kind: "page",
-        caption: { lt: "Kaip veikia (iš README)", en: "How it works (from the README)" },
-      },
-    ],
-  },
-  {
-    slug: "sonara",
-    card: { suit: "hearts", rank: "Q", line: { lt: "Muzika ir AI paieška", en: "Music and AI search" } },
-    title: "Sonara",
-    tagline: {
-      lt: "Muzikos platforma su AI rekomendacijomis ir paieška natūralia kalba",
-      en: "A music platform with AI recommendations and natural-language search",
-    },
-    status: "live",
-    problem: {
-      lt: "Pradėjau ją kaip darbą, kuriuo norėjau parodyti įmonei, ką sugebu. Vėliau tęsiau pats, nes norėjau suprasti, kaip veikia AI: kaip jis keičia atsakymus ir kaip jį teisingai promptinti.",
-      en: "I started it as a piece of work to show a company what I can do. Later I kept going on my own because I wanted to understand how AI works: how it changes its answers and how to prompt it properly.",
-    },
-    solution: {
-      lt: "Muzikos klausymosi platforma: dainų įkėlimas ir grojimas su bangos vizualizacija, automatiškai atsinaujinantys „Daily Mix“ ir „Discover Weekly“, grojaraščiai, dainų žodžiai, klausymo statistika. „Ask Sonara“ leidžia ieškoti paprastais žodžiais, pvz., „dainos lietingam vakarui“.",
-      en: 'A complete music streaming platform: upload and play songs with a waveform view, auto-refreshing Daily Mix and Discover Weekly, playlists, lyrics and listening stats. "Ask Sonara" lets you search in plain language, e.g. "songs for a rainy evening".',
-    },
-    result: {
-      lt: "Platforma veikia: 176 dainos, o „Ask Sonara“ agentas pats renkasi, kaip ieškoti: pagal žanrą, tempą ar prasmę (vektorinė paieška per embeddings).",
-      en: 'The platform is live with 176 songs, and the "Ask Sonara" agent decides how to search on its own: by genre, tempo or meaning (vector search over embeddings).',
-    },
-    role: {
-      lt: "Viskas: full-stack kūrimas ir AI dalis.",
-      en: "Everything: full-stack development and the AI layer.",
-    },
-    learned: {
-      lt: "Kai baigėsi duomenų bazės planas, platforma nustojo veikti. Perkėliau duomenis į Neon (PostgreSQL su pgvector), AI agentą iš atskiro Ruby serviso perrašiau į patį Next.js ir supratau, kad net demo projektą reikia prižiūrėti kaip produkciją.",
-      en: "When the database plan ran out, the platform went down. I moved the data to Neon (PostgreSQL with pgvector), rewrote the AI agent from a separate Ruby service into the Next.js app itself, and learned that even a demo project needs to be run like production.",
-    },
-    stack: [
-      "Next.js 16",
-      "TypeScript",
-      "Tailwind",
-      "PostgreSQL (Neon)",
-      "pgvector",
-      "Prisma",
-      "Auth.js",
-      "Claude API",
-      "Vercel",
-    ],
-    links: [
-      { kind: "live", href: "https://music-platform-woad-nine.vercel.app" },
-      { kind: "github", href: "https://github.com/NojusTautavicius1/music-platform" },
-    ],
-    media: [
-      { src: "/images/projects/sonara-desktop.webp", kind: "desktop" },
-      { src: "/images/projects/sonara-mobile.jpg", kind: "mobile" },
-      {
-        src: "/images/projects/sonara-search.webp",
-        kind: "page",
-        caption: { lt: "Paieška pagal žanrą", en: "Browse by genre" },
-      },
-      {
-        src: "/images/projects/sonara-browse.webp",
-        kind: "page",
-        caption: { lt: "Visos dainos", en: "Browse" },
-      },
-    ],
-  },
-  {
     slug: "graspit",
     card: { suit: "hearts", rank: "10", line: { lt: "Mūsų web studija", en: "Our web studio" } },
     title: "GraspIT",
@@ -213,45 +252,6 @@ export const featuredProjects: FeaturedProject[] = [
         src: "/images/projects/graspit-darbai.webp",
         kind: "page",
         caption: { lt: "Atlikti darbai", en: "Our work" },
-      },
-    ],
-  },
-  {
-    slug: "kalvita",
-    card: { suit: "hearts", rank: "J", line: { lt: "Kalvystės svetainė", en: "Blacksmith website" } },
-    title: "Kalvita",
-    tagline: {
-      lt: "Svetainė kalvystės įmonei Klaipėdoje ir Kretingoje",
-      en: "Website for a blacksmith company in Klaipėda and Kretinga",
-    },
-    status: "client",
-    problem: {
-      lt: "Kalvystės įmonei reikėjo svetainės, kuri parodytų gaminius (vartus, turėklus, tvoras, stogelius) ir atneštų užklausų iš vietinių klientų.",
-      en: "A blacksmith company needed a website that shows its products (gates, railings, fences, canopies) and brings in enquiries from local customers.",
-    },
-    solution: {
-      lt: "Greita svetainė su gaminių galerija, užklausų forma su apsauga nuo spamo ir vietiniam SEO paruošta struktūra (raktiniai žodžiai pagal miestus, sitemap, Open Graph). Pridėtos saugumo antraštės (Content Security Policy).",
-      en: "A fast website with a product gallery, a spam-protected enquiry form and a structure built for local SEO (city keywords, sitemap, Open Graph), plus security headers (Content Security Policy).",
-    },
-    result: {
-      lt: "Per nepilnus metus svetainė atvedė apie 50 naujų klientų (savininko skaičiavimu). Savininkas liko patenkintas: darbas padarytas greitai ir tvarkingai, o susirašinėjimas buvo aiškus.",
-      en: "In under a year the site brought in about 50 new customers (the owner's estimate). The owner was happy with the work: it was done quickly and neatly, and communication was clear.",
-    },
-    role: null,
-    stack: ["React", "Vite", "Tailwind", "Motion", "EmailJS", "Vercel"],
-    links: [{ kind: "live", href: "https://kalvita.lt" }],
-    media: [
-      { src: "/images/projects/kalvita-desktop.webp", kind: "desktop" },
-      { src: "/images/projects/kalvita-mobile.jpg", kind: "mobile" },
-      {
-        src: "/images/projects/kalvita-galerija.webp",
-        kind: "page",
-        caption: { lt: "Darbų galerija", en: "Work gallery" },
-      },
-      {
-        src: "/images/projects/kalvita-paslaugos.webp",
-        kind: "page",
-        caption: { lt: "Paslaugos", en: "Services" },
       },
     ],
   },

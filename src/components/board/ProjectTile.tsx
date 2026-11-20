@@ -6,17 +6,12 @@ import type { FeaturedProject } from "@/content/types";
 import { Link } from "@/i18n/navigation";
 import { localize, localizeTerms } from "@/lib/localize";
 import { eyebrow } from "@/lib/styles";
+import { firstSentence } from "@/lib/text";
 import { CardFront } from "@/components/deck/PlayingCard";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { TagList } from "@/components/ui/Tag";
 
 type Props = { project: FeaturedProject; x: number; y: number; locale: string };
-
-// The board has room for one line of the result; the project page has the rest.
-function firstSentence(text: string) {
-  const end = text.search(/[.:](\s|$)/);
-  return end === -1 ? text : text.slice(0, end + 1).replace(/:$/, ".");
-}
 
 export async function ProjectTile({ project, x, y, locale }: Props) {
   const t = await getTranslations("projects");
